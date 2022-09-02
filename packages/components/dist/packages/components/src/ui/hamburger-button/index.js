@@ -1,0 +1,2 @@
+import{__assign as t}from"../../../../../node_modules/tslib/tslib.es6.js";import{jsx as e}from"react/jsx-runtime";import o from"clsx";var i=function(i){var r=i.onClick,l=i.label,s=i.className;return e("button",t({type:"button","aria-label":l,onClick:r,className:o("w-[45px] h-[45px] flex items-center justify-center text-xl text-white/75 bg-ghost absolute top-[22px] right-3.8",s)},{children:e("i",{className:"icon ion-navicon-round"},void 0)}),void 0)};export{i as default};
+//# sourceMappingURL=index.js.map

@@ -1,0 +1,1 @@
+{"version":3,"file":"modal-body.js","sourceRoot":"","sources":["../../../../src/ui/modal/modal-body.tsx"],"names":[],"mappings":";;;;;;;;;;;;AACA,OAAO,IAAI,MAAM,MAAM,CAAC;AASxB,IAAM,SAAS,GAAe,UAAC,EAAuB;QAArB,SAAS,eAAA,EAAE,QAAQ,cAAA;IAChD,OAAO,CACH,uBAAK,SAAS,EAAE,IAAI,CAAC,SAAS,EAAE,mCAAmC,CAAC,gBAC/D,QAAQ,YACP,CACT,CAAC;AACN,CAAC,CAAC;AAEF,eAAe,SAAS,CAAC"}

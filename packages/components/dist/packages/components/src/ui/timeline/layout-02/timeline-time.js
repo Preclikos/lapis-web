@@ -1,0 +1,2 @@
+import{__assign as t}from"../../../../../../node_modules/tslib/tslib.es6.js";import{jsx as e}from"react/jsx-runtime";import r from"clsx";var i=function(i){var m=i.className,s=i.children;return e("div",t({className:r("timeline-time inline-block pr-3.8 pt-px w-[70px] flex-shrink-0 text-right text-xs md:pt-0 md:pr-[25px] md:w-[100px] md:text-base",m)},{children:s}),void 0)};export{i as default};
+//# sourceMappingURL=timeline-time.js.map

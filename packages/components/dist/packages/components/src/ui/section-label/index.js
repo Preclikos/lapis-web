@@ -1,0 +1,2 @@
+import{__assign as e}from"../../../../../node_modules/tslib/tslib.es6.js";import{jsx as r}from"react/jsx-runtime";import t from"clsx";var s=function(s){var i=s.className,m=s.children,o=s.size;return r("h5",e({className:t("text-gray-600  font-bold uppercase tracking-wider mb-2","sm"===o&&"text-[11px]","md"===o&&"text-xs",i)},{children:m}),void 0)};s.defaultProps={size:"sm"};export{s as default};
+//# sourceMappingURL=index.js.map

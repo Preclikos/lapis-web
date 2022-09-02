@@ -1,0 +1,2 @@
+import{__assign as t}from"../../../../../../node_modules/tslib/tslib.es6.js";import{jsx as e}from"react/jsx-runtime";import o from"clsx";var a=function(a){var r=a.className,n=a.onClick;return e("button",t({type:"button",onClick:n,className:o(r,"menu-expand absolute right-0 top-0 w-9 h-9 text-center bg-gray-600 text-gray-50 text-lg")},{children:e("i",{className:"icon fa fa-angle-down"},void 0)}),void 0)};export{a as default};
+//# sourceMappingURL=expand-button.js.map

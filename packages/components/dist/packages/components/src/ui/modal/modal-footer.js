@@ -1,0 +1,2 @@
+import{__assign as r}from"../../../../../node_modules/tslib/tslib.es6.js";import{jsx as e}from"react/jsx-runtime";import o from"clsx";var t=function(t){var d=t.className,s=t.children;return e("div",r({className:o(d,"modal-footer flex flex-wrap items-center justify-end p-3 border-t border-t-ghost rounded-bl rounded-br")},{children:s}),void 0)};export{t as default};
+//# sourceMappingURL=modal-footer.js.map
