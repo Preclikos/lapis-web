@@ -26,4 +26,4 @@ jobs:
         yarn
     - name: Build
       run: |
-        yarn start:main
+        yarn build:main
