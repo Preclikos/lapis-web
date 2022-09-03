@@ -59,7 +59,15 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: node-app
-    #- name: SCP Files
-    #  uses: actions/checkout@master
+    - name: SCP Files
+      uses: actions/checkout@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        password: ${{ secrets.SSH_PASSWORD }}
+        rm: true
+        overwrite: true
+        source: "."
+        target: "/home/lapis-web/web"
     - name: List  
       run: ls
