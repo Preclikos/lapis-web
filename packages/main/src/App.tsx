@@ -5,6 +5,7 @@ import Preloader from "./components/preloader";
 import { ReactKeycloakProvider } from "@react-keycloak/web";
 
 const Dashboard = lazy(() => import("./pages/dashboard"));
+const Signin = lazy(() => import("./pages/signin"));
 const Signout = lazy(() => import("./pages/signout"));
 const Error500 = lazy(() => import("./pages/error-500"));
 const Error503 = lazy(() => import("./pages/error-503"));
@@ -21,6 +22,7 @@ const App: FC = () => {
 
                         {/* Dashboard Routes */}
                         <Route path="/" element={<Dashboard />} />
+                        <Route path="/signin" element={<Signin />} />
                         <Route path="/signout" element={<Signout />} />
 
                         {/* Error Pages */}
