@@ -23,7 +23,7 @@ jobs:
       run: npm install --global lerna
     - name: Restore Project
       run: yarn
-    - name: Restore Project
+    - name: Restore Bootstrap Project
       run: yarn bootstrap
     - name: Build
       run: yarn build:main
