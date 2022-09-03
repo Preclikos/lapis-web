@@ -17,6 +17,9 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 16.x
+    - name: Install Yarn
+      run: |
+        npm install --global yarn
     - name: Build
       run: |
         yarn
