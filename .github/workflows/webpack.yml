@@ -17,13 +17,11 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 16.x
-    - name: Install Yarn and Lerna
-      run: |
-        npm install --global yarn
-        npm install --global lerna
+    - name: Install Yarn
+      run: npm install --global yarn
+    - name: Install Lerna
+      run: npm install --global lerna
     - name: Restore Project
-      run: |
-        yarn
+      run: yarn
     - name: Build
-      run: |
-        yarn build:main
+      run: yarn build:main
