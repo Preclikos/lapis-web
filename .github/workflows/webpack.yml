@@ -20,6 +20,9 @@ jobs:
     - name: Install Yarn
       run: |
         npm install --global yarn
-    - name: Build
+    - name: Restore Project
       run: |
         yarn
+    - name: Build
+      run: |
+        yarn start:main
