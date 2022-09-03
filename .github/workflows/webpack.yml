@@ -66,5 +66,5 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         password: ${{ secrets.SSH_PASSWORD }}
         files: "*"
-        remote-path: "/home/lapis-api/api"
+        remote-path: "/home/lapis-web/web"
         clean: true
