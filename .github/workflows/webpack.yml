@@ -1,4 +1,4 @@
-name: NodeJS with Webpack
+name: NodeJS
 
 on:
   push:
@@ -11,6 +11,12 @@ jobs:
     runs-on: self-hosted
     
     steps:
+    - name: 'Cleanup build folder'
+      run: |
+        ls -la ./
+        rm -rf ./* || true
+        rm -rf ./.??* || true
+        ls -la ./
     - uses: actions/checkout@v3
 
     - name: Use Node.js 16.x
@@ -30,4 +36,35 @@ jobs:
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.0
       with:
+       name: node-app
        path: packages/main/build
+       
+  deploy:
+    permissions:
+      contents: none
+    runs-on: self-hosted
+    needs: build
+    environment:
+      name: 'Production'
+      
+    steps:
+    - name: 'Cleanup build folder'
+      run: |
+        ls -la ./
+        rm -rf ./* || true
+        rm -rf ./.??* || true
+        ls -la ./
+    - name: Download artifact from build job
+      uses: actions/download-artifact@v3
+      with:
+        name: node-app
+    - name: Copy to Production
+      uses: ilCollez/ssh-scp-deploy@v1.1.0
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        port: 22
+        username: ${{ secrets.SSH_USER }}
+        password: ${{ secrets.SSH_PASSWORD }}
+        files: "*"
+        remote-path: "/home/lapis-web/web"
+        clean: true
