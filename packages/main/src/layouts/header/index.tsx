@@ -7,6 +7,8 @@ import ActivityDropdown from "../../components/dropdown/activity";
 import menuData from "@ht/shared/data/menu";
 import { useKeycloak } from "@react-keycloak/web";
 import { Link } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
+import { messages } from "./messages";
 
 const Header = () => {
     const { keycloak } = useKeycloak();
@@ -31,7 +33,9 @@ const Header = () => {
                                 <UserDropdown />
                             </>
                         ) : (
-                            <Link to="/signin">Login</Link>
+                            <Link to="/signin">
+                                <FormattedMessage {...messages.login} />
+                            </Link>
                         )}
                         <BurgerButton
                             label="Click here to open offcanvas menu"

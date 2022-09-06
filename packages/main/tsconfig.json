@@ -9,5 +9,5 @@
         "outDir": "dist",
         "downlevelIteration": true,
     },
-    "include": ["src", "src/*", "src/**/*", "config-overrides.js", "postcss.config.js", "tailwind.config.js", "analyse.js"]
+    "include": ["src", "src/*", "src/**/*", "lang/*","config-overrides.js", "postcss.config.js", "tailwind.config.js", "analyse.js"]
 }

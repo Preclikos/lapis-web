@@ -1,0 +1,8 @@
+{
+
+        "header.login":{
+            "defaultMessage": "Control Panel",
+            "description": "title of control panel section"
+          }
+
+}

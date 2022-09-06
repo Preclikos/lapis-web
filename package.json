@@ -23,7 +23,8 @@
     "lint-staged": "^12.1.4",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.4",
+    "react-intl": "^5.x"
   },
   "scripts": {
     "start": "lerna run start --parallel",
@@ -32,7 +33,7 @@
     "typecheck": "lerna run typecheck --parallel",
     "lint": "lerna run lint --parallel",
     "lint:fix": "lerna run lint:fix --parallel",
-    "start:main": "lerna exec --scope=\"@ht/main\" set HTTPS=true&&npm start",
+    "start:main": "lerna exec --scope=\"@ht/main\" yarn start",
     "build:main": "lerna exec --scope=\"@ht/main\" yarn build",
     "serve:main": "lerna exec --scope=\"@ht/main\" yarn serve",
     "test:main": "CI=true lerna run test --scope=\"@ht/main\" ",
@@ -57,5 +58,9 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
     "*": "prettier --write --ignore-unknown"
+  },
+  "resolutions": {
+    "@types/react": "17.0.11",
+    "@types/react-dom": "^17.0.11"
   }
 }
