@@ -1,6 +1,8 @@
 import { FC } from "react";
 import clsx from "clsx";
 import Anchor from "../ui/anchor";
+import { FormattedMessage } from "react-intl";
+import { menuMessages } from "../../data/menuMessages";
 
 interface IProps {
     /**
@@ -27,7 +29,7 @@ const SubLink: FC<IProps> = ({ label, path, isMegaMenu }) => {
                 isMegaMenu && "px-[0.563rem] m-0"
             )}
         >
-            {label}
+            <FormattedMessage {...menuMessages[label]} />
         </Anchor>
     );
 };

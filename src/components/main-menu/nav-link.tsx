@@ -2,6 +2,8 @@ import { FC } from "react";
 import { useLocation } from "react-router-dom";
 import clsx from "clsx";
 import Anchor from "../ui/anchor";
+import { FormattedMessage } from "react-intl";
+import { menuMessages } from "../../data/menuMessages";
 
 
 interface IProps {
@@ -64,7 +66,7 @@ const NavLink: FC<IProps> = ({ label, path, icon, hasChildren, className }) => {
                 />
             )}
 
-            <span>{label}</span>
+            <span><FormattedMessage {...menuMessages[label]} /></span>
             {hasChildren && (
                 <i className="fa fa-angle-down font-normal opacity-70 ml-1 lg:ml-2" />
             )}
