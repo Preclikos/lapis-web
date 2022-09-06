@@ -7,9 +7,12 @@ import BurgerButton from "../../components/ui/burger-button";
 import MobileMenu from "../../components/mobile-menu";
 import { FormattedMessage } from "react-intl";
 import { messages } from "./messages";
+import UserDropdown from "../../components/user-dropdown";
+import { useKeycloak } from "@react-keycloak/web";
 
 
 const Header = () => {
+    const { keycloak } = useKeycloak();
     const [offcanvas, setOffcanvas] = useState(false);
     const offcanvasHandler = () => {
         setOffcanvas((prev) => !prev);
@@ -24,9 +27,14 @@ const Header = () => {
 
                     </div>
                     <div className="header-right flex items-center">
-                            <Link to="/signin">
+                    {keycloak.authenticated ? (
+                            <>
+                                <UserDropdown />
+                            </>
+                        ) : (<Link to="/signin">
                                 <FormattedMessage {...messages.login} />
-                            </Link>               
+                            </Link>    
+                                )}           
                             <BurgerButton
                                 label="Click here to open offcanvas menu"
                                 onClick={offcanvasHandler}
