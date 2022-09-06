@@ -5,7 +5,7 @@ import Keycloak from 'keycloak-js'
 const keycloak = new Keycloak({
     url: "https://login.lapis.report",
     realm: "Lapis",
-    clientId: "lapis-web-dev",
+    clientId: "lapis-web",
 });
 
 export default keycloak
