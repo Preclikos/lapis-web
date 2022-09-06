@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren } from "react";
 import clsx from "clsx";
 import Header from "./header";
-import Footer from "./header/footer";
+import Footer from "./footer";
 
 
 interface IProps {

@@ -1,20 +1,28 @@
 import "./App.css";
-import { IntlProvider } from "react-intl";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from "./pages/dashboard";
+import { importMessages, IntlProvider, LocaleMessages } from "./translations/intlHelpers";
+import { useEffect, useState } from "react";
 
 function App() {
-  return (
-    <IntlProvider locale="cs" defaultLocale="en">
+  const locale = 'cs'
+  const [messages, setMessages] = useState<LocaleMessages | null>(null)
+
+  useEffect(() => {
+    importMessages(locale).then(setMessages)
+  }, [])
+
+  return messages ? (
+    <IntlProvider locale={locale} messages={messages}>
       <Router>
         <Switch>
           <Route path="/">
-            <Dashboard />{" "}
+            <Dashboard />
           </Route>
         </Switch>
       </Router>
     </IntlProvider>
-  );
+  ) : null;
 }
 
 export default App;

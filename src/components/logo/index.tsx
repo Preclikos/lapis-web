@@ -15,7 +15,7 @@ const Logo: FC<IProps> = ({ className }) => {
             )}
         >
             <Anchor path="/" className="text-primary">
-                stor<span>.</span>
+                Lapis<span>.</span>
             </Anchor>
         </h1>
     );

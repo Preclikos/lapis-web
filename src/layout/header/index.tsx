@@ -5,6 +5,9 @@ import Logo from "../../components/logo";
 import MainMenu from "../../components/main-menu";
 import BurgerButton from "../../components/ui/burger-button";
 import MobileMenu from "../../components/mobile-menu";
+import { FormattedMessage } from "react-intl";
+import { messages } from "./messages";
+
 
 const Header = () => {
     const [offcanvas, setOffcanvas] = useState(false);
@@ -22,7 +25,7 @@ const Header = () => {
                     </div>
                     <div className="header-right flex items-center">
                             <Link to="/signin">
-                                Sign In
+                                <FormattedMessage {...messages.login} />
                             </Link>               
                             <BurgerButton
                                 label="Click here to open offcanvas menu"
