@@ -1,2 +1,0 @@
-import{__assign as e}from"../../../../../../node_modules/tslib/tslib.es6.js";import{jsx as t}from"react/jsx-runtime";import r from"clsx";var i=function(i){var l=i.className,s=i.children;return t("div",e({className:r("timeline-media w-[50px] h-[50px] flex items-center justify-center text-2xl text-white rounded-full z-50",l)},{children:s}),void 0)};export{i as default};
-//# sourceMappingURL=timeline-media.js.map

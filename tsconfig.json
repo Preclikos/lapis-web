@@ -1,21 +1,26 @@
 {
-    "compilerOptions": {
-      "baseUrl": "./packages",
-      "paths": {
-        "@ht/*": ["./*/src/"]
-      },
-      "jsx": "react",
-      "module": "CommonJS",
-      "composite": true,
-      "target": "ES2018",
-      "strict": true,
-      "noUnusedLocals": true,
-      "noUnusedParameters": true,
-      "noImplicitReturns": true,
-      "declaration": true,
-      "skipLibCheck": true,
-      "allowJs": false,
-      "checkJs": false,
-    },
-    "exclude": ["node_modules", "docs", "stories", "__tests__", "dist"]
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
+  },
+  "include": [
+    "src",
+  ]
 }

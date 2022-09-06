@@ -1,6 +1,0 @@
-.submenu {
-    @apply hidden;
-}
-.submenu.open {
-    @apply block;
-}

@@ -1,2 +1,0 @@
-import{__assign as e}from"../../../../../node_modules/tslib/tslib.es6.js";import{jsx as r}from"react/jsx-runtime";import t from"clsx";var o=function(o){var s=o.className,d=o.children,l=o.style;return r("div",e({className:t(s,"modal-header flex items-center justify-between p-4 border-b border-b-ghost rounded-tl rounded-tr"),style:l},{children:d}),void 0)};export{o as default};
-//# sourceMappingURL=modal-header.js.map

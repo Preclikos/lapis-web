@@ -1,2 +1,0 @@
-import{__assign as e}from"../../../../../node_modules/tslib/tslib.es6.js";import{jsxs as a,jsx as o}from"react/jsx-runtime";var i=function(){return a("div",e({className:"double-bounce relative w-10 h-10 my-10 mx-auto"},{children:[o("div",{className:"absolute inset-0 rounded-full bg-heading opacity-60 animate-doubleBounce"},void 0),o("div",{className:"absolute inset-0 rounded-full bg-heading opacity-60 animate-doubleBounce animation-delay--1.0"},void 0)]}),void 0)};export{i as default};
-//# sourceMappingURL=spinner-02.js.map

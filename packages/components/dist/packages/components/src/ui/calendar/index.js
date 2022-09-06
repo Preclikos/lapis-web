@@ -1,2 +1,0 @@
-import{jsx as e}from"react/jsx-runtime";import a from"react-calendar";var n=function(n){var r=n.value,o=n.onChange;return e(a,{value:r,onChange:o,calendarType:"US",prevLabel:e("i",{className:"ion ion-chevron-left"},void 0),nextLabel:e("i",{className:"ion ion-chevron-right"},void 0),next2Label:null,prev2Label:null,formatShortWeekday:function(e,a){return["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][new Date(a).getDay()].substring(0,2)},showNeighboringMonth:!1},void 0)};export{n as default};
-//# sourceMappingURL=index.js.map

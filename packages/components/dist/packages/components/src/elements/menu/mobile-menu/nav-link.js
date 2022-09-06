@@ -1,2 +1,0 @@
-import{__assign as t}from"../../../../../../node_modules/tslib/tslib.es6.js";import{jsx as e}from"react/jsx-runtime";import r from"clsx";import i from"../../../ui/anchor/index.js";var o=function(o){var m=o.path,a=o.className,s=o.isInSubmenu,n=o.children;return e(i,t({path:m,className:r("block text-heading hover:text-primary z-50",a,!s&&"text-lg  font-medium",s&&"text-base")},{children:n}),void 0)};export{o as default};
-//# sourceMappingURL=nav-link.js.map

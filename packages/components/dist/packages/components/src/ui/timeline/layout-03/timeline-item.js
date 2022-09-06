@@ -1,2 +1,0 @@
-import{__assign as e}from"../../../../../../node_modules/tslib/tslib.es6.js";import{jsx as r}from"react/jsx-runtime";import o from"clsx";var t=function(t){var b=t.className,l=t.children;return r("div",e({className:o("timeline-item relative pl-5 pb-5 border-l border-l-geyser ml-1.5 before:absolute before:content-[''] before:top-0.5 before:-left-[7px] before:h-[13px] before:w-[13px] before:rounded-full before:border-[3px] before:border-primary before:bg-white z-40",b)},{children:l}),void 0)};export{t as default};
-//# sourceMappingURL=timeline-item.js.map

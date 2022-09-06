@@ -1,2 +1,0 @@
-import{__assign as r}from"../../../../../node_modules/tslib/tslib.es6.js";import{jsx as t,jsxs as e}from"react/jsx-runtime";import o from"clsx";import i from"../../ui/anchor/index.js";var m=function(m){var s=m.className;return t("h1",r({className:o("logo mb-0 tracking-tightest font-bold text-[2rem] lg:text-[2.25rem] lg:mr-[3.75rem]",s)},{children:e(i,r({path:"/",className:"text-primary"},{children:["stor",t("span",{children:"."},void 0)]}),void 0)}),void 0)};export{m as default};
-//# sourceMappingURL=index.js.map

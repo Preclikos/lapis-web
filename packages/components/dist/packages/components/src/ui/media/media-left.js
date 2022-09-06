@@ -1,2 +1,0 @@
-import{__assign as e}from"../../../../../node_modules/tslib/tslib.es6.js";import{jsx as r}from"react/jsx-runtime";import t from"clsx";var l=function(l){var i=l.className,s=l.alignMent,n=l.children;return r("div",e({className:t("media-left","middle"===s&&"self-center","end"===s&&"self-end",i)},{children:n}),void 0)};l.defaultProps={alignMent:"top"};export{l as default};
-//# sourceMappingURL=media-left.js.map

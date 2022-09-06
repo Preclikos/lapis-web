@@ -1,2 +1,0 @@
-import{__assign as e}from"../../../../../../node_modules/tslib/tslib.es6.js";import{jsx as r}from"react/jsx-runtime";import o from"clsx";var t=function(t){var l=t.className,i=t.children;return r("div",e({className:o("timeline-item flex items-start relative before:absolute before:content-[''] before:top-0 before:left-[25px] before:h-full before:border-l before:border-ghost z-40",l)},{children:i}),void 0)};export{t as default};
-//# sourceMappingURL=timeline-item.js.map

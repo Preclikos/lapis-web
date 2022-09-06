@@ -1,66 +1,56 @@
 {
-  "name": "lapis",
-  "main": "index.js",
-  "license": "MIT",
+  "name": "lapis-web-new",
+  "version": "0.1.0",
   "private": true,
-  "author": "BlackZone.site",
-  "workspaces": [
-    "packages/*"
-  ],
-  "devDependencies": {
-    "@babel/preset-env": "^7.16.7",
-    "@babel/preset-react": "^7.16.7",
-    "@babel/preset-typescript": "^7.16.7",
-    "@typescript-eslint/eslint-plugin": "^5.7.0",
-    "@typescript-eslint/parser": "^5.7.0",
-    "eslint": "^8.5.0",
-    "eslint-config-airbnb-typescript": "^16.1.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-prettier": "^4.0.0",
-    "husky": "^7.0.4",
-    "lerna": "^4.0.0",
-    "lint-staged": "^12.1.4",
-    "prettier": "^2.5.1",
-    "rimraf": "^3.0.2",
-    "typescript": "^4.5.4",
-    "react-intl": "^5.x"
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.11.57",
+    "@types/react": "^18.0.18",
+    "@types/react-dom": "^18.0.6",
+    "@types/react-intl": "^3.0.0",
+    "@types/react-router-dom": "^5.3.3",
+    "autoprefixer": "^10.4.8",
+    "clsx": "^1.2.1",
+    "cssnano": "^5.1.13",
+    "postcss": "^8.4.16",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-intl": "^6.1.1",
+    "react-router-dom": "^5.3.3",
+    "react-scripts": "5.0.1",
+    "tailwindcss": "^3.1.8",
+    "tailwindcss-animation-delay": "^1.0.7",
+    "typescript": "^4.8.2",
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "lerna run start --parallel",
-    "build": "lerna run build --parallel",
-    "test": "CI=true lerna run test --parallel",
-    "typecheck": "lerna run typecheck --parallel",
-    "lint": "lerna run lint --parallel",
-    "lint:fix": "lerna run lint:fix --parallel",
-    "start:main": "lerna exec --scope=\"@ht/main\" yarn start",
-    "build:main": "lerna exec --scope=\"@ht/main\" yarn build",
-    "serve:main": "lerna exec --scope=\"@ht/main\" yarn serve",
-    "test:main": "CI=true lerna run test --scope=\"@ht/main\" ",
-    "lint:main": "lerna run lint --scope=\"@ht/main\" ",
-    "lint:fix:main": "lerna run lint:fix --scope=\"@ht/main\" ",
-    "analyze:main": "lerna run analyze --scope=\"@ht/main\" ",
-    "start:components": "lerna run start --scope=\"@ht/components\" ",
-    "build:components": "lerna exec --scope=\"@ht/components\" yarn build",
-    "test:components": "CI=true lerna run test --scope=\"@ht/components\" ",
-    "lint:components": "lerna run lint --scope=\"@ht/components\" ",
-    "lint:fix:components": "lerna run lint:fix --scope=\"@ht/components\" ",
-    "storybook": "lerna exec --scope=\"@ht/components\" yarn storybook ",
-    "build-storybook": "lerna exec --scope=\"@ht/components\" yarn build-storybook ",
-    "serve-storybook": "lerna exec --scope=\"@ht/components\" yarn serve-storybook ",
-    "bootstrap": "lerna bootstrap --use-workspaces & yarn build:components",
-    "clean": "lerna run clean && rimraf node_modules",
-    "clean:update": "lerna clean && lerna bootstrap",
-    "clean-root": "rimraf node_modules",
-    "prepare": "husky install"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "dependencies": {},
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
-    "*": "prettier --write --ignore-unknown"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
-  "resolutions": {
-    "@types/react": "17.0.11",
-    "@types/react-dom": "^17.0.11"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "tailwindcss-nested-groups": "^1.2.4"
   }
 }

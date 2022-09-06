@@ -1,2 +1,0 @@
-import{__rest as r,__assign as e}from"../../../../../node_modules/tslib/tslib.es6.js";import{jsx as l}from"react/jsx-runtime";import s from"clsx";var a=function(a){var o=a.children,i=a.className,m=r(a,["children","className"]);return l("ol",e({className:s(i,"breadcrumb flex flex-wrap px-4 py-3 list-none bg-gray-300 rounded")},m,{children:o}),void 0)};export{a as default};
-//# sourceMappingURL=breadcrumb.js.map

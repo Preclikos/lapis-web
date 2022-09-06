@@ -1,2 +1,0 @@
-import{__assign as r}from"../../../../../../node_modules/tslib/tslib.es6.js";import{jsx as e}from"react/jsx-runtime";import t from"clsx";import m from"../../../ui/anchor/index.js";var o=function(o){var a=o.label,i=o.path,s=o.isMegaMenu;return e(m,r({path:i,className:t("block text-heading text-sm font-normal py-[0.375rem] hover:bg-gray-150 hover:text-primary",!s&&"px-[0.625rem] mx-[0.625rem]",s&&"px-[0.563rem] m-0")},{children:a}),void 0)};export{o as default};
-//# sourceMappingURL=sub-link.js.map

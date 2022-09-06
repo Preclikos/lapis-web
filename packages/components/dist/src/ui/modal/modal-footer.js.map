@@ -1,1 +1,0 @@
-{"version":3,"file":"modal-footer.js","sourceRoot":"","sources":["../../../../src/ui/modal/modal-footer.tsx"],"names":[],"mappings":";;;;;;;;;;;;AACA,OAAO,IAAI,MAAM,MAAM,CAAC;AASxB,IAAM,WAAW,GAAe,UAAC,EAAuB;QAArB,SAAS,eAAA,EAAE,QAAQ,cAAA;IAClD,OAAO,CACH,uBACI,SAAS,EAAE,IAAI,CACX,SAAS,EACT,wGAAwG,CAC3G,gBAEA,QAAQ,YACP,CACT,CAAC;AACN,CAAC,CAAC;AAEF,eAAe,WAAW,CAAC"}

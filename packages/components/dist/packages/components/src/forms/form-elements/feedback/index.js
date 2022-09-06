@@ -1,2 +1,0 @@
-import{__assign as r}from"../../../../../../node_modules/tslib/tslib.es6.js";import{jsx as e}from"react/jsx-runtime";import t from"clsx";var s=function(s){var o=s.state,n=s.showErrorOnly,i=s.children;return e("span",r({className:t("w-full block mt-1 text-xs","error"!==o&&n&&"hidden","success"===o&&!n&&"text-success","warning"===o&&!n&&"text-warning","error"===o&&"text-danger")},{children:i}),void 0)};export{s as default};
-//# sourceMappingURL=index.js.map
