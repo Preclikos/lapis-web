@@ -5,8 +5,6 @@ import NavLink from "./nav-link";
 import SubMenu from "./sub-menu";
 import MegaMenu from "./mega-menu";
 import { IMenu } from "../../types/menu";
-import { useIntl } from "react-intl";
-
 
 interface IProps {
     menu: IMenu[];
