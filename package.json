@@ -32,7 +32,7 @@
     "typecheck": "lerna run typecheck --parallel",
     "lint": "lerna run lint --parallel",
     "lint:fix": "lerna run lint:fix --parallel",
-    "start:main": "lerna exec --scope=\"@ht/main\" yarn start",
+    "start:main": "lerna exec --scope=\"@ht/main\" set HTTPS=true&&npm start",
     "build:main": "lerna exec --scope=\"@ht/main\" yarn build",
     "serve:main": "lerna exec --scope=\"@ht/main\" yarn serve",
     "test:main": "CI=true lerna run test --scope=\"@ht/main\" ",
@@ -57,9 +57,5 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
     "*": "prettier --write --ignore-unknown"
-  },
-  "resolutions": {
-    "@types/react": "17.0.2",
-    "@types/react-dom": "^17.0.2"
   }
 }
