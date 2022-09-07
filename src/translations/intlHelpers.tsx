@@ -18,7 +18,7 @@ export function useFormatMessage(): (
   return (id, values) => intl.formatMessage({id}, values)
 }
 
-type SupportedLocales = 'en' | 'cs'
+export type SupportedLocales = 'en' | 'cs'
 
 // return type on this signature enforces that all languages have the same translations defined
 export function importMessages(

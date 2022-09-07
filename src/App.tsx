@@ -1,13 +1,12 @@
-import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from "./pages/dashboard";
-import { importMessages, IntlProvider, LocaleMessages } from "./translations/intlHelpers";
+import { importMessages, IntlProvider, LocaleMessages, SupportedLocales } from "./translations/intlHelpers";
 import { useEffect, useState } from "react";
 import SignIn from "./pages/signin";
 import SignOut from "./pages/signout";
 
 function App() {
-  const locale = 'cs'
+  const locale = navigator.languages[1] as SupportedLocales;
   const [messages, setMessages] = useState<LocaleMessages | null>(null)
 
   useEffect(() => {
