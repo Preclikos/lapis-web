@@ -2,5 +2,9 @@
     "pageHeader.login": "Sign In",
     "menu.dashboard": "Dashboard",
     "user-menu.profile": "Profile",
-    "user-menu.logout": "Sign Out"
-  }
+    "user-menu.logout": "Sign Out",
+    "signin.title": "Get Started!",
+    "signin.content": "It's free to signin and only takes a minute.",
+    "signin.facebook": "Sign In Using Facebook",
+    "signin.google": "Sign In Using Google"
+}

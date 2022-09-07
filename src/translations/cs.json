@@ -2,5 +2,9 @@
     "pageHeader.login": "Přihlásit se",
     "menu.dashboard": "Nástěnka",
     "user-menu.profile": "Profil",
-    "user-menu.logout": "Odhlásit"
+    "user-menu.logout": "Odhlásit",
+    "signin.title": "Začínáme!",
+    "signin.content": "Přihlášení je zdarma a zabere vám to jen minutu.",
+    "signin.facebook": "Přihlášení pomocí Facebooku",
+    "signin.google": "Přihlášení pomocí Google"
   }
