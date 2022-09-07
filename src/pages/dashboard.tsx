@@ -14,6 +14,7 @@ const Dashboard = () => {
   //const [ setLoading] = useState<boolean>(true);
   const [stopSource] = useState(new Subject());
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     //setLoading(true)
     const fetchData = fromFetchStream<LapisData>('https://api.lapis.report/Search').pipe(
@@ -25,7 +26,7 @@ const Dashboard = () => {
     const subscription = fetchData.subscribe(setData);
    
     return () => subscription.unsubscribe();
-  }, [stopSource]);
+  });
 
   return <Layout>{data.map(m => {return <>{m.id + "-" + m.name}<br /></>})}</Layout>;
 };
