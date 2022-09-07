@@ -4,6 +4,7 @@ import Dashboard from "./pages/dashboard";
 import { importMessages, IntlProvider, LocaleMessages } from "./translations/intlHelpers";
 import { useEffect, useState } from "react";
 import SignIn from "./pages/signin";
+import SignOut from "./pages/signout";
 
 function App() {
   const locale = 'cs'
@@ -19,6 +20,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Dashboard}  />
           <Route path="/signin" component={SignIn}   />
+          <Route path="/signout" component={SignOut}   />
         </Switch>
       </Router>
     </IntlProvider>

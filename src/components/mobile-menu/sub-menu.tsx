@@ -1,4 +1,6 @@
 import { FC } from "react";
+import { FormattedMessage } from "react-intl";
+import { menuMessages } from "../../data/menuMessages";
 import { IMenu } from "../../types/menu";
 import NavItem from "./nav-item";
 import NavLink from "./nav-link";
@@ -15,19 +17,19 @@ const Submenu: FC<IProps> = ({ menu }) => {
                 <NavItem key={nav.id} isInSubmenu>
                     {!nav?.submenu && (
                         <NavLink path={nav.url} isInSubmenu>
-                            {nav.label}
+                           <FormattedMessage {...menuMessages[nav.label]} />
                         </NavLink>
                     )}
                     {nav?.submenu && (
                         <>
                             <h3 className="text-base opacity-70">
-                                {nav.label}
+                                <FormattedMessage {...menuMessages[nav.label]} />
                             </h3>
                             <ul className="">
                                 {nav?.submenu?.map((sub) => (
                                     <li className="mb-1 last:mb-0" key={sub.id}>
                                         <NavLink path={sub.url} isInSubmenu>
-                                            {sub.label}
+                                        <FormattedMessage {...menuMessages[sub.label]} />
                                         </NavLink>
                                     </li>
                                 ))}

@@ -1,4 +1,6 @@
 import { FC } from "react";
+import { FormattedMessage } from "react-intl";
+import { menuMessages } from "../../data/menuMessages";
 import { IMegamenu } from "../../types/menu";
 import NavItem from "./nav-item";
 import NavLink from "./nav-link";
@@ -19,7 +21,7 @@ const Megamenu: FC<IProps> = ({ menu }) => (
                         {nav?.submenu?.map((sub) => (
                             <li className="mb-1 last:mb-0" key={sub.id}>
                                 <NavLink path={sub.url} isInSubmenu>
-                                    {sub.label}
+                                    <FormattedMessage {...menuMessages[sub.label]} />
                                 </NavLink>
                             </li>
                         ))}

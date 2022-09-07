@@ -13,6 +13,8 @@ import Logo from "../logo";
 import CloseButton from "../ui/close-button";
 import { getSiblings } from "../../methods";
 import Offcanvas, { OffcanvasHeader, OffcanvasBody } from "../ui/offcanvas";
+import { FormattedMessage } from "react-intl";
+import { menuMessages } from "../../data/menuMessages";
 
 interface IProps {
     isOpen: boolean;
@@ -58,7 +60,7 @@ const MobileMenu = ({ isOpen, onClick, menu }: IProps) => {
                                 key={nav.id}
                                 onClick={(e) => clickHandler(e, true)}
                             >
-                                <NavLink path={nav.url}>{nav.label}</NavLink>
+                                <NavLink path={nav.url}><FormattedMessage {...menuMessages[nav.label]} /></NavLink>
                                 {hasChildren && (
                                     <ExpandButton
                                         onClick={(e) => clickHandler(e, true)}
