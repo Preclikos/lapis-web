@@ -11,22 +11,24 @@ interface LapisData
 
 const Dashboard = () => {
   const [data, setData] = useState<LapisData[]>([]);
-  //const [ setLoading] = useState<boolean>(true);
-  const [stopSource] = useState(new Subject());
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [loading, setLoading] = useState<boolean>(true);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [stopSource, setstopSource] = useState(new Subject());
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    //setLoading(true)
+    setLoading(true)
     const fetchData = fromFetchStream<LapisData>('https://api.lapis.report/Search').pipe(
       takeUntil(stopSource),
       scan((all, item) =>  [...all, item], [] as LapisData[]),
-      finalize(() => {/*setLoading(false)*/})
+      finalize(() => {setLoading(false)})
     );
 
     const subscription = fetchData.subscribe(setData);
    
     return () => subscription.unsubscribe();
-  });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return <Layout>{data.map(m => {return <>{m.id + "-" + m.name}<br /></>})}</Layout>;
 };
