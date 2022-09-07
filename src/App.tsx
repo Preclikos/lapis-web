@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     importMessages(locale).then(setMessages)
-  }, [])
+  }, [locale])
 
   return messages ? (
     <IntlProvider locale={locale} messages={messages}>
