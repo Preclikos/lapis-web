@@ -1,4 +1,6 @@
 {
     "pageHeader.login": "Sign In",
-    "menu.dashboard": "Dashboard"
+    "menu.dashboard": "Dashboard",
+    "user-menu.profile": "Profile",
+    "user-menu.logout": "Sign Out"
   }

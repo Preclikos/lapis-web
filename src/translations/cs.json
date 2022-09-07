@@ -1,4 +1,6 @@
 {
     "pageHeader.login": "Přihlásit se",
-    "menu.dashboard": "Nástěnka"
+    "menu.dashboard": "Nástěnka",
+    "user-menu.profile": "Profil",
+    "user-menu.logout": "Odhlásit"
   }
