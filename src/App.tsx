@@ -6,7 +6,7 @@ import SignIn from "./pages/signin";
 import SignOut from "./pages/signout";
 
 function App() {
-  const locale = navigator.languages[1] as SupportedLocales;
+  const locale = navigator.languages[0].substring(0, 2) as SupportedLocales;
   const [messages, setMessages] = useState<LocaleMessages | null>(null)
 
   useEffect(() => {
