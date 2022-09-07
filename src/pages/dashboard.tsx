@@ -25,7 +25,7 @@ const Dashboard = () => {
     const subscription = fetchData.subscribe(setData);
    
     return () => subscription.unsubscribe();
-  }, []);
+  }, [stopSource]);
 
   return <Layout>{data.map(m => {return <>{m.id + "-" + m.name}<br /></>})}</Layout>;
 };
