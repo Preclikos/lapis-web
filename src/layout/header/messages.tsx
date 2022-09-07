@@ -1,6 +1,6 @@
 export const messages = {
     login: {
-        id: "pageHeader.login",
+        id: "page-header.login",
         defaultMessage: "Sign In"
     }
 }

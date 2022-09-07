@@ -1,5 +1,6 @@
 {
-    "pageHeader.login": "Přihlásit se",
+    "page-header.login": "Přihlásit se",
+    "page-header.search": "Hledat",
     "menu.dashboard": "Nástěnka",
     "user-menu.profile": "Profil",
     "user-menu.logout": "Odhlásit",

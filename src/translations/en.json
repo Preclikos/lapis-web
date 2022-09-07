@@ -1,5 +1,6 @@
 {
-    "pageHeader.login": "Sign In",
+    "page-header.login": "Sign In",
+    "page-header.search": "Search",
     "menu.dashboard": "Dashboard",
     "user-menu.profile": "Profile",
     "user-menu.logout": "Sign Out",

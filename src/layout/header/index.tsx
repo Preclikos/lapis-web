@@ -9,6 +9,7 @@ import { FormattedMessage } from "react-intl";
 import { messages } from "./messages";
 import UserDropdown from "../../components/user-dropdown";
 import { useKeycloak } from "@react-keycloak/web";
+import SearchForm from "../../components/search-form";
 
 
 const Header = () => {
@@ -24,7 +25,7 @@ const Header = () => {
                 <div className="container flex items-center justify-between">
                     <div className="header-left flex items-center">
                         <Logo />
-
+                        <SearchForm />
                     </div>
                     <div className="header-right flex items-center">
                     {keycloak.authenticated ? (
