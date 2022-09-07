@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export function fromFetchStream<T>(input: RequestInfo, init?: RequestInit): Observable<T> {
   return new Observable<T>(observer => {
     const controller = new AbortController();
-    fetch(input, { ...init, signal: controller.signal, headers: { 'X-Accel-Buffering': 'off'} })
+    fetch(input, { ...init, signal: controller.signal })
       .then(async response => {
         const reader = response.body?.getReader();
         if (!reader) {
