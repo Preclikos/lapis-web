@@ -11,15 +11,15 @@ interface LapisData
 
 const Dashboard = () => {
   const [data, setData] = useState<LapisData[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [stopSource, setstopSource] = useState(new Subject());
+  //const [ setLoading] = useState<boolean>(true);
+  const [stopSource] = useState(new Subject());
 
   useEffect(() => {
-    setLoading(true)
+    //setLoading(true)
     const fetchData = fromFetchStream<LapisData>('https://api.lapis.report/Search').pipe(
       takeUntil(stopSource),
       scan((all, item) =>  [...all, item], [] as LapisData[]),
-      finalize(() => {setLoading(false)})
+      finalize(() => {/*setLoading(false)*/})
     );
 
     const subscription = fetchData.subscribe(setData);
