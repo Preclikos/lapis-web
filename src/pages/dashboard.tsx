@@ -24,7 +24,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     setLoading(true)
-    const fetchData = fromFetchStream<LapisData>('https://api.lapis.report/Search/Code').pipe(
+    const fetchData = fromFetchStream<LapisData>(process.env.REACT_APP_WEBAPI_API + '/Search/Code').pipe(
       takeUntil(stopSource),
       scan((all, item) =>  [...all, item], [] as LapisData[]),
       finalize(() => {setLoading(false)})
