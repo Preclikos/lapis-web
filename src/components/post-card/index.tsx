@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import CommentModal from "../modals/comment-modal";
 import Anchor from "../ui/anchor";
 import Card from "../ui/card/card";
 import CardBody from "../ui/card/card-body";
@@ -37,8 +38,8 @@ interface IProps {
 
 const PostCard: FC<IProps> = ({ title, user, activity, author }) => {
     const [likes, setLikes] = useState(0);
-    //const [showShareModal, setShowShareModal] = useState(false);
-    //const [showCommentModal, setShowCommentModal] = useState(false);
+    const [showShareModal, setShowShareModal] = useState(false);
+    const [showCommentModal, setShowCommentModal] = useState(false);
     return (
         <>
             <Card className="activity-card mt-5">
@@ -106,7 +107,7 @@ const PostCard: FC<IProps> = ({ title, user, activity, author }) => {
                 </CardBody>
                 <div className="p-0 bg-black/5 border-t border-t-geyser card-footer relative">
                     <button
-                        //onClick={() => setShowCommentModal(true)}
+                        onClick={() => setShowCommentModal(true)}
                         className="inline-block border-r border-r-geyser py-3 px-3.8 md:px-[25px] text-primary"
                     >
                         Comment
@@ -118,13 +119,18 @@ const PostCard: FC<IProps> = ({ title, user, activity, author }) => {
                         Likes ({likes})
                     </button>
                     <button
-                        //onClick={() => setShowShareModal(true)}
+                        onClick={() => setShowShareModal(true)}
                         className="inline-block border-r border-r-geyser py-3 px-3.8 md:px-[25px] text-primary"
                     >
                         Share
                     </button>
                 </div>
             </Card>
+
+            <CommentModal
+                show={showCommentModal}
+                onClose={() => setShowCommentModal(false)}
+            />
         </>
     );
 };

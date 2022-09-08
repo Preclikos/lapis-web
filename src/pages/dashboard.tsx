@@ -17,6 +17,7 @@ interface LapisData
 const Dashboard = () => {
   const t = useIntl();
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState<LapisData[]>([]);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [loading, setLoading] = useState<boolean>(true);
