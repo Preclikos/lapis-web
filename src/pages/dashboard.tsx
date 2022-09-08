@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import { takeUntil, scan, finalize, Subject } from "rxjs";
 import Layout from "../layout";
 import { fromFetchStream } from "../api/fromFetchStream";
+import PageHeader from "../components/page-header";
+import { useIntl } from "react-intl";
+import { menuMessages } from "../data/menuMessages";
+import SEO from "../components/seo";
 
 interface LapisData
 {
@@ -10,6 +14,8 @@ interface LapisData
 }
 
 const Dashboard = () => {
+  const t = useIntl();
+
   const [data, setData] = useState<LapisData[]>([]);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [loading, setLoading] = useState<boolean>(true);
@@ -30,7 +36,16 @@ const Dashboard = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return <Layout>{data.map(m => {return <>{m.id + "-" + m.name}<br /></>})}</Layout>;
+  return( 
+  <Layout>   
+    <SEO />         
+    <PageHeader
+      prev={[{ text: "home", path: "/" }]}
+      currentPage={t.formatMessage({...menuMessages.dashboard})}
+      title={t.formatMessage({...menuMessages.dashboard})} />
+        {data.map(m => {return <>{m.id + "-" + m.name}<br /></>})}
+      </Layout>
+      );
 };
 
 export default Dashboard;
