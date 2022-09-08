@@ -2142,6 +2142,13 @@
   dependencies:
     react-intl "*"
 
+"@types/react-portal@^4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@types/react-portal/-/react-portal-4.0.4.tgz#1c0e5a248f6e18a66f981139c13b6e796f4a92b6"
+  integrity sha512-ecVWngYHeSymq5XdrQOXRpIb9ay5SM4Stm/ur6+wc0Z+r05gafZ5SuMRbXKYsj4exNJa+4CTKK6J7qcTKm9K5g==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-router-dom@^5.3.3":
   version "5.3.3"
   resolved "https://registry.yarnpkg.com/@types/react-router-dom/-/react-router-dom-5.3.3.tgz#e9d6b4a66fcdbd651a5f106c2656a30088cc1e83"
@@ -2157,6 +2164,13 @@
   integrity sha512-YYknwy0D0iOwKQgz9v8nOzt2J6l4gouBmDnWqUUznltOTaon+r8US8ky8HvN0tXvc38U9m6z/t2RsVsnd1zM0g==
   dependencies:
     "@types/history" "^4.7.11"
+    "@types/react" "*"
+
+"@types/react-transition-group@^4.4.5":
+  version "4.4.5"
+  resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-4.4.5.tgz#aae20dcf773c5aa275d5b9f7cdbca638abc5e416"
+  integrity sha512-juKD/eiSM3/xZYzjuzH6ZwpP+/lejltmiS3QEzV/vmb/Q8+HfDmxu+Baga8UEMGBqV88Nbg4l2hY/K2DkyaLLA==
+  dependencies:
     "@types/react" "*"
 
 "@types/react@*", "@types/react@16 || 17 || 18", "@types/react@^18.0.18":

@@ -315,6 +315,10 @@ module.exports = {
         "-0.32": "-0.32s",
         "-0.16": "-0.16s",
       },
+      flex: {
+        full: "1 0 100%",
+      },
+      },
       container: {
         center: true,
         padding: "15px",
@@ -324,7 +328,6 @@ module.exports = {
           lg: "960px",
           xl: "1140px",
         },
-      },
     },
   },
   plugins: [
