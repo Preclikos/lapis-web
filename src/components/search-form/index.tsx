@@ -7,14 +7,14 @@ const SearchForm = () => {
     const t = useIntl();
 
     return (
-        <>
-            <div className="search-box rounded-full p-0.5 bg-gray-200 border border-geyser items-center hidden lg:flex">
+        <div className="pl-3">
+            <div className="search-box rounded-full p-0.5 bg-gray-200 border border-geyser items-center hidden md:flex">
                 <Input
                     id="search"
                     name="search"
                     placeholder={t.formatMessage({...messages.search})}
                     customStyle="nofocus"
-                    className="w-full md:w-auto border-0 bg-transparent pl-5 rounded-full bg-gray-200 "
+                    className="w-[15.625rem] border-0 bg-transparent pl-6 rounded-full bg-gray-200 "
                 />
                 <Button
                     className="bg-primary-400 hover:bg-primary-400 focus:bg-primary-400 border-0"
@@ -24,20 +24,18 @@ const SearchForm = () => {
                 >
                     <i className="fa fa-search"></i>
                 </Button>
+            </div>        
+            <div className="search-box rounded-full p-0.5 bg-gray-200 border border-geyser items-center md:hidden">
+                <Button
+                    className="bg-primary-400 hover:bg-primary-400 focus:bg-primary-400 border-0"
+                    shape="ellipse"
+                    size="lg"
+                    iconButton
+                >
+                    <i className="fa fa-search"></i>
+                </Button>
             </div>
-            <div className="pl-3">
-                <div className="search-box rounded-full p-0.5 bg-gray-200 border border-geyser items-center lg:hidden">
-                    <Button
-                        className="bg-primary-400 hover:bg-primary-400 focus:bg-primary-400 border-0"
-                        shape="ellipse"
-                        size="lg"
-                        iconButton
-                    >
-                        <i className="fa fa-search"></i>
-                    </Button>
-                </div>
-            </div>
-        </>
+        </div>       
     );
 };
 
