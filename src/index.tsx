@@ -5,6 +5,7 @@ import "./fonts/fonts.css";
 import "./fonts/font-awesome.css";
 import "./fonts/ionicons.css";
 import "./fonts/flag-icon.min.css";
+import "leaflet/dist/leaflet.css";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import keycloak from './keycloak';

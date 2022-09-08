@@ -39,8 +39,6 @@ const ProfileCard: FC<IProps> = ({
     };
 
     return (
-
-        
         <>
            <Card className="card-profile">
                 <CardBody className="p-[30px]">

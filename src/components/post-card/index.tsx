@@ -1,4 +1,6 @@
+import { LatLng } from "leaflet";
 import { FC, useState } from "react";
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import CommentModal from "../modals/comment-modal";
 import Anchor from "../ui/anchor";
 import Card from "../ui/card/card";
@@ -104,6 +106,7 @@ const PostCard: FC<IProps> = ({ title, user, activity, author }) => {
                                 )}
                             </div>
                         </div>
+
                     </div>
                 </CardBody>
                 <div className="p-0 bg-black/5 border-t border-t-geyser card-footer relative">
