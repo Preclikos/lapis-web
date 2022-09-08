@@ -1,6 +1,4 @@
-import { LatLng } from "leaflet";
 import { FC, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import CommentModal from "../modals/comment-modal";
 import Anchor from "../ui/anchor";
 import Card from "../ui/card/card";
