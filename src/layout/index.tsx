@@ -3,7 +3,6 @@ import clsx from "clsx";
 import Header from "./header";
 import Footer from "./footer";
 
-
 interface IProps {
     hideFooter?: boolean;
     containerClass?: string;

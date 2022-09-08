@@ -7,11 +7,11 @@ const SearchForm = () => {
     const t = useIntl();
 
     return (
-        <div className="search-box rounded-full p-0.5 bg-gray-200 border border-geyser items-center flex">
+        <div className="search-box rounded-full p-0.5 bg-gray-200 border border-geyser items-center hidden lg:flex">
             <Input
                 id="search"
                 name="search"
-                placeholder={t.formatMessage( {...messages.search})}
+                placeholder={t.formatMessage({...messages.search})}
                 customStyle="nofocus"
                 className="w-full md:w-auto border-0 bg-transparent pl-5 rounded-full bg-gray-200"
             />
