@@ -1,6 +1,14 @@
+import { useParams } from "react-router-dom";
 import ProfileCard from "../../../components/profile-card";
 
+interface IProfileProps
+{
+    id: string
+}
+
 const MainContent = () => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    let { id } = useParams<IProfileProps>();
 
     return (
         <>
@@ -10,7 +18,7 @@ const MainContent = () => {
              company={""} 
              location={""} 
              bio={""} 
-             path={""} 
+             path={"https://"+window.location.host +"/profile?id="} 
              image={{src: "test", alt: "test"
             }} />
         </>

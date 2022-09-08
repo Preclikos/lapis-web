@@ -81,7 +81,7 @@ const ProfileCard: FC<IProps> = ({
                         path={path}
                         className="block py-3.8 px-8 border-b border-geyser text-gray-600 md:border-b-0 md:px-5 md:py-0"
                     >
-                        http://example.me/profile?id=katherine
+                        {path}
                     </Anchor>
                     <button
                         type="button"

@@ -21,6 +21,7 @@ function App() {
           <Route exact path="/" component={Dashboard}  />
 
           <Route path="/profile" component={Profile}   />
+          <Route path="/profile/:id" component={Profile}   />
           <Route path="/signin" component={SignIn}   />
           <Route path="/signout" component={SignOut}   />
           
