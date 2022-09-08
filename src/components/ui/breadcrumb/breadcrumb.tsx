@@ -13,7 +13,7 @@ const Breadcrumb: FC<PropsWithChildren<IBreadcrumb>> = ({ children, className, .
         <ol
             className={clsx(
                 className,
-                "breadcrumb flex flex-wrap px-4 py-3 list-none bg-gray-300 rounded"
+                "breadcrumb flex flex-wrap list-none rounded"
             )}
             {...restProps}
         >

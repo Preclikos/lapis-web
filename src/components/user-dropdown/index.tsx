@@ -7,6 +7,7 @@ import { useKeycloak } from "@react-keycloak/web";
 import { KeycloakTokenParsed } from "keycloak-js";
 import { FormattedMessage } from "react-intl";
 import { messages } from "./messages";
+import  empty_user  from './empty_user.png'
 
 interface ParsedToken extends KeycloakTokenParsed { name: string }
 
@@ -23,13 +24,13 @@ const UserDropdown = () => {
                 iconClass="hidden md:inline-block"
                 className="inline-flex items-center"
             >
-              {/*  <img
-      
+                <img    
+                    src={empty_user}
                     alt="user"
                     className="w-[2.813rem] h-[2.813rem] rounded-full p-[3px] border border-primary"
                     width={37}
                     height={37}
-    />*/}
+                />
                 <span className="pl-2.5 hidden md:inline-block">{(keycloak.tokenParsed as ParsedToken).name}</span>
             </DropdownToggle>
             <DropdownMenu

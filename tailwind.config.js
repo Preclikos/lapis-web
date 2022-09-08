@@ -318,7 +318,7 @@ module.exports = {
       flex: {
         full: "1 0 100%",
       },
-      },
+    },
       container: {
         center: true,
         padding: "15px",
