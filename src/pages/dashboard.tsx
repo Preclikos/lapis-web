@@ -40,7 +40,7 @@ const Dashboard = () => {
   <Layout>   
     <SEO />         
     <PageHeader
-      prev={[{ text: "home", path: "/" }]}
+      prev={[{ text: t.formatMessage({...menuMessages.home}), path: "/" }]}
       currentPage={t.formatMessage({...menuMessages.dashboard})}
       title={t.formatMessage({...menuMessages.dashboard})} />
         {data.map(m => {return <>{m.id + "-" + m.name}<br /></>})}
