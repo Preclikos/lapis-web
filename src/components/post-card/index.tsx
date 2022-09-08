@@ -38,6 +38,7 @@ interface IProps {
 
 const PostCard: FC<IProps> = ({ title, user, activity, author }) => {
     const [likes, setLikes] = useState(0);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [showShareModal, setShowShareModal] = useState(false);
     const [showCommentModal, setShowCommentModal] = useState(false);
     return (
