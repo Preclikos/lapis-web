@@ -4,6 +4,7 @@ import { importMessages, IntlProvider, LocaleMessages, SupportedLocales } from "
 import { useEffect, useState } from "react";
 import SignIn from "./pages/signin";
 import SignOut from "./pages/signout";
+import Profile from "./pages/profile";
 
 function App() {
   const locale = navigator.languages[0].substring(0, 2) as SupportedLocales;
@@ -18,8 +19,11 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Dashboard}  />
+
+          <Route path="/profile" component={Profile}   />
           <Route path="/signin" component={SignIn}   />
           <Route path="/signout" component={SignOut}   />
+          
         </Switch>
       </Router>
     </IntlProvider>
