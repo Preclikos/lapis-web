@@ -16,7 +16,7 @@ const Profile = () => {
                 currentPage={t.formatMessage({...menuMessages.profile})}
                 title={t.formatMessage({...menuMessages.profile})}
             />
-            <div className="grid lg:grid-cols-12 gap-5">
+            <div className="grid  gap-5">
                     <MainContent />
             </div>
         </Layout>
