@@ -28,7 +28,7 @@ jobs:
     - name: Restore Project
       run: yarn
     - name: Build
-      run: yarn build
+      run: CI=false yarn build
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.0
       with:
