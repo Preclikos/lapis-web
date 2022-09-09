@@ -4,12 +4,48 @@ import Input from "../form-elements/input";
 import Button from "../ui/button";
 import Modal from "../ui/modal/modal";
 import ModalBody from "../ui/modal/modal-body";
-import { createRef, useState } from "react";
+import { createRef, useEffect, useState } from "react";
+import { Subject, takeUntil, scan, finalize } from "rxjs";
+import { fromFetchStream } from "../../api/fromFetchStream";
 
+interface LapisData
+{
+  id : number
+  name: string;
+  description: string;
+  image: string;
+}
 const SearchForm = () => {
     const t = useIntl();
     const inputRef = createRef<HTMLInputElement>()
     const [ searchModal, showSearchModal ] = useState<boolean>(false);
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [code, setCode] = useState<string>('');
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [data, setData] = useState<LapisData[]>([]);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [loading, setLoading] = useState<boolean>(true);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [stopSource, setstopSource] = useState(new Subject());
+
+  useEffect(() => {
+    if(code.length > 0)
+    {
+        setData([]);
+        setLoading(true)
+        const fetchData = fromFetchStream<LapisData>(process.env.REACT_APP_WEBAPI_API + '/Search/Code?code=' + code).pipe(
+        takeUntil(stopSource),
+        scan((all, item) =>  [...all, item], [] as LapisData[]),
+        finalize(() => {setLoading(false)})
+        );
+
+        const subscription = fetchData.subscribe(setData);
+    
+        return () => subscription.unsubscribe();
+        }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [code]);
 
     return (
         <div className="pl-3">
@@ -57,6 +93,7 @@ const SearchForm = () => {
                             placeholder={t.formatMessage({...messages.search})}
                             customStyle="nofocus"
                             className="w-11/12 border-0 bg-transparent  rounded-full bg-gray-200"
+                            onChange={event => setCode(event.target.value)}
                         />
                         <Button
                             className="bg-primary-600 hover:bg-primary-400 focus:bg-primary-400 border-0"
@@ -68,55 +105,17 @@ const SearchForm = () => {
                         </Button>
                     </div>  
                     <div>
-                        <div className="grid grid-cols-4 py-4">
-                            <img  />
-                            <div className="col-span-3">
-                                <h4>Descripton</h4>
-                                <p>Descripton</p>
-                            </div>
-                        </div>
-                        <div className="grid grid-cols-4 py-4">
-                            <img  />
-                            <div className="col-span-3">
-                                <h4>Descripton</h4>
-                                <p>Descripton</p>
-                            </div>
-                        </div>
-                        <div className="grid grid-cols-4 py-4">
-                            <img  />
-                            <div className="col-span-3">
-                                <h4>Descripton</h4>
-                                <p>Descripton</p>
-                            </div>
-                        </div>
-                        <div className="grid grid-cols-4 py-4">
-                            <img  />
-                            <div className="col-span-3">
-                                <h4>Descripton</h4>
-                                <p>Descripton</p>
-                            </div>
-                        </div>
-                        <div className="grid grid-cols-4 py-4">
-                            <img  />
-                            <div className="col-span-3">
-                                <h4>Descripton</h4>
-                                <p>Descripton</p>
-                            </div>
-                        </div>
-                        <div className="grid grid-cols-4 py-4">
-                            <img  />
-                            <div className="col-span-3">
-                                <h4>Descripton</h4>
-                                <p>Descripton</p>
-                            </div>
-                        </div>
-                        <div className="grid grid-cols-4 py-4">
-                            <img  />
-                            <div className="col-span-3">
-                                <h4>Descripton</h4>
-                                <p>Descripton</p>
-                            </div>
-                        </div>
+                        {data.map(item => {
+                            return (
+                                <div key={item.id} className="grid grid-cols-4 py-4">
+                                    <img src={item.image} alt={item.name} />
+                                    <div className="col-span-3">
+                                        <h4>{item.name}</h4>
+                                        <p>{item.description}</p>
+                                    </div>
+                                </div>)}
+                            )
+                        }
                     </div>
                 </ModalBody>
             </Modal>
