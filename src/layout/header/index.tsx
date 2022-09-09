@@ -10,8 +10,6 @@ import { messages } from "./messages";
 import UserDropdown from "../../components/user-dropdown";
 import { useKeycloak } from "@react-keycloak/web";
 import SearchForm from "../../components/search-form";
-import Button from "../../components/ui/button";
-
 
 const Header = () => {
     const { keycloak } = useKeycloak();
