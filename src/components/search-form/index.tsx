@@ -40,7 +40,7 @@ const SearchForm = () => {
                     <i className="fa fa-search"/>
 
                 </Button>
-                <Modal show={searchModal} onClose={() => showSearchModal(false) }>
+                <Modal className={"pt-[3.45rem]"} centered={false} show={searchModal} onClose={() => showSearchModal(false) }>
                     <ModalBody className={"content-startcontent-start"}>
                         <div className="search-box rounded-full p-0.5 bg-gray-200 border border-geyser items-center flex">
                             <Input
