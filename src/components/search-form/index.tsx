@@ -21,12 +21,9 @@ const SearchForm = () => {
     const inputRef = createRef<HTMLInputElement>()
     const [ searchModal, showSearchModal ] = useState<boolean>(false);
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [code, setCode] = useState<string>('');
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [data, setData] = useState<LapisData[]>([]);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [loading, setLoading] = useState<boolean>(true);
+    const [loading, setLoading] = useState<boolean>(false);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [stopSource, setstopSource] = useState(new Subject());
 
