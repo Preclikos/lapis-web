@@ -15,6 +15,7 @@ interface LapisData
   name: string;
   description: string;
   image: string;
+  code: string;
 }
 const SearchForm = () => {
     const t = useIntl();
@@ -110,6 +111,7 @@ const SearchForm = () => {
                                 <div key={item.id} className=" grid grid-cols-4 py-4">
                                     <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/305930899_5997173090293006_823830225743787113_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=5cd70e&_nc_ohc=f4VMkhScKKgAX8GgyCA&_nc_ht=scontent-prg1-1.xx&oh=00_AT83ezFHEkardChgqkahzaYMhjY3eB4t_3REzMruDvu6zA&oe=631E4754" alt={item.name} />
                                     <div className="px-2 py-2 col-span-3 border border-geyser">
+                                        <h6>{item.code}</h6>
                                         <h4>{item.name}</h4>
                                         <p>{item.description}</p>
                                     </div>
