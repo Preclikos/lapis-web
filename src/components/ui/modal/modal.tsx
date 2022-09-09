@@ -71,7 +71,7 @@ const Modal: FC<PropsWithChildren<IModal>> = ({
                             <div
                                 ref={nodeRef}
                                 className={clsx(
-                                    "modal-dialog relative w-auto m-2 pointer-events-none sm:my-5 sm:mx-auto",
+                                    "modal-dialog relative w-auto m-2 pointer-events-none my-5 sm:mx-auto",
                                     size === "sm" && "sm:max-w-[300px]",
                                     size === "md" && "sm:max-w-[500px]",
                                     size === "lg" &&

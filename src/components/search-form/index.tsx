@@ -40,8 +40,8 @@ const SearchForm = () => {
                     <i className="fa fa-search"/>
 
                 </Button>
-                <Modal className={"pt-[3.45rem]"} centered={false} show={searchModal} onClose={() => showSearchModal(false) }>
-                    <ModalBody className={"content-startcontent-start"}>
+                <Modal className={"pt-[3.45rem] overflow-scroll"} centered={false} show={searchModal} onClose={() => showSearchModal(false) }>
+                    <ModalBody>
                         <div className="search-box rounded-full p-0.5 bg-gray-200 border border-geyser items-center flex">
                             <Input
                                 id="search-modal"
@@ -59,11 +59,55 @@ const SearchForm = () => {
                                 <i className="fa fa-search"></i>
                             </Button>
                         </div>  
-                        <div className="grid grid-cols-4 py-4">
-                            <img  />
-                            <div className="col-span-3">
-                                <h4>Descripton</h4>
-                                <p>Descripton</p>
+                        <div>
+                            <div className="grid grid-cols-4 py-4">
+                                <img  />
+                                <div className="col-span-3">
+                                    <h4>Descripton</h4>
+                                    <p>Descripton</p>
+                                </div>
+                            </div>
+                            <div className="grid grid-cols-4 py-4">
+                                <img  />
+                                <div className="col-span-3">
+                                    <h4>Descripton</h4>
+                                    <p>Descripton</p>
+                                </div>
+                            </div>
+                            <div className="grid grid-cols-4 py-4">
+                                <img  />
+                                <div className="col-span-3">
+                                    <h4>Descripton</h4>
+                                    <p>Descripton</p>
+                                </div>
+                            </div>
+                            <div className="grid grid-cols-4 py-4">
+                                <img  />
+                                <div className="col-span-3">
+                                    <h4>Descripton</h4>
+                                    <p>Descripton</p>
+                                </div>
+                            </div>
+                            <div className="grid grid-cols-4 py-4">
+                                <img  />
+                                <div className="col-span-3">
+                                    <h4>Descripton</h4>
+                                    <p>Descripton</p>
+                                </div>
+                            </div>
+                            <div className="grid grid-cols-4 py-4">
+                                <img  />
+                                <div className="col-span-3">
+                                    <h4>Descripton</h4>
+                                    <p>Descripton</p>
+                                </div>
+                            </div>
+                            <div className="grid grid-cols-4 py-4">
+                                <img  />
+                                <div className="col-span-3">
+                                    <h4>Descripton</h4>
+                                    <p>Descripton</p>
+                                </div>
                             </div>
                         </div>
                     </ModalBody>
