@@ -4,9 +4,11 @@ import Input from "../form-elements/input";
 import Button from "../ui/button";
 import Modal from "../ui/modal/modal";
 import ModalBody from "../ui/modal/modal-body";
+import { useState } from "react";
 
 const SearchForm = () => {
     const t = useIntl();
+    const [ searchModal, showSearchModal ] = useState<boolean>(false);
 
     return (
         <div className="pl-3">
@@ -33,12 +35,12 @@ const SearchForm = () => {
                     shape="ellipse"
                     size="lg"
                     iconButton
+                    onClick={() => showSearchModal(true)}
                 >
-                    <i className="fa fa-search"></i>
+                    <i className="fa fa-search"/>
+
                 </Button>
-                <Modal show={true} onClose={function (): void {
-                    throw new Error("Function not implemented.");
-                } }>
+                <Modal show={searchModal} onClose={() => showSearchModal(false) }>
                     <ModalBody className={"content-startcontent-start"}>
                         <div className="search-box rounded-full p-0.5 bg-gray-200 border border-geyser items-center flex">
                             <Input
@@ -46,7 +48,7 @@ const SearchForm = () => {
                                 name="search"
                                 placeholder={t.formatMessage({...messages.search})}
                                 customStyle="nofocus"
-                                className="w-[26.325rem] border-0 bg-transparent pl-6 rounded-full bg-gray-200 "
+                                className="w-11/12 border-0 bg-transparent  rounded-full bg-gray-200"
                             />
                             <Button
                                 className="bg-primary-600 hover:bg-primary-400 focus:bg-primary-400 border-0"
