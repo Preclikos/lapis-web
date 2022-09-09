@@ -2,6 +2,8 @@ import { useIntl } from "react-intl";
 import { messages } from "./messages";
 import Input from "../form-elements/input";
 import Button from "../ui/button";
+import Modal from "../ui/modal/modal";
+import ModalBody from "../ui/modal/modal-body";
 
 const SearchForm = () => {
     const t = useIntl();
@@ -34,6 +36,36 @@ const SearchForm = () => {
                 >
                     <i className="fa fa-search"></i>
                 </Button>
+                <Modal show={true} onClose={function (): void {
+                    throw new Error("Function not implemented.");
+                } }>
+                    <ModalBody className={"content-startcontent-start"}>
+                        <div className="search-box rounded-full p-0.5 bg-gray-200 border border-geyser items-center flex">
+                            <Input
+                                id="search-modal"
+                                name="search"
+                                placeholder={t.formatMessage({...messages.search})}
+                                customStyle="nofocus"
+                                className="w-[26.325rem] border-0 bg-transparent pl-6 rounded-full bg-gray-200 "
+                            />
+                            <Button
+                                className="bg-primary-600 hover:bg-primary-400 focus:bg-primary-400 border-0"
+                                shape="ellipse"
+                                size="lg"
+                                iconButton
+                            >
+                                <i className="fa fa-search"></i>
+                            </Button>
+                        </div>  
+                        <div className="grid grid-cols-4 py-4">
+                            <img  />
+                            <div className="col-span-3">
+                                <h4>Descripton</h4>
+                                <p>Descripton</p>
+                            </div>
+                        </div>
+                    </ModalBody>
+                </Modal>
             </div>
         </div>       
     );
