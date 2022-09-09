@@ -9,7 +9,7 @@ import { messages } from "./messages";
 
 const SigninBox = () => {
    const { keycloak } = useKeycloak();
-console.log("asd")
+
     const loginFacebook = useCallback(async () => {
         await keycloak?.login({ idpHint: "facebook" });
     }, [keycloak]);
