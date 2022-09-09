@@ -35,7 +35,7 @@ const SearchForm = () => {
     {
         setData([]);
         setLoading(true)
-        const fetchData = fromFetchStream<LapisData>(process.env.REACT_APP_WEBAPI_API + '/Search/Code?code=' + code).pipe(
+        const fetchData = fromFetchStream<LapisData>(process.env.REACT_APP_WEBAPI_API + '/Search/Code?code=' + encodeURIComponent(code)).pipe(
         takeUntil(stopSource),
         scan((all, item) =>  [...all, item], [] as LapisData[]),
         finalize(() => {setLoading(false)})
