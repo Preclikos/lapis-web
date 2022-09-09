@@ -27,6 +27,10 @@ export interface IModal extends IProps {
      * Callback function for close modal
      */
     onClose: () => void;
+
+    onEntered?: () => void;
+
+    onExited?: () => void;
 }
 
 const Modal: FC<PropsWithChildren<IModal>> = ({
@@ -36,6 +40,8 @@ const Modal: FC<PropsWithChildren<IModal>> = ({
     centered,
     children,
     onClose,
+    onEntered,
+    onExited
 }) => {
     const nodeRef = useRef(null);
     return (
@@ -65,6 +71,8 @@ const Modal: FC<PropsWithChildren<IModal>> = ({
                         timeout={400}
                         unmountOnExit
                         classNames="modal"
+                        onEntered={onEntered}
+                        onExited={onExited}
                         nodeRef={nodeRef}
                     >
                         {() => (

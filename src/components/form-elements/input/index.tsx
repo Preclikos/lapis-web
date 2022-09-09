@@ -53,6 +53,7 @@ const Input = forwardRef<HTMLInputElement, IProps>(
         return (
             <>
                 <input
+                    autoComplete="off"
                     type={type}
                     disabled={disabled}
                     ref={ref}

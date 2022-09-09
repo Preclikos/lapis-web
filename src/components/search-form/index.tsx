@@ -4,27 +4,31 @@ import Input from "../form-elements/input";
 import Button from "../ui/button";
 import Modal from "../ui/modal/modal";
 import ModalBody from "../ui/modal/modal-body";
-import { useState } from "react";
+import { createRef, useState } from "react";
 
 const SearchForm = () => {
     const t = useIntl();
+    const inputRef = createRef<HTMLInputElement>()
     const [ searchModal, showSearchModal ] = useState<boolean>(false);
 
     return (
         <div className="pl-3">
-            <div className="search-box rounded-full p-0.5 bg-gray-200 border border-geyser items-center hidden md:flex">
-                <Input
+            <div className={searchModal ? "hidden" : "search-box rounded-full p-0.5 bg-gray-200 border border-geyser items-center hidden md:flex" }>
+                <Input 
                     id="search"
+                    type="tel"
                     name="search"
                     placeholder={t.formatMessage({...messages.search})}
                     customStyle="nofocus"
                     className="w-[15.625rem] border-0 bg-transparent pl-6 rounded-full bg-gray-200 "
-                />
+                    onClick={() => showSearchModal(true)}
+               />
                 <Button
                     className="bg-primary-400 hover:bg-primary-400 focus:bg-primary-400 border-0"
                     shape="ellipse"
                     size="lg"
                     iconButton
+                    onClick={() => showSearchModal(true)}
                 >
                     <i className="fa fa-search"></i>
                 </Button>
@@ -40,10 +44,12 @@ const SearchForm = () => {
                     <i className="fa fa-search"/>
 
                 </Button>
-                <Modal className={"pt-[3.45rem] overflow-scroll"} centered={false} show={searchModal} onClose={() => showSearchModal(false) }>
+                <Modal className={"pt-[3.45rem] overflow-scroll"} centered={false} show={searchModal} onClose={() => showSearchModal(false) } onEntered={() => {inputRef.current?.focus()}}>
                     <ModalBody>
                         <div className="search-box rounded-full p-0.5 bg-gray-200 border border-geyser items-center flex">
                             <Input
+                                type="tel"
+                                ref={inputRef}
                                 id="search-modal"
                                 name="search"
                                 placeholder={t.formatMessage({...messages.search})}
@@ -118,3 +124,4 @@ const SearchForm = () => {
 };
 
 export default SearchForm;
+
