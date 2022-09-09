@@ -1,4 +1,4 @@
-const Spinner03 = () => {
+const SpinnerLine = () => {
     return (
         <div className="sk-wave w-[50px] h-10 text-center my-10 mx-auto text-[10px] flex justify-between">
             <div className="bg-heading inline-block h-full w-1.5 animate-waveStretchDelay animation-delay--1.2" />
@@ -10,4 +10,4 @@ const Spinner03 = () => {
     );
 };
 
-export default Spinner03;
+export default SpinnerLine;

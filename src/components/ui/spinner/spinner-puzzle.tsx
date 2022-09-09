@@ -1,4 +1,4 @@
-const Spinner09 = () => {
+const SpinnerPuzzle = () => {
     return (
         <div className="folding-cube w-10 h-10 my-10 mx-auto relative cube">
             <div className="scale-110 float-left w-1/2 h-1/2 relative before:absolute before:content-[''] before:inset-0 before:bg-heading before:animate-foldCubeAngle before:origin-[100%_100%]" />
@@ -9,4 +9,4 @@ const Spinner09 = () => {
     );
 };
 
-export default Spinner09;
+export default SpinnerPuzzle;

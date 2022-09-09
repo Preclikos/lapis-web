@@ -1,4 +1,4 @@
-const Spinner08 = () => {
+const SpinnerMosaic = () => {
     return (
         <div className="sk-cube-grid w-10 h-10 my-10 mx-auto">
             <div className="w-1/3 h-1/3 bg-heading float-left animate-cubeGridScaleDelay animation-delay-200" />
@@ -14,4 +14,4 @@ const Spinner08 = () => {
     );
 };
 
-export default Spinner08;
+export default SpinnerMosaic;

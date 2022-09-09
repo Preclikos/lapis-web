@@ -1,4 +1,4 @@
-const Spinner06 = () => {
+const SpinnerRound = () => {
     return (
         <div className="sk-circle relative w-10 h-10 my-10 mx-auto">
             <div className="absolute inset-0 before:content-[''] before:block before:my-0 before:mx-auto before:w-[15%] before:h-[15%] before:bg-heading before:rounded-full before:animate-circleBounceDelay" />
@@ -17,4 +17,4 @@ const Spinner06 = () => {
     );
 };
 
-export default Spinner06;
+export default SpinnerRound;
