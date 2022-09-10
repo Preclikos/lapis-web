@@ -43,7 +43,7 @@ const PostCard: FC<IProps> = ({ title, user, activity, author }) => {
     const [showCommentModal, setShowCommentModal] = useState(false);
     return (
         <>
-            <Card className="activity-card mt-5">
+            <Card className="activity-card">
                 <CardBody className="p-[25px]">
                     <CardTitle>{title}</CardTitle>
                     <Media className="items-center my-[25px]">
@@ -65,22 +65,22 @@ const PostCard: FC<IProps> = ({ title, user, activity, author }) => {
                         </MediaBody>
                         <span className="text-sm">{user.lastActivity}</span>
                     </Media>
-                    <div className="grid md:grid-cols-12">
+                    <div className="">
                         {activity?.image?.src && (
-                            <div className="md:col-span-4">
+
                                 <Anchor path="#!">
                                     <img
                                         src={activity.image.src}
-                                        className="w-full h-full object-cover"
+                                        className="w-full h-full-aspect object-cover"
                                         alt={activity.image?.alt || "Banner"}
                                         width={227}
                                         height={303}
                                     />
                                 </Anchor>
-                            </div>
+         
                         )}
 
-                        <div className="md:col-span-8">
+
                             <div className="bg-gray-200 p-[25px]">
                                 <Anchor
                                     path={activity.path}
@@ -103,7 +103,7 @@ const PostCard: FC<IProps> = ({ title, user, activity, author }) => {
                                     </p>
                                 )}
                             </div>
-                        </div>
+
 
                     </div>
                 </CardBody>
