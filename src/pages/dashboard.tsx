@@ -124,7 +124,7 @@ const Dashboard = () => {
 
         <div className="inline-block mb-4">
           <PostCard
-            title={'Nahlasil novou polohu'}
+            title={'Nahlasila novou polohu'}
             user={{
               image: {
                 src: 'https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/274614062_4960869104001841_2121471793839880380_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=6NBtLlfQO_MAX9xazy-&_nc_ht=scontent-prg1-1.xx&oh=00_AT_5IreiV5woKQySjtHEOje41yUhnl_QLXSuRga4nJRCnA&oe=632243EE',
@@ -150,23 +150,23 @@ const Dashboard = () => {
 
         <div className="inline-block">
           <PostCard
-            title={'Nahlasil novou polohu'}
+            title={'Nahlasila novou polohu'}
             user={{
               image: {
-                src: 'https://scontent-prg1-1.xx.fbcdn.net/v/t1.6435-9/131273260_10218550013368020_3840312457061816031_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=M8yomtEYJlEAX89FqW8&_nc_ht=scontent-prg1-1.xx&oh=00_AT_IYFgf9j7VS0xRxh38j6aRKjmpf0KBGf-6suSWs3bO-w&oe=633FCDB6',
+                src: 'https://scontent-prg1-1.xx.fbcdn.net/v/t31.18172-8/615782_2448939119424_1537089930_o.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=VhTPDywOeYYAX93naNp&_nc_ht=scontent-prg1-1.xx&oh=00_AT8yKacUgBmOYezzdJlQtd-JRFPUXPiQIiHPAQQBMhSxZw&oe=634366A8',
                 alt: undefined,
               },
-              name: 'Preclikos Husák',
+              name: 'Hana Husáková',
               path: '/profile/nejakyid',
               designation: 'Czech - Guru',
-              lastActivity: 'Pred 5. hodinama',
+              lastActivity: 'Pred 1. dnem',
             }}
             activity={{
               image: {
-                src: 'https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/305930899_5997173090293006_823830225743787113_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=5cd70e&_nc_ohc=f4VMkhScKKgAX8GgyCA&_nc_ht=scontent-prg1-1.xx&oh=00_AT83ezFHEkardChgqkahzaYMhjY3eB4t_3REzMruDvu6zA&oe=631E4754',
+                src: 'https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/306136009_5606291649428877_5359476429240359169_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5cd70e&_nc_ohc=Mp5c2-gjKN4AX9IZZ40&_nc_ht=scontent-prg1-1.xx&oh=00_AT8cqeEJ3d9DDGJ73CiyAHj3bN1C5z2XU9LdInaDc5i2BQ&oe=6322A939',
                 alt: undefined,
               },
-              title: 'Sifon s Vodou',
+              title: 'Sest',
               path: '/lapis/nejakyid',
               excerpt:
                 'Krasny kaminek nedaleko Noveho brodu, dekujeme posuneme dal.',
