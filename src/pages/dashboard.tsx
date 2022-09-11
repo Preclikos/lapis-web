@@ -3,9 +3,7 @@ import PageHeader from '../components/page-header';
 import { useIntl } from 'react-intl';
 import { menuMessages } from '../data/menuMessages';
 import SEO from '../components/seo';
-import PostCard from '../components/post-card';
-import { map } from 'leaflet';
-import { IProps } from '../components/post-card';
+import PostCard, { IProps } from '../components/post-card';
 
 const data: IProps[] = [
   {
@@ -147,10 +145,6 @@ const data: IProps[] = [
 
 const Dashboard = () => {
   const t = useIntl();
-
-  useBreakpointEffect((match: any) => {
-    console.log(match);
-  });
 
   return (
     <Layout>
