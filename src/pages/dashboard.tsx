@@ -28,8 +28,7 @@ const data: IProps[] = [
       },
       title: 'Jedna',
       path: '/lapis/nejakyid',
-      excerpt:
-        'Krasny kaminek nedaleko dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme Noveho brodu, dekujeme poaleko Noveho brodu, dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme dekujeme poaleko Noveho brodu, dekujeme poaleko Noveho brodu, dekujeme poaleko Noveho brodu, dekujeme poaleko Noveho brodu, dekujeme poaleko Noveho brodu, dekujeme po brodu, dekujeme posuneme dal.',
+      excerpt: 'Krasny kaminek, dekujeme posuneme dal.',
     },
   },
   {
@@ -53,7 +52,7 @@ const data: IProps[] = [
       },
       title: 'Dva',
       path: '/lapis/nejakyid',
-      excerpt: 'Krasny kaminek nedaleko Noveho brodu, dekujeme posuneme dal.',
+      excerpt: 'Nalezen nedaleko berouna, pan je asi piskac.',
     },
   },
   {
@@ -77,8 +76,7 @@ const data: IProps[] = [
       },
       title: 'Tri',
       path: '/lapis/nejakyid',
-      excerpt:
-        'Krasny kaminek nedaleko Novehoaleko Noveho brodu, dekujeme poaleko Noveho brodu, dekujeme poaleko Noveho brodu, dekujeme poaleko Noveho brodu, dekujeme poaleko Noveho brodu, dekujeme poaleko Noveho brodu, dekujeme poaleko Noveho brodu, dekujeme po brodu, dekujeme posuneme dal.',
+      excerpt: 'Nasla sem ho po ceste do prace. Zlepsil me den :)',
     },
   },
   {
@@ -102,8 +100,7 @@ const data: IProps[] = [
       },
       title: 'Ctyri',
       path: '/lapis/nejakyid',
-      excerpt:
-        'Krasny kaminek nedaleko Noveho brodu, dekujeme poaleko Noveho brodu, dekujeme poaleko Noveho brodu, dekujeme poaleko Noveho brodu, dekujeme poaleko Noveho brodu, dekujeme poaleko Noveho brodu, dekujeme poaleko Noveho brodu, dekujeme posuneme dal.',
+      excerpt: 'Papousek z hradce',
     },
   },
   {
@@ -151,7 +148,31 @@ const data: IProps[] = [
       },
       title: 'Sest',
       path: '/lapis/nejakyid',
-      excerpt: 'Krasny kaminek nedaleko Noveho brodu, dekujeme posuneme dal.',
+      excerpt: 'Kvetinka u mostu.',
+    },
+  },
+  {
+    title: 'Nahlasila novou polohu',
+    user: {
+      image: {
+        src: 'https://scontent-prg1-1.xx.fbcdn.net/v/t31.18172-8/615782_2448939119424_1537089930_o.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=VhTPDywOeYYAX93naNp&_nc_ht=scontent-prg1-1.xx&oh=00_AT8yKacUgBmOYezzdJlQtd-JRFPUXPiQIiHPAQQBMhSxZw&oe=634366A8',
+        alt: undefined,
+      },
+      name: 'Hana Husáová',
+      path: '/profile/nejakyid',
+      designation: 'Czech - Guru',
+      lastActivity: 'Pred 1. dnem',
+    },
+    activity: {
+      image: {
+        src: 'https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/306136009_5606291649428877_5359476429240359169_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5cd70e&_nc_ohc=Mp5c2-gjKN4AX9IZZ40&_nc_ht=scontent-prg1-1.xx&oh=00_AT8cqeEJ3d9DDGJ73CiyAHj3bN1C5z2XU9LdInaDc5i2BQ&oe=6322A939',
+        alt: undefined,
+        width: 1387,
+        height: 640,
+      },
+      title: 'Sedm',
+      path: '/lapis/nejakyid',
+      excerpt: 'Kvetinka u mostu.',
     },
   },
 ];
@@ -189,7 +210,7 @@ const Dashboard = () => {
       for (let i = 0; i < pocetSloupcu; i++) {
         const height =
           itemsRef.current[i] !== undefined
-            ? itemsRef.current[i].offsetHeight
+            ? itemsRef.current[i].clientHeight
             : 0;
         console.log(i + ' Index ' + height);
         if (height < minimalHeight) {
