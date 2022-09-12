@@ -23,6 +23,8 @@ export interface IProps {
     image: {
       src: string;
       alt?: string;
+      width: number;
+      height: number;
     };
     title: string;
     path: string;
@@ -40,11 +42,13 @@ const PostCard: FC<IProps> = ({ title, user, activity, author }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [showShareModal, setShowShareModal] = useState(false);
   const [showCommentModal, setShowCommentModal] = useState(false);
+
   return (
     <>
-      <Card className="activity-card">
+      <Card className="activity-card mb-5">
         <CardBody className="p-[25px]">
           <CardTitle>{title}</CardTitle>
+
           <Media className="items-center my-[25px]">
             {user?.image?.src && (
               <img
@@ -71,8 +75,8 @@ const PostCard: FC<IProps> = ({ title, user, activity, author }) => {
                   src={activity.image.src}
                   className="w-full h-full-aspect object-cover"
                   alt={activity.image?.alt || 'Banner'}
-                  width={227}
-                  height={303}
+                  width={activity.image.width}
+                  height={activity.image.height}
                 />
               </Anchor>
             )}
