@@ -3,9 +3,12 @@ import PageHeader from '../components/page-header';
 import { useIntl } from 'react-intl';
 import { menuMessages } from '../data/menuMessages';
 import SEO from '../components/seo';
+import { useKeycloak } from '@react-keycloak/web';
 
 const TermsAndConditions = () => {
   const t = useIntl();
+  const { keycloak } = useKeycloak();
+
   return (
     <Layout>
       <SEO />
@@ -626,6 +629,13 @@ const TermsAndConditions = () => {
         without notice. Without limiting the foregoing, Lapis does not warrant
         that the Lapis Service will be uninterrupted, uncorrupted, timely, or
         error-free.
+      </p>
+      <h1>Account deletion</h1>
+      <p>
+        If u want delete your account u can send Deletion Request to mail:
+        <a href="mailto:accounts@lapis.report" id="email">
+          accounts@lapis.report
+        </a>
       </p>
     </Layout>
   );
