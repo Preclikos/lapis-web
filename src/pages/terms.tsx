@@ -630,7 +630,7 @@ const TermsAndConditions = () => {
       </p>
       <h1>Account deletion</h1>
       <p>
-        If u want delete your account u can send Deletion Request to mail:
+        If u want delete your account u can send Deletion Request to mail:&nbsp;
         <a href="mailto:accounts@lapis.report" id="email">
           accounts@lapis.report
         </a>
