@@ -1,9 +1,4 @@
 import { useState, useEffect } from 'react';
-import resolveConfig from 'tailwindcss/resolveConfig';
-/*
-const tailwindConfig = require('../../tailwind.config');
-const config = resolveConfig(tailwindConfig);
-*/
 
 interface Screen {
   id: string;

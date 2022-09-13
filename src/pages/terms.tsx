@@ -3,11 +3,9 @@ import PageHeader from '../components/page-header';
 import { useIntl } from 'react-intl';
 import { menuMessages } from '../data/menuMessages';
 import SEO from '../components/seo';
-import { useKeycloak } from '@react-keycloak/web';
 
 const TermsAndConditions = () => {
   const t = useIntl();
-  const { keycloak } = useKeycloak();
 
   return (
     <Layout>
