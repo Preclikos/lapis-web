@@ -8,6 +8,7 @@ import Media from '../ui/media/media';
 import MediaBody from '../ui/media/media-body';
 
 export interface IProps {
+  id: number;
   title: string;
   user: {
     image: {
@@ -23,8 +24,8 @@ export interface IProps {
     image: {
       src: string;
       alt?: string;
-      width: number;
-      height: number;
+      width?: number;
+      height?: number;
     };
     title: string;
     path: string;

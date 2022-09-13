@@ -5,9 +5,11 @@ import { menuMessages } from '../data/menuMessages';
 import SEO from '../components/seo';
 import PostCard, { IProps } from '../components/post-card';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useBreakpoint } from '../hooks/use-breakpoint';
 
 const data: IProps[] = [
   {
+    id: 1,
     title: 'Nahlasil novou polohu',
     user: {
       image: {
@@ -32,6 +34,7 @@ const data: IProps[] = [
     },
   },
   {
+    id: 2,
     title: 'Nahlasil novou polohu',
     user: {
       image: {
@@ -56,6 +59,7 @@ const data: IProps[] = [
     },
   },
   {
+    id: 3,
     title: 'Nahlasila novou polohu',
     user: {
       image: {
@@ -80,6 +84,7 @@ const data: IProps[] = [
     },
   },
   {
+    id: 4,
     title: 'Nahlasil novou polohu',
     user: {
       image: {
@@ -104,6 +109,7 @@ const data: IProps[] = [
     },
   },
   {
+    id: 5,
     title: 'Nahlasila novou polohu',
     user: {
       image: {
@@ -128,6 +134,7 @@ const data: IProps[] = [
     },
   },
   {
+    id: 6,
     title: 'Nahlasila novou polohu',
     user: {
       image: {
@@ -152,6 +159,7 @@ const data: IProps[] = [
     },
   },
   {
+    id: 7,
     title: 'Nahlasila novou polohu',
     user: {
       image: {
@@ -181,10 +189,29 @@ const Dashboard = () => {
   const t = useIntl();
 
   const [postCounter, setPostCounter] = useState<number>(0);
+  const [columnsCount, setColumnsCount] = useState<number>(3);
   const [content, setContent] = useState<Array<Array<JSX.Element>>>([]);
   const itemsRef = useRef<HTMLDivElement[]>([]);
 
-  const pocetSloupcu = 3;
+  const resolution = useBreakpoint();
+
+  useEffect(() => {
+    console.log(resolution);
+    switch (resolution) {
+      case 'sm':
+        setColumnsCount(1);
+        break;
+      case 'md':
+        setColumnsCount(2);
+        break;
+      case 'lg':
+        setColumnsCount(3);
+        break;
+      case 'xl':
+        setColumnsCount(3);
+        break;
+    }
+  }, [resolution]);
 
   const addToRefs = (index: number, el: HTMLDivElement | null) => {
     if (el !== null) {
@@ -193,21 +220,21 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    for (let i = 0; i < pocetSloupcu; i++) {
+    const content = [];
+    for (let i = 0; i < columnsCount; i++) {
       content[i] = [];
     }
     setPostCounter(0);
     setContent([...content]);
-  }, []);
+  }, [columnsCount]);
 
   useLayoutEffect(() => {
-    if (content.length === pocetSloupcu && postCounter < data.length) {
+    if (content.length === columnsCount && postCounter < data.length) {
       setPostCounter(postCounter + 1);
-
       let minimalIndex = 0;
       let minimalHeight = Number.MAX_SAFE_INTEGER;
 
-      for (let i = 0; i < pocetSloupcu; i++) {
+      for (let i = 0; i < columnsCount; i++) {
         const height =
           itemsRef.current[i] !== undefined
             ? itemsRef.current[i].clientHeight
