@@ -32,17 +32,10 @@ export interface IProps {
     excerpt: string;
     type: string;
   };
-  author?: {
-    name: string;
-    path: string;
-    designation: string;
-  };
 }
 
-const PostCard: FC<IProps> = ({ user, activity, author }) => {
+const PostCard: FC<IProps> = ({ user, activity }) => {
   const [likes, setLikes] = useState(0);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [showShareModal, setShowShareModal] = useState(false);
   const [showCommentModal, setShowCommentModal] = useState(false);
 
   return (
@@ -55,13 +48,15 @@ const PostCard: FC<IProps> = ({ user, activity, author }) => {
 
           <Media className="items-center my-[25px]">
             {user?.image?.src && (
-              <img
-                src={user.image.src}
-                alt={user.image?.alt || 'author'}
-                className="rounded-full w-10"
-                width={40}
-                height={40}
-              />
+              <Anchor path={user.path}>
+                <img
+                  src={user.image.src}
+                  alt={user.image?.alt || 'author'}
+                  className="rounded-full w-10"
+                  width={40}
+                  height={40}
+                />
+              </Anchor>
             )}
 
             <MediaBody className="ml-3.8">
@@ -73,7 +68,7 @@ const PostCard: FC<IProps> = ({ user, activity, author }) => {
             <span className="text-sm">{user.lastActivity}</span>
           </Media>
           <div className="">
-            {activity?.image?.src && (
+            {activity.image.src && (
               <Anchor path="#!">
                 <img
                   src={activity.image.src}
@@ -84,17 +79,8 @@ const PostCard: FC<IProps> = ({ user, activity, author }) => {
                 />
               </Anchor>
             )}
-
-            <div className="bg-gray-200 p-[25px]">
+            <div className="bg-gray-200 p-[15px]">
               <p>{activity.excerpt}</p>
-              {author && (
-                <p className="mb-0">
-                  <Anchor path={author.path} className="block">
-                    {author.name}
-                  </Anchor>
-                  <span className="block">{author.designation}</span>
-                </p>
-              )}
             </div>
           </div>
         </CardBody>
@@ -110,12 +96,6 @@ const PostCard: FC<IProps> = ({ user, activity, author }) => {
             onClick={() => setLikes((prev) => prev + 1)}
           >
             Likes ({likes})
-          </button>
-          <button
-            onClick={() => setShowShareModal(true)}
-            className="inline-block border-r border-r-geyser py-3 px-3.8 md:px-[25px] text-primary"
-          >
-            Share
           </button>
         </div>
       </Card>
