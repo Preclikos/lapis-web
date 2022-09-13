@@ -183,16 +183,13 @@ const Mansory = () => {
   const [data, setData] = useState<IProps[]>([]);
   const itemsRef = useRef<HTMLDivElement[]>([]);
 
-  useEffect(() => {
-    loadItems();
-  }, []);
-
   const loadItems = async () => {
     const response = await webApi.getFeedItems(0, postCounter);
     setData([...data, ...response.data]);
   };
 
   useEffect(() => {
+    loadItems();
     const onScroll = function () {
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
         loadItems();
