@@ -27,7 +27,6 @@ export interface IProps {
       width?: number;
       height?: number;
     };
-    title: string;
     path: string;
     excerpt: string;
   };
@@ -83,12 +82,6 @@ const PostCard: FC<IProps> = ({ title, user, activity, author }) => {
             )}
 
             <div className="bg-gray-200 p-[25px]">
-              <Anchor
-                path={activity.path}
-                className="block text-2xl text-heading mb-5 leading-snug"
-              >
-                {activity.title}
-              </Anchor>
               <p>{activity.excerpt}</p>
               {author && (
                 <p className="mb-0">
