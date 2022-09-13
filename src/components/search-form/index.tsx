@@ -6,7 +6,7 @@ import Modal from '../ui/modal/modal';
 import ModalBody from '../ui/modal/modal-body';
 import { createRef, useEffect, useState } from 'react';
 import { Subject, takeUntil, scan, finalize } from 'rxjs';
-import { fromFetchStream } from '../../api/fromFetchStream';
+import { fromFetchStream } from '../../api/from-fetch-stream';
 import SpinnerCircle from '../ui/spinner/spinner-circle';
 
 interface LapisData {

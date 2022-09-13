@@ -5,6 +5,7 @@ interface Screen {
   size: number;
 }
 
+//mirror tailwindconfig
 const screens: Screen[] = [
   // => @media (max-width: 991px) { ... }
   {

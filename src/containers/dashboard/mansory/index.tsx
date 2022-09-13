@@ -1,7 +1,9 @@
 import PostCard, { IProps } from '../../../components/post-card';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useBreakpoint } from '../../../hooks/use-breakpoint';
+import webApi from '../../../api/web-api';
 
+/*
 const data: IProps[] = [
   {
     id: 1,
@@ -172,17 +174,28 @@ const data: IProps[] = [
     },
   },
 ];
+*/
 
 const Mansory = () => {
   const [postCounter, setPostCounter] = useState<number>(0);
   const [columnsCount, setColumnsCount] = useState<number>(3);
   const [content, setContent] = useState<[IProps[]]>([[]]);
+  const [data, setData] = useState<IProps[]>([]);
   const itemsRef = useRef<HTMLDivElement[]>([]);
+
+  useEffect(() => {
+    loadItems();
+  }, []);
+
+  const loadItems = async () => {
+    const response = await webApi.getFeedItems(0, postCounter);
+    setData([...data, ...response.data]);
+  };
 
   useEffect(() => {
     const onScroll = function () {
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        console.log("you're at the bottom of the page");
+        loadItems();
       }
     };
     window.addEventListener('scroll', onScroll);
@@ -208,9 +221,9 @@ const Mansory = () => {
     }
   }, [resolution]);
 
-  const addToRefs = (index: number, el: HTMLDivElement | null) => {
-    if (el !== null) {
-      itemsRef.current[index] = el;
+  const addToRefs = (index: number, element: HTMLDivElement | null) => {
+    if (element !== null) {
+      itemsRef.current[index] = element;
     }
   };
 
@@ -244,7 +257,7 @@ const Mansory = () => {
 
       setContent([...content]);
     }
-  }, [content]);
+  }, [content, data]);
 
   return (
     <div className="gap-8 grid lg:grid-cols-3 md:grid-cols-2">
