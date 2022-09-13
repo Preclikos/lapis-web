@@ -11,8 +11,8 @@ const TermsAndConditions = () => {
       <SEO />
       <PageHeader
         prev={[{ text: t.formatMessage({ ...menuMessages.home }), path: '/' }]}
-        currentPage={t.formatMessage({ ...menuMessages.dashboard })}
-        title={t.formatMessage({ ...menuMessages.dashboard })}
+        currentPage={t.formatMessage({ ...menuMessages.terms })}
+        title={t.formatMessage({ ...menuMessages.terms })}
       />
       <h1>Terms &amp; Conditions</h1>
       <p>Updated at 2022-09-13</p>
@@ -627,11 +627,6 @@ const TermsAndConditions = () => {
         that the Lapis Service will be uninterrupted, uncorrupted, timely, or
         error-free.
       </p>
-
-      <script
-        data-cfasync="false"
-        src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
-      ></script>
     </Layout>
   );
 };
