@@ -10,7 +10,6 @@ import { useBreakpoint } from '../hooks/use-breakpoint';
 const data: IProps[] = [
   {
     id: 1,
-    title: 'Nahlasil novou polohu',
     user: {
       image: {
         src: 'https://scontent-prg1-1.xx.fbcdn.net/v/t1.6435-9/131273260_10218550013368020_3840312457061816031_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=M8yomtEYJlEAX89FqW8&_nc_ht=scontent-prg1-1.xx&oh=00_AT_IYFgf9j7VS0xRxh38j6aRKjmpf0KBGf-6suSWs3bO-w&oe=633FCDB6',
@@ -28,13 +27,13 @@ const data: IProps[] = [
         width: 720,
         height: 540,
       },
+      type: 'Location',
       path: '/lapis/nejakyid',
       excerpt: 'Krasny kaminek, dekujeme posuneme dal.',
     },
   },
   {
     id: 2,
-    title: 'Nahlasil novou polohu',
     user: {
       image: {
         src: 'https://scontent-prg1-1.xx.fbcdn.net/v/t1.6435-9/55865112_2850827104935056_1322842037313077248_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=l2sP-W29XnMAX_qKoIB&_nc_ht=scontent-prg1-1.xx&oh=00_AT_OaBLU0aKUF8NLP_D10kG58UwbnKK5IQ338cWnAFsfAw&oe=6341779E',
@@ -52,13 +51,13 @@ const data: IProps[] = [
         width: 1536,
         height: 2048,
       },
+      type: 'Location',
       path: '/lapis/nejakyid',
       excerpt: 'Nalezen nedaleko berouna, pan je asi piskac.',
     },
   },
   {
     id: 3,
-    title: 'Nahlasila novou polohu',
     user: {
       image: {
         src: 'https://scontent-prg1-1.xx.fbcdn.net/v/t1.6435-9/125527990_4533821043299139_4309680603481955445_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=ES0W-qoG1ZoAX8lVm96&_nc_ht=scontent-prg1-1.xx&oh=00_AT-SJwsO3IRE6fXyrg6CuzT8Rpc3wZ-_OoGinVY6YrmODQ&oe=634419DA',
@@ -76,13 +75,13 @@ const data: IProps[] = [
         width: 721,
         height: 960,
       },
+      type: 'Location',
       path: '/lapis/nejakyid',
       excerpt: 'Nasla sem ho po ceste do prace. Zlepsil me den :)',
     },
   },
   {
     id: 4,
-    title: 'Nahlasil novou polohu',
     user: {
       image: {
         src: 'https://scontent-prg1-1.xx.fbcdn.net/v/t31.18172-8/12068408_10205463497652927_7978865435089464222_o.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=4A3qOGu2Hy8AX_8csAD&_nc_oc=AQleGjpxw3_JShWzsVEGTa97YErnwp2fE9HtIiwWeXTHEVj_mC4Z-NneUbMgwTmxYFQ&tn=RkJAGpiN1nTrpekT&_nc_ht=scontent-prg1-1.xx&oh=00_AT-fTdG3I3IN5dKjcgbWppAjvKZ6PaAkSIRc2ojtqSCN8w&oe=63435E2A',
@@ -100,13 +99,13 @@ const data: IProps[] = [
         width: 720,
         height: 960,
       },
+      type: 'Location',
       path: '/lapis/nejakyid',
       excerpt: 'Papousek z hradce',
     },
   },
   {
     id: 5,
-    title: 'Nahlasila novou polohu',
     user: {
       image: {
         src: 'https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/274614062_4960869104001841_2121471793839880380_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=6NBtLlfQO_MAX9xazy-&_nc_ht=scontent-prg1-1.xx&oh=00_AT_5IreiV5woKQySjtHEOje41yUhnl_QLXSuRga4nJRCnA&oe=632243EE',
@@ -124,13 +123,13 @@ const data: IProps[] = [
         width: 1536,
         height: 2048,
       },
+      type: 'Location',
       path: '/lapis/nejakyid',
       excerpt: 'Krasny kaminek nedaleko Noveho brodu, dekujeme posuneme dal.',
     },
   },
   {
     id: 6,
-    title: 'Nahlasila novou polohu',
     user: {
       image: {
         src: 'https://scontent-prg1-1.xx.fbcdn.net/v/t31.18172-8/615782_2448939119424_1537089930_o.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=VhTPDywOeYYAX93naNp&_nc_ht=scontent-prg1-1.xx&oh=00_AT8yKacUgBmOYezzdJlQtd-JRFPUXPiQIiHPAQQBMhSxZw&oe=634366A8',
@@ -148,13 +147,13 @@ const data: IProps[] = [
         width: 1387,
         height: 640,
       },
+      type: 'Location',
       path: '/lapis/nejakyid',
       excerpt: 'Kvetinka u mostu.',
     },
   },
   {
     id: 7,
-    title: 'Nahlasila novou polohu',
     user: {
       image: {
         src: 'https://scontent-prg1-1.xx.fbcdn.net/v/t31.18172-8/615782_2448939119424_1537089930_o.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=VhTPDywOeYYAX93naNp&_nc_ht=scontent-prg1-1.xx&oh=00_AT8yKacUgBmOYezzdJlQtd-JRFPUXPiQIiHPAQQBMhSxZw&oe=634366A8',
@@ -172,6 +171,7 @@ const data: IProps[] = [
         width: 1387,
         height: 640,
       },
+      type: 'Location',
       path: '/lapis/nejakyid',
       excerpt: 'Kvetinka u mostu.',
     },

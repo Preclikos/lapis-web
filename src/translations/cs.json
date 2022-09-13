@@ -1,13 +1,15 @@
 {
-    "page-header.login": "Přihlásit se",
-    "page-header.search": "Hledat",
-    "menu.home": "Domů",
-    "menu.profile": "Profil",
-    "menu.dashboard": "Nástěnka",
-    "user-menu.profile": "Profil",
-    "user-menu.logout": "Odhlásit",
-    "signin.title": "Začínáme!",
-    "signin.content": "Přihlášení je zdarma a zabere vám to jen minutu.",
-    "signin.facebook": "Přihlášení pomocí Facebooku",
-    "signin.google": "Přihlášení pomocí Google"
-  }
+  "page-header.login": "Přihlásit se",
+  "page-header.search": "Hledat",
+  "menu.home": "Domů",
+  "menu.profile": "Profil",
+  "menu.dashboard": "Nástěnka",
+  "user-menu.profile": "Profil",
+  "user-menu.logout": "Odhlásit",
+  "signin.title": "Začínáme!",
+  "signin.content": "Přihlášení je zdarma a zabere vám to jen minutu.",
+  "signin.facebook": "Přihlášení pomocí Facebooku",
+  "signin.google": "Přihlášení pomocí Google",
+  "activity-card.location": "Nahlásil novou polohu",
+  "activity-card.create": "Vytvořil nový kaminek"
+}

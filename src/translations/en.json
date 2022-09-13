@@ -1,13 +1,15 @@
 {
-    "page-header.login": "Sign In",
-    "page-header.search": "Search",
-    "menu.home": "Home",
-    "menu.profile": "Profile",
-    "menu.dashboard": "Dashboard",
-    "user-menu.profile": "Profile",
-    "user-menu.logout": "Sign Out",
-    "signin.title": "Get Started!",
-    "signin.content": "It's free to signin and only takes a minute.",
-    "signin.facebook": "Sign In Using Facebook",
-    "signin.google": "Sign In Using Google"
+  "page-header.login": "Sign In",
+  "page-header.search": "Search",
+  "menu.home": "Home",
+  "menu.profile": "Profile",
+  "menu.dashboard": "Dashboard",
+  "user-menu.profile": "Profile",
+  "user-menu.logout": "Sign Out",
+  "signin.title": "Get Started!",
+  "signin.content": "It's free to signin and only takes a minute.",
+  "signin.facebook": "Sign In Using Facebook",
+  "signin.google": "Sign In Using Google",
+  "activity-card.location": "Report new location",
+  "activity-card.create": "Create new Lapis"
 }

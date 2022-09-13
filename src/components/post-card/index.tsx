@@ -1,4 +1,5 @@
 import { FC, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import CommentModal from '../modals/comment-modal';
 import Anchor from '../ui/anchor';
 import Card from '../ui/card/card';
@@ -6,10 +7,10 @@ import CardBody from '../ui/card/card-body';
 import CardTitle from '../ui/card/card-title';
 import Media from '../ui/media/media';
 import MediaBody from '../ui/media/media-body';
+import { messages } from './messages';
 
 export interface IProps {
   id: number;
-  title: string;
   user: {
     image: {
       src: string;
@@ -29,6 +30,7 @@ export interface IProps {
     };
     path: string;
     excerpt: string;
+    type: string;
   };
   author?: {
     name: string;
@@ -37,7 +39,7 @@ export interface IProps {
   };
 }
 
-const PostCard: FC<IProps> = ({ title, user, activity, author }) => {
+const PostCard: FC<IProps> = ({ user, activity, author }) => {
   const [likes, setLikes] = useState(0);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [showShareModal, setShowShareModal] = useState(false);
@@ -47,7 +49,9 @@ const PostCard: FC<IProps> = ({ title, user, activity, author }) => {
     <>
       <Card className="activity-card mb-5">
         <CardBody className="p-[25px]">
-          <CardTitle>{title}</CardTitle>
+          <CardTitle>
+            <FormattedMessage {...messages[activity.type]} />
+          </CardTitle>
 
           <Media className="items-center my-[25px]">
             {user?.image?.src && (
