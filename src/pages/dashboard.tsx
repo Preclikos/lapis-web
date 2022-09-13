@@ -190,7 +190,7 @@ const Dashboard = () => {
 
   const [postCounter, setPostCounter] = useState<number>(0);
   const [columnsCount, setColumnsCount] = useState<number>(3);
-  const [content, setContent] = useState<Array<Array<JSX.Element>>>([]);
+  const [content, setContent] = useState<[IProps[]]>([[]]);
   const itemsRef = useRef<HTMLDivElement[]>([]);
 
   const resolution = useBreakpoint();
@@ -220,7 +220,7 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    const content = [];
+    const content: [IProps[]] = [[]];
     for (let i = 0; i < columnsCount; i++) {
       content[i] = [];
     }
@@ -246,9 +246,7 @@ const Dashboard = () => {
         }
       }
 
-      content[minimalIndex].push(
-        <PostCard key={data[postCounter].user.name} {...data[postCounter]} />
-      );
+      content[minimalIndex].push(data[postCounter]);
 
       setContent([...content]);
     }
@@ -264,11 +262,13 @@ const Dashboard = () => {
       />
 
       <div className="gap-8 grid lg:grid-cols-3 md:grid-cols-2">
-        {content.map((item, index) => {
+        {content.map((items, index) => {
           return (
             <div key={index}>
               <div ref={(element) => addToRefs(index, element)}>
-                {content[index]}
+                {items.map((singleItem) => (
+                  <PostCard key={singleItem.id} {...singleItem} />
+                ))}
               </div>
             </div>
           );
