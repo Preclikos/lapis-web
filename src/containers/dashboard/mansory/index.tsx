@@ -211,20 +211,6 @@ const Mansory = () => {
   }, [feedData, feedError, isValidating]);
 
   useEffect(() => {
-    console.log('Add scroll listener');
-    const onScroll = function () {
-      if (
-        window.innerHeight + document.documentElement.scrollTop ===
-        document.documentElement.scrollHeight
-      ) {
-        console.log('Load more');
-      }
-    };
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  useEffect(() => {
     switch (resolution) {
       case 'sm':
         setColumnsCount(1);
