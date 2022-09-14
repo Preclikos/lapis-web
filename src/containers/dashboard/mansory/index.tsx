@@ -3,6 +3,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useBreakpoint } from '../../../hooks/use-breakpoint';
 import { useApiFeed } from '../../../api/use-api';
 import { FeedItem } from '../../../api/types/feed-item';
+import SpinnerCube from '../../../components/ui/spinner/spinner-cube';
 
 /*
 const data: IProps[] = [
@@ -184,7 +185,11 @@ const Mansory = () => {
   const [content, setContent] = useState<[FeedItem[]]>([[]]);
   const itemsRef = useRef<HTMLDivElement[]>([]);
   const resolution = useBreakpoint();
-  const { data: feedData, error: feedError } = useApiFeed(0, offset);
+  const {
+    data: feedData,
+    error: feedError,
+    isValidating,
+  } = useApiFeed(0, offset);
 
   const addToRefs = (index: number, element: HTMLDivElement | null) => {
     if (element !== null) {
@@ -269,6 +274,7 @@ const Mansory = () => {
           </div>
         );
       })}
+      {((!feedError && !feedData) || isValidating) ?? <SpinnerCube />}
     </div>
   );
 };
