@@ -29,7 +29,7 @@ const PostCard: FC<FeedItem> = (activity: FeedItem) => {
           <Media className="items-center my-[25px]">
             <Anchor path={'test'}>
               <img
-                src={user?.image?.path ?? empty_user}
+                src={user?.image?.src ?? empty_user}
                 alt={'author'}
                 className="rounded-full w-10"
                 width={40}

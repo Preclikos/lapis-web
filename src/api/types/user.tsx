@@ -3,6 +3,6 @@ export type User = {
   name: string;
   country: number;
   image: {
-    path: string;
+    src: string;
   };
 };
