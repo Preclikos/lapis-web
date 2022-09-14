@@ -1,7 +1,8 @@
-import PostCard, { IProps } from '../../../components/post-card';
+import PostCard from '../../../components/post-card';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useBreakpoint } from '../../../hooks/use-breakpoint';
-import webApi from '../../../api/web-api';
+import { useApiFeed } from '../../../api/use-api';
+import { FeedItem } from '../../../api/types/feed-item';
 
 /*
 const data: IProps[] = [
@@ -177,29 +178,29 @@ const data: IProps[] = [
 */
 
 const Mansory = () => {
+  const [offset, setOffset] = useState<number>(0);
   const [postCounter, setPostCounter] = useState<number>(0);
   const [columnsCount, setColumnsCount] = useState<number>(3);
-  const [content, setContent] = useState<[IProps[]]>([[]]);
-  const [data, setData] = useState<IProps[]>([]);
+  const [content, setContent] = useState<[FeedItem[]]>([[]]);
   const itemsRef = useRef<HTMLDivElement[]>([]);
+  const resolution = useBreakpoint();
+  const { data: feedData, error: feedError } = useApiFeed(0, offset);
 
-  const loadItems = async () => {
-    const response = await webApi.getFeedItems(0, postCounter);
-    setData([...data, ...response.data]);
+  const addToRefs = (index: number, element: HTMLDivElement | null) => {
+    if (element !== null) {
+      itemsRef.current[index] = element;
+    }
   };
 
   useEffect(() => {
-    loadItems();
     const onScroll = function () {
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        loadItems();
+        setOffset(postCounter);
       }
     };
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
-
-  const resolution = useBreakpoint();
 
   useEffect(() => {
     switch (resolution) {
@@ -218,14 +219,8 @@ const Mansory = () => {
     }
   }, [resolution]);
 
-  const addToRefs = (index: number, element: HTMLDivElement | null) => {
-    if (element !== null) {
-      itemsRef.current[index] = element;
-    }
-  };
-
   useEffect(() => {
-    const content: [IProps[]] = [[]];
+    const content: [FeedItem[]] = [[]];
     for (let i = 0; i < columnsCount; i++) {
       content[i] = [];
     }
@@ -234,8 +229,13 @@ const Mansory = () => {
   }, [columnsCount]);
 
   useLayoutEffect(() => {
-    if (content.length === columnsCount && postCounter < data.length) {
+    if (
+      feedData != undefined &&
+      content.length === columnsCount &&
+      postCounter < feedData.length
+    ) {
       setPostCounter(postCounter + 1);
+
       let minimalIndex = 0;
       let minimalHeight = Number.MAX_SAFE_INTEGER;
 
@@ -250,11 +250,11 @@ const Mansory = () => {
         }
       }
 
-      content[minimalIndex].push(data[postCounter]);
+      content[minimalIndex].push(feedData[postCounter - offset]);
 
       setContent([...content]);
     }
-  }, [content, data]);
+  }, [content, feedData]);
 
   return (
     <div className="gap-8 grid lg:grid-cols-3 md:grid-cols-2">
