@@ -8,8 +8,11 @@ class WebApi {
       .get<Feed>(`/activity/feed?country=${country}&offset=${offset}`)
       .then((res) => res.data);
 
-  getUser = (userId: number) =>
-    http.get<User>(`/user/getuserbyid?id=${userId}`).then((res) => res.data);
+  getUserById = (userId: number) =>
+    http.get<User>(`/user/getbyid?id=${userId}`).then((res) => res.data);
+
+  getUserBySub = (userSub: string) =>
+    http.get<User>(`/user/getbysub?sub=${userSub}`).then((res) => res.data);
 }
 
 export default new WebApi();

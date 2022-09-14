@@ -3,12 +3,20 @@ import { Feed } from './types/feed';
 import { User } from './types/user';
 import webApi from './web-api';
 
-const userFetcher = (id: number) => webApi.getUser(id);
+const userByIdFetcher = (id: number) => webApi.getUserById(id);
 
-export const useApiUser = (userId: number) =>
-  useSWR<User>([userId], userFetcher, {
+export const useApiUserById = (id: number) =>
+  useSWR<User>([id], userByIdFetcher, {
     revalidateOnFocus: false,
     dedupingInterval: 30000,
+  });
+
+const userBySubFetcher = (sub: string) => webApi.getUserBySub(sub);
+
+export const useApiUserBySub = (sub?: string) =>
+  useSWR<User>([sub], userBySubFetcher, {
+    revalidateOnFocus: false,
+    dedupingInterval: 120000,
   });
 
 const feedFetcher = (country: number, offset: number) =>

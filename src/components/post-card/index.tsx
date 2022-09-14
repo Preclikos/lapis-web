@@ -9,7 +9,7 @@ import Media from '../ui/media/media';
 import MediaBody from '../ui/media/media-body';
 import { messages } from './messages';
 import empty_user from '../user-dropdown/empty_user.png';
-import { useApiUser } from '../../api/use-api';
+import { useApiUserById } from '../../api/use-api';
 import { FeedItem } from '../../api/types/feed';
 import TimeAfter from '../time-after';
 
@@ -17,7 +17,7 @@ const PostCard: FC<FeedItem> = (activity: FeedItem) => {
   const [likes, setLikes] = useState(0);
   const [showCommentModal, setShowCommentModal] = useState(false);
 
-  const { data: user, error: userError } = useApiUser(activity.userId);
+  const { data: user, error: userError } = useApiUserById(activity.userId);
 
   return (
     <>
