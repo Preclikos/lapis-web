@@ -8,35 +8,15 @@ import CardTitle from '../ui/card/card-title';
 import Media from '../ui/media/media';
 import MediaBody from '../ui/media/media-body';
 import { messages } from './messages';
+import empty_user from '../user-dropdown/empty_user.png';
+import { useApiUser } from '../../api/use-api';
+import { FeedItem } from '../../api/types/feed-item';
 
-export interface IProps {
-  id: number;
-  user: {
-    image: {
-      src: string;
-      alt?: string;
-    };
-    name: string;
-    path: string;
-    designation: string;
-    lastActivity: string;
-  };
-  activity: {
-    image: {
-      src: string;
-      alt?: string;
-      width?: number;
-      height?: number;
-    };
-    path: string;
-    excerpt: string;
-    type: string;
-  };
-}
-
-const PostCard: FC<IProps> = ({ user, activity }) => {
+const PostCard: FC<FeedItem> = (activity: FeedItem) => {
   const [likes, setLikes] = useState(0);
   const [showCommentModal, setShowCommentModal] = useState(false);
+
+  const { data: user, error: userError } = useApiUser(activity.userId);
 
   return (
     <>
@@ -47,25 +27,23 @@ const PostCard: FC<IProps> = ({ user, activity }) => {
           </CardTitle>
 
           <Media className="items-center my-[25px]">
-            {user?.image?.src && (
-              <Anchor path={user.path}>
-                <img
-                  src={user.image.src}
-                  alt={user.image?.alt || 'author'}
-                  className="rounded-full w-10"
-                  width={40}
-                  height={40}
-                />
-              </Anchor>
-            )}
+            <Anchor path={'test'}>
+              <img
+                src={user?.image?.path ?? empty_user}
+                alt={'author'}
+                className="rounded-full w-10"
+                width={40}
+                height={40}
+              />
+            </Anchor>
 
             <MediaBody className="ml-3.8">
               <h6 className="mb-[2px]">
-                <Anchor path={user.path}>{user.name}</Anchor>
+                <Anchor path="">{user?.name}</Anchor>
               </h6>
-              <p className="mb-0">{user.designation}</p>
+              <p className="mb-0">{/*data?.data?.country ?? '-1'*/}</p>
             </MediaBody>
-            <span className="text-sm">{user.lastActivity}</span>
+            <span className="text-sm">{activity.timeStamp}</span>
           </Media>
           <div className="">
             {activity.image.src && (
@@ -80,7 +58,7 @@ const PostCard: FC<IProps> = ({ user, activity }) => {
               </Anchor>
             )}
             <div className="bg-gray-200 p-[15px]">
-              <p>{activity.excerpt}</p>
+              <p>{activity.description}</p>
             </div>
           </div>
         </CardBody>
