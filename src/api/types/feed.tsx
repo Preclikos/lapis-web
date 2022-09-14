@@ -6,7 +6,7 @@ export type Feed = {
 export type FeedItem = {
   id: number;
   type: string;
-  path: string;
+  lapisId: number;
   description: string;
   timeStamp: number;
   userId: number;

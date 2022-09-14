@@ -24,11 +24,13 @@ const PostCard: FC<FeedItem> = (activity: FeedItem) => {
       <Card className="activity-card mb-5">
         <CardBody className="p-[25px]">
           <CardTitle>
-            <FormattedMessage {...messages[activity.type]} />
+            <Anchor path={`/lapis/${activity.lapisId}`}>
+              <FormattedMessage {...messages[activity.type]} />
+            </Anchor>
           </CardTitle>
 
           <Media className="items-center my-[25px]">
-            <Anchor path={'test'}>
+            <Anchor path={`/profile/${user?.id}`}>
               <img
                 src={user?.image?.src ?? empty_user}
                 alt={'author'}
@@ -40,7 +42,7 @@ const PostCard: FC<FeedItem> = (activity: FeedItem) => {
 
             <MediaBody className="ml-3.8">
               <h6 className="mb-[2px]">
-                <Anchor path="">{user?.name}</Anchor>
+                <Anchor path={`/profile/${user?.id}`}>{user?.name}</Anchor>
               </h6>
               <p className="mb-0">{/*data?.data?.country ?? '-1'*/}</p>
             </MediaBody>
@@ -50,7 +52,7 @@ const PostCard: FC<FeedItem> = (activity: FeedItem) => {
           </Media>
           <div className="">
             {activity.image.src && (
-              <Anchor path="#!">
+              <Anchor path={`/lapis/${activity.lapisId}`}>
                 <img
                   src={activity.image.src}
                   className="w-full h-full-aspect object-cover"

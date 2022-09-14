@@ -28,6 +28,7 @@ function App() {
 
           <Route path="/profile" component={Profile} />
           <Route path="/profile/:id" component={Profile} />
+          <Route path="/lapis/:id" component={Profile} />
           <Route path="/signin" component={SignIn} />
           <Route path="/signout" component={SignOut} />
 
