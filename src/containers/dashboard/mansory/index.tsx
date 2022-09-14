@@ -2,7 +2,7 @@ import PostCard from '../../../components/post-card';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useBreakpoint } from '../../../hooks/use-breakpoint';
 import { useApiFeed } from '../../../api/use-api';
-import { FeedItem } from '../../../api/types/feed-item';
+import { FeedItem } from '../../../api/types/feed';
 import SpinnerCube from '../../../components/ui/spinner/spinner-cube';
 import InfiniteScroll from 'react-infinite-scroller';
 
@@ -183,7 +183,7 @@ const Mansory = () => {
   const [offset, setOffset] = useState<number>(0);
   const [isLoadingAndHasMore, setIsLoadingAndHasMore] = useState<boolean>(true);
   const [postCounter, setPostCounter] = useState<number>(0);
-  const [columnsCount, setColumnsCount] = useState<number>(3);
+  const [columnsCount, setColumnsCount] = useState<number>(5);
   const [content, setContent] = useState<[FeedItem[]]>([[]]);
   const itemsRef = useRef<HTMLDivElement[]>([]);
   const resolution = useBreakpoint();
@@ -204,7 +204,7 @@ const Mansory = () => {
     if (feedData == undefined) {
       setIsLoadingAndHasMore(isLoadingSet);
     } else {
-      if (feedData.length >= 8) {
+      if (feedData.feedItems.length >= feedData.responseLimit) {
         setIsLoadingAndHasMore(false);
       }
     }
@@ -222,7 +222,7 @@ const Mansory = () => {
         setColumnsCount(3);
         break;
       case 'xl':
-        setColumnsCount(3);
+        setColumnsCount(5);
         break;
     }
   }, [resolution]);
@@ -240,7 +240,7 @@ const Mansory = () => {
     if (
       feedData != undefined &&
       content.length === columnsCount &&
-      postCounter < feedData.length
+      postCounter < feedData.feedItems.length
     ) {
       setPostCounter(postCounter + 1);
 
@@ -258,7 +258,7 @@ const Mansory = () => {
         }
       }
 
-      content[minimalIndex].push(feedData[postCounter - offset]);
+      content[minimalIndex].push(feedData.feedItems[postCounter - offset]);
 
       setContent([...content]);
     }

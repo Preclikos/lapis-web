@@ -1,3 +1,8 @@
+export type Feed = {
+  responseLimit: number;
+  feedItems: FeedItem[];
+};
+
 export type FeedItem = {
   id: number;
   type: string;

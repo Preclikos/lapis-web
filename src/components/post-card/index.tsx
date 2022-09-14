@@ -10,7 +10,7 @@ import MediaBody from '../ui/media/media-body';
 import { messages } from './messages';
 import empty_user from '../user-dropdown/empty_user.png';
 import { useApiUser } from '../../api/use-api';
-import { FeedItem } from '../../api/types/feed-item';
+import { FeedItem } from '../../api/types/feed';
 
 const PostCard: FC<FeedItem> = (activity: FeedItem) => {
   const [likes, setLikes] = useState(0);
