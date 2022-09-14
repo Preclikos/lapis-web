@@ -4,6 +4,7 @@ import { useBreakpoint } from '../../../hooks/use-breakpoint';
 import { useApiFeed } from '../../../api/use-api';
 import { FeedItem } from '../../../api/types/feed-item';
 import SpinnerCube from '../../../components/ui/spinner/spinner-cube';
+import InfiniteScroll from 'react-infinite-scroller';
 
 /*
 const data: IProps[] = [
@@ -180,6 +181,7 @@ const data: IProps[] = [
 
 const Mansory = () => {
   const [offset, setOffset] = useState<number>(0);
+  const [isLoadingAndHasMore, setIsLoadingAndHasMore] = useState<boolean>(true);
   const [postCounter, setPostCounter] = useState<number>(0);
   const [columnsCount, setColumnsCount] = useState<number>(3);
   const [content, setContent] = useState<[FeedItem[]]>([[]]);
@@ -198,9 +200,24 @@ const Mansory = () => {
   };
 
   useEffect(() => {
+    const isLoadingSet = (!feedData && !feedError) || isValidating;
+    if (feedData == undefined) {
+      setIsLoadingAndHasMore(isLoadingSet);
+    } else {
+      if (feedData.length >= 8) {
+        setIsLoadingAndHasMore(false);
+      }
+    }
+  }, [feedData, feedError, isValidating]);
+
+  useEffect(() => {
+    console.log('Add scroll listener');
     const onScroll = function () {
-      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        setOffset(postCounter);
+      if (
+        window.innerHeight + document.documentElement.scrollTop ===
+        document.documentElement.scrollHeight
+      ) {
+        console.log('Load more');
       }
     };
     window.addEventListener('scroll', onScroll);
@@ -262,20 +279,29 @@ const Mansory = () => {
   }, [content, feedData]);
 
   return (
-    <div className="gap-8 grid lg:grid-cols-3 md:grid-cols-2">
-      {content.map((items, index) => {
-        return (
-          <div key={index}>
-            <div ref={(element) => addToRefs(index, element)}>
-              {items.map((singleItem) => (
-                <PostCard key={singleItem.id} {...singleItem} />
-              ))}
+    <InfiniteScroll
+      loadMore={() => {
+        if (!isLoadingAndHasMore) {
+          setOffset(postCounter);
+        }
+      }}
+      hasMore={!isLoadingAndHasMore}
+      loader={<SpinnerCube />}
+    >
+      <div className="gap-8 grid lg:grid-cols-3 md:grid-cols-2">
+        {content.map((items, index) => {
+          return (
+            <div key={index}>
+              <div ref={(element) => addToRefs(index, element)}>
+                {items.map((singleItem) => (
+                  <PostCard key={singleItem.id} {...singleItem} />
+                ))}
+              </div>
             </div>
-          </div>
-        );
-      })}
-      {((!feedError && !feedData) || isValidating) ?? <SpinnerCube />}
-    </div>
+          );
+        })}
+      </div>
+    </InfiniteScroll>
   );
 };
 
