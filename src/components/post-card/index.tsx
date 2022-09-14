@@ -11,6 +11,7 @@ import { messages } from './messages';
 import empty_user from '../user-dropdown/empty_user.png';
 import { useApiUser } from '../../api/use-api';
 import { FeedItem } from '../../api/types/feed';
+import TimeAfter from '../time-after';
 
 const PostCard: FC<FeedItem> = (activity: FeedItem) => {
   const [likes, setLikes] = useState(0);
@@ -43,7 +44,9 @@ const PostCard: FC<FeedItem> = (activity: FeedItem) => {
               </h6>
               <p className="mb-0">{/*data?.data?.country ?? '-1'*/}</p>
             </MediaBody>
-            <span className="text-sm">{activity.timeStamp}</span>
+            <span className="text-sm">
+              <TimeAfter utcTimeStamp={activity.timeStamp} />
+            </span>
           </Media>
           <div className="">
             {activity.image.src && (
