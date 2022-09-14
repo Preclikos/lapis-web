@@ -183,7 +183,7 @@ const Mansory = () => {
   const [offset, setOffset] = useState<number>(0);
   const [isLoadingAndHasMore, setIsLoadingAndHasMore] = useState<boolean>(true);
   const [postCounter, setPostCounter] = useState<number>(0);
-  const [columnsCount, setColumnsCount] = useState<number>(5);
+  const [columnsCount, setColumnsCount] = useState<number>(3);
   const [content, setContent] = useState<[FeedItem[]]>([[]]);
   const itemsRef = useRef<HTMLDivElement[]>([]);
   const resolution = useBreakpoint();
@@ -219,10 +219,8 @@ const Mansory = () => {
         setColumnsCount(2);
         break;
       case 'lg':
-        setColumnsCount(3);
-        break;
       case 'xl':
-        setColumnsCount(5);
+        setColumnsCount(3);
         break;
     }
   }, [resolution]);
