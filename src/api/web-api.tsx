@@ -9,10 +9,10 @@ class WebApi {
       .then((res) => res.data);
 
   getUserById = (userId: number) =>
-    http.get<User>(`/user/getbyid?id=${userId}`).then((res) => res.data);
+    http.get<User>(`/user/id/${userId}`).then((res) => res.data);
 
   getUserBySub = (userSub: string) =>
-    http.get<User>(`/user/getbysub?sub=${userSub}`).then((res) => res.data);
+    http.get<User>(`/user/sub/${userSub}`).then((res) => res.data);
 }
 
 export default new WebApi();
