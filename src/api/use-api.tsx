@@ -19,10 +19,10 @@ export const useApiUserBySub = (sub?: string) =>
     dedupingInterval: 120000,
   });
 
-export const useApiUserByIdOrSub = (subOrId: string | number) =>
+export const useApiUserByIdOrSub = (subOrId: string | number | null) =>
   useSWR<User>(
-    [subOrId],
-    !isNaN(+subOrId) ? userByIdFetcher : userBySubFetcher,
+    subOrId != null ? [subOrId] : null,
+    subOrId != null && !isNaN(+subOrId) ? userByIdFetcher : userBySubFetcher,
     {
       revalidateOnFocus: false,
       dedupingInterval: 120000,

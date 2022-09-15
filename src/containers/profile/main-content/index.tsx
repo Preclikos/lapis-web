@@ -11,7 +11,7 @@ const MainContent = () => {
   const { keycloak } = useKeycloak();
   const { id } = useParams<IProfileProps>();
   const subOrId = id !== undefined ? Number(id) : keycloak.subject;
-  const { data: user, error } = useApiUserByIdOrSub(subOrId ?? 0);
+  const { data: user, error } = useApiUserByIdOrSub(subOrId ?? null);
 
   return (
     <>
