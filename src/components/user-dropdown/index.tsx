@@ -41,7 +41,7 @@ const UserDropdown = () => {
           'p-[0.625rem] w-[12.5rem] mt-3 -mr-[0.938rem] border-t-0 maxSm:right-4 sm:right-0 left-auto rounded-none'
         )}
       >
-        <DropdownItem path="/profile">
+        <DropdownItem path={`/profile/${user?.id}`}>
           <i className={clsx('icon ion-person', iconClass)} />
           <FormattedMessage {...messages.profile} />
         </DropdownItem>
