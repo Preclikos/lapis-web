@@ -8,7 +8,7 @@ import MediaBody from '../ui/media/media-body';
 interface IProps {
   name: string;
   designation: string;
-  countryId: number;
+  country?: string;
   motto: string;
   path: string;
   image: { src: string; alt?: string };
@@ -17,7 +17,7 @@ interface IProps {
 const ProfileCard: FC<IProps> = ({
   name,
   designation,
-  countryId,
+  country,
   motto,
   path,
   image,
@@ -54,9 +54,8 @@ const ProfileCard: FC<IProps> = ({
               <h3 className="font-normal">{name}</h3>
               {/*<p className="mb-[5px] text-[15px] text-heading leading-relaxed">
                 {designation} at <span className="text-primary">{company}</span>
-              </p>
-              <p>{location}</p>
-            */}
+            </p>*/}
+              <p>{country}</p>
               <p className="mb-0">
                 {ltlBio}{' '}
                 <button

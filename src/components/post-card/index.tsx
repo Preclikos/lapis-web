@@ -12,13 +12,13 @@ import empty_user from '../images/empty_user.png';
 import { useApiUserById } from '../../api/use-api';
 import { FeedItem } from '../../api/types/feed';
 import TimeAfter from '../time-after';
+import { Country } from '../country/enum';
 
 const PostCard: FC<FeedItem> = (activity: FeedItem) => {
   const [likes, setLikes] = useState(0);
   const [showCommentModal, setShowCommentModal] = useState(false);
 
   const { data: user, error: userError } = useApiUserById(activity.userId);
-
   return (
     <>
       <Card className="activity-card mb-5">
@@ -44,7 +44,15 @@ const PostCard: FC<FeedItem> = (activity: FeedItem) => {
               <h6 className="mb-[2px]">
                 <Anchor path={`/profile/${user?.id}`}>{user?.name}</Anchor>
               </h6>
-              <p className="mb-0">{/*data?.data?.country ?? '-1'*/}</p>
+              <p className="mb-0">
+                {user && (
+                  <>
+                    <span
+                      className={'fi  fi-' + user?.country.toLocaleLowerCase()}
+                    />
+                  </>
+                )}
+              </p>
             </MediaBody>
             <span className="text-sm">
               <TimeAfter utcTimeStamp={activity.timeStamp} />

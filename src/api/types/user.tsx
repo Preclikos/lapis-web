@@ -1,7 +1,7 @@
 export type User = {
   id: number;
   name: string;
-  countryId: number;
+  country: string;
   motto: string;
   image: {
     src: string;

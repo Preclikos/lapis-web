@@ -18,7 +18,7 @@ const MainContent = () => {
       <ProfileCard
         name={user?.name ?? ''}
         designation={''}
-        countryId={user?.countryId ?? 0}
+        country={user?.country}
         motto={user?.motto ?? ''}
         path={'https://' + window.location.host + '/profile/' + user?.id}
         image={{ src: user?.image.src ?? '', alt: user?.name }}
