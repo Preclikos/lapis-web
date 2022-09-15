@@ -1,6 +1,6 @@
 import { useKeycloak } from '@react-keycloak/web';
 import { useParams } from 'react-router-dom';
-import { useApiUserById } from '../../../api/use-api';
+import { useApiUserByIdOrSub } from '../../../api/use-api';
 import ProfileCard from '../../../components/profile-card';
 
 interface IProfileProps {
@@ -8,9 +8,10 @@ interface IProfileProps {
 }
 
 const MainContent = () => {
+  const { keycloak } = useKeycloak();
   const { id } = useParams<IProfileProps>();
-  console.log(id);
-  const { data: user, error } = useApiUserById(Number(id));
+  const subOrId = id !== undefined ? Number(id) : keycloak.subject;
+  const { data: user, error } = useApiUserByIdOrSub(subOrId ?? 0);
 
   return (
     <>

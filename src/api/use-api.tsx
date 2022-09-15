@@ -19,6 +19,16 @@ export const useApiUserBySub = (sub?: string) =>
     dedupingInterval: 120000,
   });
 
+export const useApiUserByIdOrSub = (subOrId: string | number) =>
+  useSWR<User>(
+    [subOrId],
+    !isNaN(+subOrId) ? userByIdFetcher : userBySubFetcher,
+    {
+      revalidateOnFocus: false,
+      dedupingInterval: 120000,
+    }
+  );
+
 const feedFetcher = (country: number, offset: number) =>
   webApi.getFeedItems(country, offset);
 
