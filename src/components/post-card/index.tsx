@@ -8,7 +8,7 @@ import CardTitle from '../ui/card/card-title';
 import Media from '../ui/media/media';
 import MediaBody from '../ui/media/media-body';
 import { messages } from './messages';
-import empty_user from '../user-dropdown/empty_user.png';
+import empty_user from '../images/empty_user.png';
 import { useApiUserById } from '../../api/use-api';
 import { FeedItem } from '../../api/types/feed';
 import TimeAfter from '../time-after';

@@ -7,7 +7,7 @@ import { useKeycloak } from '@react-keycloak/web';
 import { KeycloakTokenParsed } from 'keycloak-js';
 import { FormattedMessage } from 'react-intl';
 import { messages } from './messages';
-import empty_user from './empty_user.png';
+import empty_user from '../images/empty_user.png';
 import { useApiUserBySub } from '../../api/use-api';
 
 interface ParsedToken extends KeycloakTokenParsed {
@@ -41,7 +41,7 @@ const UserDropdown = () => {
           'p-[0.625rem] w-[12.5rem] mt-3 -mr-[0.938rem] border-t-0 maxSm:right-4 sm:right-0 left-auto rounded-none'
         )}
       >
-        <DropdownItem path={`/profile/${user?.id}`}>
+        <DropdownItem path={'/profile'}>
           <i className={clsx('icon ion-person', iconClass)} />
           <FormattedMessage {...messages.profile} />
         </DropdownItem>
