@@ -20,7 +20,7 @@ const MainContent = () => {
         designation={''}
         countryId={user?.countryId ?? 0}
         motto={user?.motto ?? ''}
-        path={'https://' + window.location.host + '/profile/' + id}
+        path={'https://' + window.location.host + '/profile/' + user?.id}
         image={{ src: user?.image.src ?? '', alt: user?.name }}
       />
     </>
