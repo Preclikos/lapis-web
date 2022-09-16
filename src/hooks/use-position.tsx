@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export const usePosition = (wantLoad: boolean) => {
+export const usePosition = (active: boolean) => {
   const [position, setPosition] = useState<GeolocationCoordinates>();
   const [error, setError] = useState<string | undefined>(undefined);
 
@@ -13,7 +13,7 @@ export const usePosition = (wantLoad: boolean) => {
   };
 
   useEffect(() => {
-    if (wantLoad) {
+    if (active) {
       const geo = navigator.geolocation;
       if (!geo) {
         setError('Geolocation is not supported');
