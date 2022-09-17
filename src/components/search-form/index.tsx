@@ -9,6 +9,7 @@ import { Subject, takeUntil, scan, finalize } from 'rxjs';
 import { fromFetchStream } from '../../api/from-fetch-stream';
 import SpinnerCircle from '../ui/spinner/spinner-circle';
 import { SearchItem } from '../../api/types/search';
+import Anchor from '../ui/anchor';
 
 const SearchForm = () => {
   const t = useIntl();
@@ -117,14 +118,18 @@ const SearchForm = () => {
                 data.length > 0 ? (
                   data.map((item) => {
                     return (
-                      <div key={item.id} className=" grid grid-cols-4 py-4">
+                      <Anchor
+                        key={item.id}
+                        path={'lapis/' + item.id}
+                        className=" grid grid-cols-4 py-4"
+                      >
                         <img src={item.image.src} alt={item.name} />
                         <div className="px-2 py-2 col-span-3 border border-geyser">
                           <h6>{item.code}</h6>
                           <h4>{item.name}</h4>
                           {/*<p>{item.description}</p>*/}
                         </div>
-                      </div>
+                      </Anchor>
                     );
                   })
                 ) : (

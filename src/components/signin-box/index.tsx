@@ -11,7 +11,7 @@ const SigninBox = () => {
    const { keycloak } = useKeycloak();
 
     const loginFacebook = useCallback(async () => {
-        await keycloak?.login({ idpHint: "facebook" });
+        await keycloak?.login({ idpHint: "facebook", });
     }, [keycloak]);
 
     const loginGoogle = useCallback(async () => {

@@ -13,6 +13,10 @@ export const menuMessages: { [name: string]: MessageDescriptor } = {
     id: 'menu.profile',
     defaultMessage: 'Profile',
   },
+  lapis: {
+    id: 'menu.lapis',
+    defaultMessage: 'Lapis',
+  },
   terms: {
     id: 'menu.terms',
     defaultMessage: 'Terms & Conditions',

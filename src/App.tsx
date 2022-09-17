@@ -11,6 +11,7 @@ import SignIn from './pages/signin';
 import SignOut from './pages/signout';
 import Profile from './pages/profile';
 import TermsAndConditions from './pages/terms';
+import Lapis from './pages/lapis';
 
 function App() {
   const locale = navigator.languages[0].substring(0, 2) as SupportedLocales;
@@ -28,7 +29,7 @@ function App() {
 
           <Route path="/profile/:id" component={Profile} />
           <Route path="/profile" component={Profile} />
-          <Route path="/lapis/:id" component={Profile} />
+          <Route path="/lapis/:id" component={Lapis} />
           <Route path="/signin" component={SignIn} />
           <Route path="/signout" component={SignOut} />
 
