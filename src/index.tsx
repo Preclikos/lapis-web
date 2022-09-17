@@ -6,6 +6,8 @@ import './fonts/font-awesome.css';
 import './fonts/ionicons.css';
 import './fonts/flag-icon.min.css';
 import 'leaflet/dist/leaflet.css';
+import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css'; // Re-uses images from ~leaflet package
+import 'leaflet-defaulticon-compatibility';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import keycloak from './keycloak';

@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import clsx from 'clsx';
+import SideMapCard from '../../../components/side-map-card';
 
 interface IProps {
   sidebarOpen?: boolean;
@@ -13,7 +14,9 @@ const Sidebar: FC<IProps> = ({ sidebarOpen }) => {
         !sidebarOpen && 'maxLg:opacity-0 maxLg:invisible maxLg:-translate-x-72',
         sidebarOpen && 'maxLg:opacity-1 maxLg:visible maxLg:translate-x-0'
       )}
-    ></div>
+    >
+      <SideMapCard />
+    </div>
   );
 };
 

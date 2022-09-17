@@ -4,9 +4,9 @@ import MainContent from '../containers/profile/main-content';
 import Layout from '../layout';
 import { menuMessages } from '../data/menuMessages';
 import { useIntl } from 'react-intl';
-import Sidebar from '../containers/profile/sidebar';
 import Wrapper from '../containers/timeline/wrapper';
 import Main from '../containers/timeline/main';
+import Sidebar from '../containers/timeline/sidebar';
 
 const Lapis = () => {
   const t = useIntl();
@@ -21,6 +21,7 @@ const Lapis = () => {
       />
       <Wrapper>
         <Main />
+        <Sidebar />
       </Wrapper>
     </Layout>
   );
