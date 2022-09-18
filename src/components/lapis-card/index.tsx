@@ -1,4 +1,5 @@
 import { FC, useState } from 'react';
+import { useApiUserById } from '../../api/use-api';
 import Anchor from '../ui/anchor';
 import Card from '../ui/card/card';
 import CardBody from '../ui/card/card-body';
@@ -6,34 +7,25 @@ import Media from '../ui/media/media';
 import MediaBody from '../ui/media/media-body';
 
 interface IProps {
+  id: number;
+  code: string;
   name: string;
   description: string;
   country?: string;
   userId: number;
-  path: string;
   image: { src: string; alt?: string };
 }
 
 const LapisCard: FC<IProps> = ({
+  id,
+  code,
   name,
   description,
   country,
   userId,
-  path,
   image,
 }) => {
-  const [ltlBio, setLtlBio] = useState('');
-  const [expanded, setExpanded] = useState(false);
-
-  const readMoreHandler = () => {
-    if (!expanded) {
-      setLtlBio(description);
-      setExpanded(true);
-    } else {
-      setLtlBio(description.substring(0, 100) + '...');
-      setExpanded(false);
-    }
-  };
+  const { data: author } = useApiUserById(userId);
 
   return (
     <>
@@ -52,31 +44,21 @@ const LapisCard: FC<IProps> = ({
 
             <MediaBody className="mt-[25px] md:mt-0 md:ml-[30px]">
               <h3 className="font-normal">{name}</h3>
-              {/*<p className="mb-[5px] text-[15px] text-heading leading-relaxed">
-                {designation} at <span className="text-primary">{company}</span>
-            </p>*/}
-              <p>{country}</p>
-              <p className="mb-0">
-                {ltlBio}{' '}
-                <button
-                  type="button"
+              <h6>{code}</h6>
+              <p className="mb-[5px] text-[15px] text-heading leading-relaxed">
+                Created by{' '}
+                <Anchor
                   className="text-primary"
-                  onClick={readMoreHandler}
+                  path={'/profile/' + author?.id}
                 >
-                  Read {expanded ? 'Less' : 'More'}
-                </button>
+                  {author?.name}
+                </Anchor>{' '}
+                from {country}
               </p>
+              <p className="mb-0">{description}</p>
             </MediaBody>
           </Media>
         </CardBody>
-        <div className="bg-gray-200 border-t border-t-geyser md:flex md:items-center md:justify-between">
-          <Anchor
-            path={path}
-            className="block py-3.8 px-8 border-b border-geyser text-gray-600 md:border-b-0 md:px-5 md:py-0"
-          >
-            {path}
-          </Anchor>
-        </div>
       </Card>
     </>
   );
