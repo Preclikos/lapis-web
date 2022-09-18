@@ -7,6 +7,7 @@ import Post from '../../../components/ui/post';
 import TimelineTime from '../../../components/ui/timeline/timeline-time';
 import TimelineDate from '../../../components/ui/timeline/timeline-date';
 import TimelineBody from '../../../components/ui/timeline/timeline-body';
+import LapisCard from '../../../components/lapis-card';
 
 interface IPost {
   [x: string]: Array<{

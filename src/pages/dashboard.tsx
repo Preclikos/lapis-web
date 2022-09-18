@@ -10,7 +10,7 @@ import NominatimOsmApi from '../api/nominatim-api';
 
 const Dashboard = () => {
   const t = useIntl();
-
+  /*
   const position = usePosition(true);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const Dashboard = () => {
       ).then((res) => console.log(res));
     }
   }, [position]);
-
+*/
   return (
     <Layout>
       <SEO />
