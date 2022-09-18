@@ -15,11 +15,11 @@ interface IPost {
     title: string;
     path: string;
     time: string;
-    author: {
+    userId: number /*{
       name: string;
       path: string;
       location?: string;
-    };
+    };*/;
     excerpt: string;
     images?: Array<{
       src: string;
@@ -29,87 +29,13 @@ interface IPost {
 }
 
 const posts: IPost = {
-  today: [
-    {
-      id: 1,
-      title: 'Building a Simple User Interface',
-      path: '/profile',
-      time: '10:30pm',
-      author: {
-        name: 'Elisse Joson',
-        path: '/profile',
-        location: 'San Francisco, CA',
-      },
-      excerpt:
-        'In this lesson, you create a layout in XML that includes a text field and a button. In the next lesson, your app responds when the',
-    },
-    {
-      id: 2,
-      title: 'Blueberry Cheesecake Dessert Recipe',
-      path: '/profile',
-      time: '8:15pm',
-      author: {
-        name: 'Katherine Lumaad',
-        path: '/profile',
-        location: 'Oakland, CA',
-      },
-      excerpt:
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.',
-    },
-    {
-      id: 3,
-      title: "Your Finances Don't Have to Be Perfect to Work",
-      path: '/profile',
-      time: '3:30pm',
-      author: {
-        name: 'Elisse Joson',
-        path: '/profile',
-        location: 'San Francisco, CA',
-      },
-      excerpt:
-        'n this lesson, you create a layout in XML that includes a text field and a button. In the next lesson, your app responds when the',
-    },
-  ],
-  yesterday: [
-    {
-      id: 1,
-      title:
-        'An Engineer Explains Why You Should Always Order the Larger Pizza',
-      path: '/profile',
-      time: '6:30pm',
-      author: {
-        name: 'Elisse Joson',
-        path: '/profile',
-        location: 'San Francisco, CA',
-      },
-      excerpt:
-        'In this lesson, you create a layout in XML that includes a text field and a button. In the next lesson, your app responds when the',
-    },
-    {
-      id: 2,
-      title: 'The Strange Persistence of First Languages',
-      path: '/profile',
-      time: '1:15pm',
-      author: {
-        name: 'Elisse Joson',
-        path: '/profile',
-        location: 'San Francisco, CA',
-      },
-      excerpt:
-        'In this lesson, you create a layout in XML that includes a text field and a button. In the next lesson, your app responds when the',
-    },
-  ],
   '12/20/2020': [
     {
       id: 1,
       title: 'How to Win Your Next Political Argument',
       path: '/profile',
       time: '11:45pm',
-      author: {
-        name: 'Elisse Joson',
-        path: '/profile',
-        location: 'San Francisco, CA',
-      },
+      userId: 1,
       excerpt:
         'In this lesson, you create a layout in XML that includes a text field and a button. In the next lesson, your app responds when the',
     },
@@ -128,14 +54,25 @@ const Main: FC<IProps> = ({ sidebarOpen }) => {
         sidebarOpen && 'maxLg:translate-x-[305px]'
       )}
     >
-      <Card className="p-4 sm:p-[30px]">
+      <LapisCard
+        name={'Krtecek'}
+        description={''}
+        userId={1}
+        country={''}
+        path={''}
+        image={{
+          src: 'https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/305305762_5427427467355173_7747652545362861810_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5cd70e&_nc_ohc=JtIAxIpxzl4AX-BDnlL&_nc_ht=scontent-prg1-1.xx&oh=00_AT9oAnnMRV_kJ_31bVRpDpxNYIdwzDe0gCQTErKDpwDbDA&oe=632B7B6D',
+          alt: 'Krtecek',
+        }}
+      />
+      <Card className="p-4 mt-8 sm:p-[30px]">
         <Timeline>
           {Object.entries(posts).map(([key, post]) => (
             <Fragment key={key}>
               <TimelineItem key={key} isDay>
                 <TimelineTime>&nbsp;</TimelineTime>
                 <TimelineBody>
-                  <TimelineDate>Today</TimelineDate>
+                  <TimelineDate>{key}</TimelineDate>
                 </TimelineBody>
               </TimelineItem>
               {post.map((item) => (
@@ -145,7 +82,7 @@ const Main: FC<IProps> = ({ sidebarOpen }) => {
                     <Post
                       title={item.title}
                       path={item.path}
-                      author={item.author}
+                      userId={item.userId}
                       excerpt={item.excerpt}
                       images={item?.images}
                     />

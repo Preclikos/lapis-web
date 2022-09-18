@@ -4,11 +4,11 @@ import Anchor from '../anchor';
 interface IProps {
   title: string;
   path: string;
-  author: {
+  userId: number /*{
     name: string;
     path: string;
     location?: string;
-  };
+  };*/;
   excerpt: string;
   images?: Array<{
     src: string;
@@ -16,7 +16,7 @@ interface IProps {
   }>;
 }
 
-const Post: FC<IProps> = ({ title, path, author, excerpt, images }) => {
+const Post: FC<IProps> = ({ title, path, userId, excerpt, images }) => {
   return (
     <>
       <p className="ont-medium mb-0">
@@ -24,12 +24,12 @@ const Post: FC<IProps> = ({ title, path, author, excerpt, images }) => {
           {title}
         </Anchor>
       </p>
-      {author && (
+      {/*author && (
         <p className="text-xs mb-3.7">
           <Anchor path={author.path}>{author.name}</Anchor>{' '}
           {author?.location && <>{author.location}</>}
         </p>
-      )}
+      )*/}
       <p className="mb-3.8">{excerpt}</p>
       {images && (
         <div className="grid sm:grid-cols-2 gap-2.5 mb-3.8">

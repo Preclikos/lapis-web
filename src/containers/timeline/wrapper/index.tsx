@@ -7,6 +7,7 @@ import {
   FunctionComponent,
   PropsWithChildren,
 } from 'react';
+import HamburgerButton from '../../../components/ui/hamburger-button';
 
 type IChild = Exclude<ReactChild, ReactText>;
 
@@ -25,6 +26,11 @@ const Wrapper: FC<PropsWithChildren> = ({ children }) => {
   });
   return (
     <>
+      <HamburgerButton
+        label="Click here to open sidebar"
+        onClick={() => setSidebarOpen((prev) => !prev)}
+        className="lg:hidden"
+      />
       <div className="relative lg:grid lg:grid-cols-[minmax(0,_72%)_minmax(296px,_26%)] lg:gap-5 overflow-hidden">
         {RenderChild}
       </div>

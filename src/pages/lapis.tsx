@@ -18,6 +18,7 @@ const Lapis = () => {
         prev={[{ text: t.formatMessage({ ...menuMessages.home }), path: '/' }]}
         currentPage={t.formatMessage({ ...menuMessages.lapis })}
         title={t.formatMessage({ ...menuMessages.lapis })}
+        variant={3}
       />
       <Wrapper>
         <Main />

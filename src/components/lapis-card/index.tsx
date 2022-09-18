@@ -7,18 +7,18 @@ import MediaBody from '../ui/media/media-body';
 
 interface IProps {
   name: string;
-  designation: string;
+  description: string;
   country?: string;
-  motto: string;
+  userId: number;
   path: string;
   image: { src: string; alt?: string };
 }
 
 const LapisCard: FC<IProps> = ({
   name,
-  designation,
+  description,
   country,
-  motto,
+  userId,
   path,
   image,
 }) => {
@@ -27,10 +27,10 @@ const LapisCard: FC<IProps> = ({
 
   const readMoreHandler = () => {
     if (!expanded) {
-      setLtlBio(motto);
+      setLtlBio(description);
       setExpanded(true);
     } else {
-      setLtlBio(motto.substring(0, 100) + '...');
+      setLtlBio(description.substring(0, 100) + '...');
       setExpanded(false);
     }
   };
@@ -44,7 +44,7 @@ const LapisCard: FC<IProps> = ({
               <img
                 src={image.src}
                 alt={image?.alt || 'profile'}
-                className="mt-5 w-[120px] rounded-full"
+                className="mt-5 w-[120px]"
                 width={120}
                 height={120}
               />
@@ -76,12 +76,6 @@ const LapisCard: FC<IProps> = ({
           >
             {path}
           </Anchor>
-          <button
-            type="button"
-            className="inline-block py-3.8 px-8 md:px-5 md:border-l border-l-geyser text-primary"
-          >
-            Edit Profile
-          </button>
         </div>
       </Card>
     </>
