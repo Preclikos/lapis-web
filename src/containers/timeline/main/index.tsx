@@ -9,6 +9,8 @@ import TimelineBody from '../../../components/ui/timeline/timeline-body';
 import LapisCard from '../../../components/lapis-card';
 import TimelinePost from '../../../components/ui/timeline/timeline-post';
 import { FormattedDate } from 'react-intl';
+import { useApiLapisById } from '../../../api/use-api';
+import { useParams } from 'react-router-dom';
 
 interface IPost {
   id: string | number;
@@ -56,16 +58,26 @@ const posts: IPost[] = [
   },
 ];
 
+interface ILapisProps {
+  id: string;
+}
+
 interface IProps {
   sidebarOpen?: boolean;
 }
 
+const convertToLocalTime = (timeStamp: number) => {
+  const date = new Date(timeStamp * 1000);
+  console.log(date);
+  return date;
+};
+
 const Main: FC<IProps> = ({ sidebarOpen }) => {
-  const convertToLocalTime = (timeStamp: number) => {
-    const date = new Date(timeStamp * 1000);
-    console.log(date);
-    return date;
-  };
+  const { id } = useParams<ILapisProps>();
+  console.log(id !== undefined ? Number(id) : null);
+  const { data: lapis } = useApiLapisById(id !== undefined ? Number(id) : null);
+
+  console.log(id);
 
   return (
     <div
@@ -74,18 +86,7 @@ const Main: FC<IProps> = ({ sidebarOpen }) => {
         sidebarOpen && 'maxLg:translate-x-[305px]'
       )}
     >
-      <LapisCard
-        id={1}
-        name={'Krtecek'}
-        code={'1/1/1/1'}
-        description={'Maly krtecek schovavajici se v zimnim listi.'}
-        userId={4}
-        country={'Czech'}
-        image={{
-          src: 'https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/305305762_5427427467355173_7747652545362861810_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5cd70e&_nc_ohc=JtIAxIpxzl4AX-BDnlL&_nc_ht=scontent-prg1-1.xx&oh=00_AT9oAnnMRV_kJ_31bVRpDpxNYIdwzDe0gCQTErKDpwDbDA&oe=632B7B6D',
-          alt: 'Krtecek',
-        }}
-      />
+      {lapis && <LapisCard code={''} {...lapis} />}
       <Card className="p-4 mt-8 sm:p-[30px]">
         <Timeline>
           {posts.map((item) => (

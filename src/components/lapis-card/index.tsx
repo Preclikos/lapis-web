@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { useApiUserById } from '../../api/use-api';
 import Anchor from '../ui/anchor';
 import Card from '../ui/card/card';
@@ -12,7 +12,7 @@ interface IProps {
   name: string;
   description: string;
   country?: string;
-  userId: number;
+  userId?: number;
   image: { src: string; alt?: string };
 }
 
@@ -25,7 +25,9 @@ const LapisCard: FC<IProps> = ({
   userId,
   image,
 }) => {
-  const { data: author } = useApiUserById(userId);
+  const { data: author } = useApiUserById(userId ?? null);
+
+  console.log(name);
 
   return (
     <>
@@ -53,7 +55,7 @@ const LapisCard: FC<IProps> = ({
                 >
                   {author?.name}
                 </Anchor>{' '}
-                from {country}
+                from {author?.country}
               </p>
               <p className="mb-0">{description}</p>
             </MediaBody>

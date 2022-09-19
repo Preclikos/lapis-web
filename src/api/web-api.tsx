@@ -1,5 +1,6 @@
 import http from './http-client';
 import { Feed } from './types/feed';
+import { Lapis } from './types/lapis';
 import { User } from './types/user';
 
 class WebApi {
@@ -13,6 +14,9 @@ class WebApi {
 
   getUserBySub = (userSub: string) =>
     http.get<User>(`/user/sub/${userSub}`).then((res) => res.data);
+
+  getLapisById = (lapisId: number) =>
+    http.get<Lapis>(`/lapis/id/${lapisId}`).then((res) => res.data);
 }
 
 export default new WebApi();
