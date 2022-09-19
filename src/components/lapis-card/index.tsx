@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { useApiUserById } from '../../api/use-api';
+import { Country } from '../country/enum';
 import Anchor from '../ui/anchor';
 import Card from '../ui/card/card';
 import CardBody from '../ui/card/card-body';
@@ -27,8 +28,6 @@ const LapisCard: FC<IProps> = ({
 }) => {
   const { data: author } = useApiUserById(userId ?? null);
 
-  console.log(name);
-
   return (
     <>
       <Card className="card-profile">
@@ -54,9 +53,9 @@ const LapisCard: FC<IProps> = ({
                   path={'/profile/' + author?.id}
                 >
                   {author?.name}
-                </Anchor>{' '}
-                from {author?.country}
+                </Anchor>
               </p>
+              <p>{author?.country}</p>
               <p className="mb-0">{description}</p>
             </MediaBody>
           </Media>

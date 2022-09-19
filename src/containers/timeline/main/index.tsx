@@ -67,17 +67,12 @@ interface IProps {
 }
 
 const convertToLocalTime = (timeStamp: number) => {
-  const date = new Date(timeStamp * 1000);
-  console.log(date);
-  return date;
+  return new Date(timeStamp * 1000);
 };
 
 const Main: FC<IProps> = ({ sidebarOpen }) => {
   const { id } = useParams<ILapisProps>();
-  console.log(id !== undefined ? Number(id) : null);
   const { data: lapis } = useApiLapisById(id !== undefined ? Number(id) : null);
-
-  console.log(id);
 
   return (
     <div
