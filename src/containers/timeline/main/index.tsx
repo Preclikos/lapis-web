@@ -11,6 +11,7 @@ import TimelinePost from '../../../components/ui/timeline/timeline-post';
 import { FormattedDate } from 'react-intl';
 import { useApiLapisById } from '../../../api/use-api';
 import { useParams } from 'react-router-dom';
+import SpinnerPuzzle from '../../../components/ui/spinner/spinner-puzzle';
 
 interface IPost {
   id: string | number;
@@ -66,9 +67,7 @@ interface IProps {
   sidebarOpen?: boolean;
 }
 
-const convertToLocalTime = (timeStamp: number) => {
-  return new Date(timeStamp * 1000);
-};
+const convertToLocalTime = (timeStamp: number) => new Date(timeStamp * 1000);
 
 const Main: FC<IProps> = ({ sidebarOpen }) => {
   const { id } = useParams<ILapisProps>();
