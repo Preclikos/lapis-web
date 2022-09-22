@@ -7,11 +7,28 @@ const http = axios.create({
   },
 });
 
+let nextRequestPossible = Date.now();
+
+console.log(nextRequestPossible);
+
 class NominatimOsmApi {
-  Reverse = (lat: number, lon: number) =>
-    http
-      .get(`reverse?format=json&lat=${lat}&lon=${lon}&addressdetails=1`)
-      .then((res) => res.data);
+  wait = async (waitMs: number) => {
+    return new Promise((resolve) => setTimeout(resolve, waitMs));
+  };
+
+  fetchWithWait = async (fetch: Promise<any>) => {
+    const currentNextRequest = nextRequestPossible;
+    nextRequestPossible = Math.max(nextRequestPossible, Date.now()) + 1000;
+    await this.wait(currentNextRequest - Date.now());
+    return fetch;
+  };
+
+  Reverse = (lat: number, lng: number) =>
+    this.fetchWithWait(
+      http
+        .get(`reverse?format=json&lat=${lat}&lon=${lng}&addressdetails=1`)
+        .then((res) => res.data)
+    );
 }
 
 export default new NominatimOsmApi();

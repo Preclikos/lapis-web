@@ -1,17 +1,10 @@
 import { FC, Fragment } from 'react';
 import clsx from 'clsx';
-import Card from '../../../components/ui/card/card';
-import Timeline from '../../../components/ui/timeline/timeline';
-import TimelineItem from '../../../components/ui/timeline/timeline-item';
-import TimelineTime from '../../../components/ui/timeline/timeline-time';
-import TimelineDate from '../../../components/ui/timeline/timeline-date';
-import TimelineBody from '../../../components/ui/timeline/timeline-body';
 import LapisCard from '../../../components/lapis-card';
-import TimelinePost from '../../../components/ui/timeline/timeline-post';
-import { FormattedDate } from 'react-intl';
 import { useApiLapisById } from '../../../api/use-api';
 import { useParams } from 'react-router-dom';
 import SpinnerPuzzle from '../../../components/ui/spinner/spinner-puzzle';
+import LapisTimeline from '../../../components/lapis-timeline';
 
 interface IPost {
   id: string | number;
@@ -67,8 +60,6 @@ interface IProps {
   sidebarOpen?: boolean;
 }
 
-const convertToLocalTime = (timeStamp: number) => new Date(timeStamp * 1000);
-
 const Main: FC<IProps> = ({ sidebarOpen }) => {
   const { id } = useParams<ILapisProps>();
   const { data: lapis } = useApiLapisById(id !== undefined ? Number(id) : null);
@@ -80,33 +71,14 @@ const Main: FC<IProps> = ({ sidebarOpen }) => {
         sidebarOpen && 'maxLg:translate-x-[305px]'
       )}
     >
-      {lapis && <LapisCard code={''} {...lapis} />}
-      <Card className="p-4 mt-8 sm:p-[30px]">
-        <Timeline>
-          {posts.map((item) => (
-            <Fragment key={item.id}>
-              <TimelineItem key={item.id}>
-                <TimelineTime>
-                  <FormattedDate
-                    value={convertToLocalTime(item.timeStamp)}
-                    day="2-digit"
-                    month="2-digit"
-                  />
-                </TimelineTime>
-                <TimelineBody>
-                  <TimelinePost
-                    title={item.title}
-                    path={item.path}
-                    userId={item.userId}
-                    excerpt={item.excerpt}
-                    images={item?.images}
-                  />
-                </TimelineBody>
-              </TimelineItem>
-            </Fragment>
-          ))}
-        </Timeline>
-      </Card>
+      {lapis ? (
+        <>
+          <LapisCard code={''} {...lapis} />
+          <LapisTimeline id={lapis.id} />
+        </>
+      ) : (
+        <SpinnerPuzzle />
+      )}
     </div>
   );
 };

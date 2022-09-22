@@ -1,12 +1,13 @@
 import http from './http-client';
 import { Feed } from './types/feed';
 import { Lapis } from './types/lapis';
+import { LapisActivity } from './types/lapisActivity';
 import { User } from './types/user';
 
 class WebApi {
   getFeedItems = (country: number, offset: number) =>
     http
-      .get<Feed>(`/activity/feed?country=${country}&offset=${offset}`)
+      .get<Feed>(`/activity/feed/${country}/${offset}`)
       .then((res) => res.data);
 
   getUserById = (userId: number) =>
@@ -17,6 +18,11 @@ class WebApi {
 
   getLapisById = (lapisId: number) =>
     http.get<Lapis>(`/lapis/id/${lapisId}`).then((res) => res.data);
+
+  getLapisActivityById = (lapisId: number, offset: number) =>
+    http
+      .get<LapisActivity>(`/lapis/id/${lapisId}/activities/${offset}`)
+      .then((res) => res.data);
 }
 
 export default new WebApi();

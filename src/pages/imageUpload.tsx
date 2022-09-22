@@ -8,6 +8,7 @@ import { usePosition } from '../hooks/use-position';
 import { ChangeEvent, useEffect, useState } from 'react';
 import NominatimOsmApi from '../api/nominatim-api';
 import ExifReader, { GpsTags } from 'exifreader';
+import { useNominatimReverse } from '../api/use-nominatim';
 
 const ImageUpload = () => {
   const t = useIntl();
@@ -26,6 +27,8 @@ const ImageUpload = () => {
   const [preview, setPreview] = useState<string>();
   const [gps, setGps] = useState<GpsTags>();
   const [location, setLocation] = useState<GpsTags>();
+
+  //const locationReverse = useNominatimReverse();
 
   const onImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { files } = event.target;

@@ -1,10 +1,11 @@
 import useSWR from 'swr';
 import { Feed } from './types/feed';
 import { Lapis } from './types/lapis';
+import { LapisActivity } from './types/lapisActivity';
 import { User } from './types/user';
 import webApi from './web-api';
 
-const userByIdFetcher = (name: string, id: number) => webApi.getUserById(id);
+const userByIdFetcher = (_name: string, id: number) => webApi.getUserById(id);
 
 export const useApiUserById = (id: number | null) =>
   useSWR<User>(id !== null ? ['useApiUserById', id] : null, userByIdFetcher, {
@@ -12,7 +13,7 @@ export const useApiUserById = (id: number | null) =>
     dedupingInterval: 30000,
   });
 
-const userBySubFetcher = (name: string, sub: string) =>
+const userBySubFetcher = (_name: string, sub: string) =>
   webApi.getUserBySub(sub);
 
 export const useApiUserBySub = (sub?: string) =>
@@ -31,7 +32,7 @@ export const useApiUserByIdOrSub = (subOrId: string | number | null) =>
     }
   );
 
-const feedFetcher = (name: string, country: number, offset: number) =>
+const feedFetcher = (_name: string, country: number, offset: number) =>
   webApi.getFeedItems(country, offset);
 
 export const useApiFeed = (country: number, offset: number) =>
@@ -40,9 +41,21 @@ export const useApiFeed = (country: number, offset: number) =>
     dedupingInterval: 5000,
   });
 
-const lapisFetcher = (name: string, id: number) => webApi.getLapisById(id);
+const lapisFetcher = (_name: string, id: number) => webApi.getLapisById(id);
 
 export const useApiLapisById = (id: number | null) =>
   useSWR<Lapis>(id !== null ? ['useApiLapisById', id] : null, lapisFetcher, {
     revalidateOnFocus: false,
   });
+
+const lapisActivityFetcher = (_name: string, lapisId: number, offset: number) =>
+  webApi.getLapisActivityById(lapisId, offset);
+
+export const useApiLapisActivityById = (lapisId: number, offset: number) =>
+  useSWR<LapisActivity>(
+    ['useApiLapisActivityById', lapisId, offset],
+    lapisActivityFetcher,
+    {
+      revalidateOnFocus: false,
+    }
+  );
