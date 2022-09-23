@@ -7,7 +7,7 @@ import CardBody from '../ui/card/card-body';
 import CardTitle from '../ui/card/card-title';
 import Media from '../ui/media/media';
 import MediaBody from '../ui/media/media-body';
-import { messages } from './messages';
+import { messages } from '../../data/activity-type-messages';
 import empty_user from '../images/empty_user.png';
 import { useApiUserById } from '../../api/use-api';
 import { FeedItem } from '../../api/types/feed';
@@ -17,7 +17,7 @@ const PostCard: FC<FeedItem> = (activity: FeedItem) => {
   const [likes, setLikes] = useState(0);
   const [showCommentModal, setShowCommentModal] = useState(false);
 
-  const { data: user, error: userError } = useApiUserById(activity.userId);
+  const { data: user, error: _userError } = useApiUserById(activity.userId);
   return (
     <>
       <Card className="activity-card mb-5">

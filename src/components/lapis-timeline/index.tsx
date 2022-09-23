@@ -23,13 +23,13 @@ const LapisTimeline: FC<IProps> = ({ id }) => {
   const [isLoadingAndHasMore, setIsLoadingAndHasMore] = useState<boolean>(true);
   const [content, setContent] = useState<LapisActivityItem[]>([]);
 
-  useEffect(() => setContent([]), []);
-
   const {
     data: lapisActivity,
     error: lapisError,
     isValidating,
   } = useApiLapisActivityById(id, offset);
+
+  useEffect(() => setContent([]), []);
 
   useEffect(() => {
     const isLoadingSet = (!lapisActivity && !lapisError) || isValidating;

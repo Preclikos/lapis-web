@@ -11,6 +11,6 @@
   "signin.content": "Přihlášení je zdarma a zabere vám to jen minutu.",
   "signin.facebook": "Přihlášení pomocí Facebooku",
   "signin.google": "Přihlášení pomocí Google",
-  "activity-card.location": "Nahlásil novou polohu",
-  "activity-card.create": "Vytvořil nový kamínek"
+  "activity.location": "Nahlásil novou polohu",
+  "activity.create": "Vytvořil nový kamínek"
 }

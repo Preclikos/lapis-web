@@ -2,11 +2,11 @@ import { MessageDescriptor } from 'react-intl';
 
 export const messages: { [name: string]: MessageDescriptor } = {
   Location: {
-    id: 'activity-card.location',
-    defaultMessage: 'Report new location',
+    id: 'activity.location',
+    defaultMessage: 'Reported new location',
   },
   Create: {
-    id: 'activity-card.create',
-    defaultMessage: 'Create new lapis',
+    id: 'activity.create',
+    defaultMessage: 'New lapis was created',
   },
 };

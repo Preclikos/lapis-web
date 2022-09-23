@@ -73,7 +73,7 @@ const Main: FC<IProps> = ({ sidebarOpen }) => {
     >
       {lapis ? (
         <>
-          <LapisCard code={''} {...lapis} />
+          <LapisCard code={'1/1/1/1'} {...lapis} />
           <LapisTimeline id={lapis.id} />
         </>
       ) : (

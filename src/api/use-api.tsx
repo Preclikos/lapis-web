@@ -57,5 +57,6 @@ export const useApiLapisActivityById = (lapisId: number, offset: number) =>
     lapisActivityFetcher,
     {
       revalidateOnFocus: false,
+      dedupingInterval: 5000,
     }
   );

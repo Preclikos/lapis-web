@@ -11,6 +11,6 @@
   "signin.content": "It's free to signin and only takes a minute.",
   "signin.facebook": "Sign In Using Facebook",
   "signin.google": "Sign In Using Google",
-  "activity-card.location": "Report new location",
-  "activity-card.create": "Create new lapis"
+  "activity.location": "Reported new location",
+  "activity.create": "New lapis was created"
 }
