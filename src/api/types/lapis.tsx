@@ -1,5 +1,6 @@
 export type Lapis = {
   id: number;
+  code: string;
   name: string;
   description: string;
   userId: number;

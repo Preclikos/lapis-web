@@ -1,10 +1,13 @@
 import clsx from 'clsx';
 import { FC } from 'react';
+import { FormattedMessage } from 'react-intl';
+import { ActivityType } from '../../../api/types/activityType';
 import { useApiUserById } from '../../../api/use-api';
 import Anchor from '../anchor';
+import { messages, getActivityMessage } from './messages';
 
 interface IProps {
-  title: string;
+  type: ActivityType;
   path: string;
   userId: number;
   excerpt: string;
@@ -14,7 +17,7 @@ interface IProps {
   }>;
 }
 
-const TimelinePost: FC<IProps> = ({ title, path, userId, excerpt, images }) => {
+const TimelinePost: FC<IProps> = ({ type, path, userId, excerpt, images }) => {
   const { data: author } = useApiUserById(userId);
 
   return (
@@ -24,7 +27,7 @@ const TimelinePost: FC<IProps> = ({ title, path, userId, excerpt, images }) => {
           className="timeline-date font-bold text-heading text-sm uppercase tracking-wider mb-0"
           path={path}
         >
-          {title}
+          <FormattedMessage {...getActivityMessage(type)} />
         </Anchor>
       </p>
       {author && (
@@ -39,22 +42,21 @@ const TimelinePost: FC<IProps> = ({ title, path, userId, excerpt, images }) => {
       {images && (
         <div className="grid sm:grid-cols-2 gap-2.5 mb-3.8">
           {images.map((img, i) => (
-            <img
-              key={i}
-              src={img.src}
-              alt={img?.alt || title}
-              width={129}
-              height={69}
-            />
+            <img key={i} src={img.src} alt={img?.alt} width={129} height={69} />
           ))}
         </div>
       )}
-      {/*
-      <div className="text-xs">
-        <Anchor path="/timeline">Like</Anchor>
-        &nbsp;&nbsp;
-        <Anchor path="/timeline">Comment</Anchor>
-          </div>*/}
+      {
+        <div className="text-xs">
+          <Anchor path="/timeline">
+            <FormattedMessage {...messages.like} />
+          </Anchor>
+          &nbsp;&nbsp;
+          <Anchor path="/timeline">
+            <FormattedMessage {...messages.comment} />
+          </Anchor>
+        </div>
+      }
     </>
   );
 };

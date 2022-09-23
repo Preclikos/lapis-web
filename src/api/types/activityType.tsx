@@ -1,3 +1,4 @@
 export enum ActivityType {
-  Location,
+  Unknown = 0,
+  Location = 1,
 }

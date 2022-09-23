@@ -1,10 +1,7 @@
-import { FC, Fragment, useEffect, useState } from 'react';
+import { FC, Fragment } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import { FormattedDate } from 'react-intl';
-import {
-  LapisActivity,
-  LapisActivityItem,
-} from '../../api/types/lapisActivity';
+import { LapisActivityItem } from '../../api/types/lapisActivity';
 import { useApiLapisActivityById } from '../../api/use-api';
 import Card from '../ui/card/card';
 import SpinnerPuzzle from '../ui/spinner/spinner-puzzle';
@@ -62,9 +59,7 @@ const LapisTimeline: FC<IProps> = ({ id }) => {
                   </TimelineTime>
                   <TimelineBody>
                     <TimelinePost
-                      title={
-                        item.type === 'Location' ? 'Nalasena nova poloha' : ''
-                      }
+                      type={item.type}
                       path={''}
                       userId={item.userId}
                       excerpt={item.description}

@@ -1,3 +1,5 @@
+import { ActivityType } from './activityType';
+
 export type LapisActivity = {
   responseLimit: number;
   activityItems: LapisActivityItem[];
@@ -5,7 +7,7 @@ export type LapisActivity = {
 
 export type LapisActivityItem = {
   id: number;
-  type: string;
+  type: ActivityType;
   lapisId: number;
   description: string;
   timeStamp: number;
