@@ -12,7 +12,7 @@ import CloseButton from '../ui/close-button';
 import { getSiblings } from '../../methods';
 import Offcanvas, { OffcanvasHeader, OffcanvasBody } from '../ui/offcanvas';
 import { FormattedMessage } from 'react-intl';
-import { menuMessages } from '../../data/menu-messages';
+import { menuMessages } from '../../messages/menu-messages';
 
 interface IProps {
   isOpen: boolean;

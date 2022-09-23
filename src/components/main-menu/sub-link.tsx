@@ -2,7 +2,7 @@ import { FC } from 'react';
 import clsx from 'clsx';
 import Anchor from '../ui/anchor';
 import { FormattedMessage } from 'react-intl';
-import { menuMessages } from '../../data/menu-messages';
+import { menuMessages } from '../../messages/menu-messages';
 
 interface IProps {
   /**

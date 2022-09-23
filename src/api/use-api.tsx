@@ -1,4 +1,5 @@
 import useSWR from 'swr';
+import useSWRInfinite from 'swr/infinite';
 import { Feed } from './types/feed';
 import { Lapis } from './types/lapis';
 import { LapisActivity } from './types/lapisActivity';
@@ -35,11 +36,16 @@ export const useApiUserByIdOrSub = (subOrId: string | number | null) =>
 const feedFetcher = (_name: string, country: number, offset: number) =>
   webApi.getFeedItems(country, offset);
 
-export const useApiFeed = (country: number, offset: number) =>
-  useSWR<Feed>(['useApiFeed', country, offset], feedFetcher, {
-    revalidateOnFocus: false,
-    dedupingInterval: 5000,
-  });
+export const useApiFeed = (country: number) => {
+  return useSWRInfinite<Feed>(
+    (pageIndex, _previousPageData) => ['useApiFeed', country, pageIndex],
+    feedFetcher,
+    {
+      revalidateFirstPage: false,
+      revalidateOnFocus: false,
+    }
+  );
+};
 
 const lapisFetcher = (_name: string, id: number) => webApi.getLapisById(id);
 
@@ -51,12 +57,17 @@ export const useApiLapisById = (id: number | null) =>
 const lapisActivityFetcher = (_name: string, lapisId: number, offset: number) =>
   webApi.getLapisActivityById(lapisId, offset);
 
-export const useApiLapisActivityById = (lapisId: number, offset: number) =>
-  useSWR<LapisActivity>(
-    ['useApiLapisActivityById', lapisId, offset],
+export const useApiLapisActivityById = (lapisId: number) => {
+  return useSWRInfinite<LapisActivity>(
+    (pageIndex, _previousPageData) => [
+      'useApiInfiniteLapisActivityById',
+      lapisId,
+      pageIndex,
+    ],
     lapisActivityFetcher,
     {
+      revalidateFirstPage: false,
       revalidateOnFocus: false,
-      dedupingInterval: 5000,
     }
   );
+};

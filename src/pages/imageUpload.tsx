@@ -1,7 +1,7 @@
 import Layout from '../layout';
 import PageHeader from '../components/page-header';
 import { useIntl } from 'react-intl';
-import { menuMessages } from '../data/menu-messages';
+import { menuMessages } from '../messages/menu-messages';
 import SEO from '../components/seo';
 import Mansory from '../containers/dashboard/mansory';
 import { usePosition } from '../hooks/use-position';

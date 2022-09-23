@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { menuMessages } from '../../data/menu-messages';
+import { menuMessages } from '../../messages/menu-messages';
 import { IMegamenu } from '../../types/menu';
 import NavItem from './nav-item';
 import NavLink from './nav-link';

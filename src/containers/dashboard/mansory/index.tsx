@@ -7,18 +7,11 @@ import InfiniteScroll from 'react-infinite-scroller';
 import SpinnerPuzzle from '../../../components/ui/spinner/spinner-puzzle';
 
 const Mansory = () => {
-  const [offset, setOffset] = useState<number>(0);
-  const [isLoadingAndHasMore, setIsLoadingAndHasMore] = useState<boolean>(true);
-  const [postCounter, setPostCounter] = useState<number>(0);
-  const [columnsCount, setColumnsCount] = useState<number>(3);
-  const [content, setContent] = useState<[FeedItem[]]>([[]]);
+  const [content, setContent] = useState<FeedItem[][]>([[], [], []]);
   const itemsRef = useRef<HTMLDivElement[]>([]);
   const resolution = useBreakpoint();
-  const {
-    data: feedData,
-    error: feedError,
-    isValidating,
-  } = useApiFeed(0, offset);
+
+  const { data: feedData, isValidating, size, setSize } = useApiFeed(0);
 
   const addToRefs = (index: number, element: HTMLDivElement | null) => {
     if (element !== null) {
@@ -26,78 +19,64 @@ const Mansory = () => {
     }
   };
 
-  useEffect(() => {
-    const isLoadingSet = (!feedData && !feedError) || isValidating;
-    if (feedData == undefined) {
-      setIsLoadingAndHasMore(isLoadingSet);
-    } else {
-      if (feedData.feedItems.length >= feedData.responseLimit) {
-        setIsLoadingAndHasMore(false);
-      }
-    }
-  }, [feedData, feedError, isValidating]);
+  const hasMore =
+    feedData &&
+    feedData[feedData.length - 1].feedItems.length ===
+      feedData[feedData.length - 1].responseLimit;
 
   useEffect(() => {
     switch (resolution) {
       case 'sm':
-        setColumnsCount(1);
+        setContent([[]]);
         break;
       case 'md':
-        setColumnsCount(2);
+        setContent([[], []]);
         break;
       case 'lg':
       case 'xl':
-        setColumnsCount(3);
+        setContent([[], [], []]);
         break;
     }
   }, [resolution]);
 
-  useEffect(() => {
-    const content: [FeedItem[]] = [[]];
-    for (let i = 0; i < columnsCount; i++) {
-      content[i] = [];
+  const allItems = feedData
+    ? ([] as FeedItem[]).concat(...feedData.map((i) => i.feedItems))
+    : [];
+
+  const smallestColumnIndex = () => {
+    let minimalIndex = 0;
+    let minimalHeight = Number.MAX_SAFE_INTEGER;
+
+    for (let i = 0; i < content.length; i++) {
+      const height =
+        itemsRef.current[i] !== undefined
+          ? itemsRef.current[i].clientHeight
+          : 0;
+      if (height < minimalHeight) {
+        minimalHeight = height;
+        minimalIndex = i;
+      }
     }
-    setPostCounter(0);
-    setContent([...content]);
-  }, [columnsCount]);
+    return minimalIndex;
+  };
 
   useLayoutEffect(() => {
-    if (
-      feedData != undefined &&
-      content.length === columnsCount &&
-      postCounter < feedData.feedItems.length
-    ) {
-      setPostCounter(postCounter + 1);
+    const displayedCount = content.reduce((s, c) => s + c.length, 0);
+    if (displayedCount < allItems.length) {
+      const tempContent = [...content];
+      tempContent[smallestColumnIndex()].push(allItems[displayedCount]);
 
-      let minimalIndex = 0;
-      let minimalHeight = Number.MAX_SAFE_INTEGER;
-
-      for (let i = 0; i < columnsCount; i++) {
-        const height =
-          itemsRef.current[i] !== undefined
-            ? itemsRef.current[i].clientHeight
-            : 0;
-        if (height < minimalHeight) {
-          minimalHeight = height;
-          minimalIndex = i;
-        }
-      }
-
-      content[minimalIndex].push(feedData.feedItems[postCounter - offset]);
-
-      setContent([...content]);
+      setContent(tempContent);
     }
   }, [content, feedData]);
 
   return (
     <InfiniteScroll
       loadMore={() => {
-        if (!isLoadingAndHasMore) {
-          setOffset(postCounter);
-        }
+        setSize(size + 1);
       }}
-      hasMore={!isLoadingAndHasMore}
-      loader={<SpinnerPuzzle />}
+      hasMore={hasMore && !isValidating}
+      loader={<SpinnerPuzzle key={-1} />}
     >
       <div className="gap-8 grid lg:grid-cols-3 md:grid-cols-2">
         {content.map((items, index) => {

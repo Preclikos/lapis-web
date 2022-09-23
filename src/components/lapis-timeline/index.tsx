@@ -1,7 +1,10 @@
 import { FC, Fragment, useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import { FormattedDate } from 'react-intl';
-import { LapisActivityItem } from '../../api/types/lapisActivity';
+import {
+  LapisActivity,
+  LapisActivityItem,
+} from '../../api/types/lapisActivity';
 import { useApiLapisActivityById } from '../../api/use-api';
 import Card from '../ui/card/card';
 import SpinnerPuzzle from '../ui/spinner/spinner-puzzle';
@@ -18,73 +21,58 @@ interface IProps {
 const convertToLocalTime = (timeStamp: number) => new Date(timeStamp * 1000);
 
 const LapisTimeline: FC<IProps> = ({ id }) => {
-  const [offset, setOffset] = useState<number>(0);
-  const [postCounter, setPostCounter] = useState<number>(0);
-  const [isLoadingAndHasMore, setIsLoadingAndHasMore] = useState<boolean>(true);
-  const [content, setContent] = useState<LapisActivityItem[]>([]);
-
   const {
     data: lapisActivity,
-    error: lapisError,
+    size,
+    setSize,
     isValidating,
-  } = useApiLapisActivityById(id, offset);
+  } = useApiLapisActivityById(id);
 
-  useEffect(() => setContent([]), []);
+  const hasMore =
+    lapisActivity &&
+    lapisActivity[lapisActivity.length - 1].activityItems.length ===
+      lapisActivity[lapisActivity.length - 1].responseLimit;
 
-  useEffect(() => {
-    const isLoadingSet = (!lapisActivity && !lapisError) || isValidating;
-    if (lapisActivity == undefined) {
-      setIsLoadingAndHasMore(isLoadingSet);
-    } else {
-      if (lapisActivity.activityItems.length >= lapisActivity.responseLimit) {
-        setIsLoadingAndHasMore(false);
-      }
-    }
-  }, [lapisActivity, lapisError, isValidating]);
-
-  useEffect(() => {
-    if (lapisActivity != undefined) {
-      lapisActivity.activityItems.forEach((f) => content.push(f));
-      setPostCounter(offset + lapisActivity.activityItems.length);
-      setContent([...content]);
-    }
-  }, [lapisActivity]);
+  const allItems = lapisActivity
+    ? ([] as LapisActivityItem[]).concat(
+        ...lapisActivity.map((i) => i.activityItems)
+      )
+    : [];
 
   return (
     <Card className="p-4 mt-8 sm:p-[30px]">
       <InfiniteScroll
         loadMore={() => {
-          if (!isLoadingAndHasMore) {
-            setOffset(postCounter);
-          }
+          setSize(size + 1);
         }}
-        hasMore={!isLoadingAndHasMore}
-        loader={<SpinnerPuzzle />}
+        hasMore={hasMore && !isValidating}
+        loader={<SpinnerPuzzle key={0} />}
       >
-        <Timeline>
-          {content.map((item) => (
-            <Fragment key={item.id}>
-              <TimelineItem key={item.id}>
-                <TimelineTime>
-                  <FormattedDate
-                    value={convertToLocalTime(item.timeStamp)}
-                    day="2-digit"
-                    month="2-digit"
-                  />
-                </TimelineTime>
-                <TimelineBody>
-                  <TimelinePost
-                    title={
-                      item.type === 'Location' ? 'Nalasena nova poloha' : ''
-                    }
-                    path={''}
-                    userId={item.userId}
-                    excerpt={item.description}
-                  />
-                </TimelineBody>
-              </TimelineItem>
-            </Fragment>
-          ))}
+        <Timeline key={'timeline'}>
+          {allItems &&
+            allItems.map((item) => (
+              <Fragment key={item.id}>
+                <TimelineItem key={item.id}>
+                  <TimelineTime>
+                    <FormattedDate
+                      value={convertToLocalTime(item.timeStamp)}
+                      day="2-digit"
+                      month="2-digit"
+                    />
+                  </TimelineTime>
+                  <TimelineBody>
+                    <TimelinePost
+                      title={
+                        item.type === 'Location' ? 'Nalasena nova poloha' : ''
+                      }
+                      path={''}
+                      userId={item.userId}
+                      excerpt={item.description}
+                    />
+                  </TimelineBody>
+                </TimelineItem>
+              </Fragment>
+            ))}
         </Timeline>
       </InfiniteScroll>
     </Card>
