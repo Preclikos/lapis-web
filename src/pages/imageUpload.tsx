@@ -3,12 +3,9 @@ import PageHeader from '../components/page-header';
 import { useIntl } from 'react-intl';
 import { menuMessages } from '../messages/menu-messages';
 import SEO from '../components/seo';
-import Mansory from '../containers/dashboard/mansory';
-import { usePosition } from '../hooks/use-position';
 import { ChangeEvent, useEffect, useState } from 'react';
 import NominatimOsmApi from '../api/nominatim-api';
 import ExifReader, { GpsTags } from 'exifreader';
-import { useNominatimReverse } from '../api/use-nominatim';
 
 const ImageUpload = () => {
   const t = useIntl();
