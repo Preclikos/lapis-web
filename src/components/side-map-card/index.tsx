@@ -19,7 +19,7 @@ const SideMapCard: FC<IProps> = ({ id }) => {
 
   return (
     <Card className="p-3.8">
-      <CardHeader>
+      <CardHeader className="pb-0">
         <h3>
           <FormattedMessage {...messages.lastLocation} />
         </h3>

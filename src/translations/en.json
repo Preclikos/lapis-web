@@ -21,5 +21,6 @@
   "lapis-card.created-by": "Created by",
   "lapis-card.report-location": "Report location",
   "lapis-card.from": "from",
-  "side-map.last-location": "Last location"
+  "side-map.last-location": "Last location",
+  "lapis-overview.overview": "Overview"
 }

@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import SideMapCard from '../../../components/side-map-card';
 import { Lapis } from '../../../api/types/lapis';
 import SpinnerPuzzle from '../../../components/ui/spinner/spinner-puzzle';
+import LapisOverview from '../../../components/lapis-overview';
 
 interface IProps {
   sidebarOpen?: boolean;
@@ -18,7 +19,14 @@ const Sidebar: FC<IProps> = ({ sidebarOpen, lapis }) => {
         sidebarOpen && 'maxLg:opacity-1 maxLg:visible maxLg:translate-x-0 '
       )}
     >
-      {lapis ? <SideMapCard id={lapis.id} /> : <SpinnerPuzzle />}
+      {lapis ? (
+        <>
+          <LapisOverview id={lapis.id} />
+          <SideMapCard id={lapis.id} />
+        </>
+      ) : (
+        <SpinnerPuzzle />
+      )}
     </div>
   );
 };

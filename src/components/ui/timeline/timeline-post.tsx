@@ -39,13 +39,21 @@ const TimelinePost: FC<IProps> = ({ type, path, userId, excerpt, images }) => {
         </p>
       )}
       <p className="mb-3.8">{excerpt}</p>
-      {images && (
-        <div className="grid sm:grid-cols-2 gap-2.5 mb-3.8">
-          {images.map((img, i) => (
-            <img key={i} src={img.src} alt={img?.alt} width={100} height={70} />
-          ))}
-        </div>
-      )}
+      <div className="grid grid-cols-5 gap-2 mb-3.8">
+        {images && (
+          <>
+            {images.map((img, i) => (
+              <img
+                key={i}
+                src={img.src}
+                alt={img?.alt}
+                width={100}
+                height={70}
+              />
+            ))}
+          </>
+        )}
+      </div>
       {
         <div className="text-xs">
           <Anchor path="/timeline">
