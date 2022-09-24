@@ -1,23 +1,17 @@
 import PostCard from '../../../components/post-card';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useBreakpoint } from '../../../hooks/use-breakpoint';
 import { useApiFeed } from '../../../api/use-api';
 import { FeedItem } from '../../../api/types/feed';
 import InfiniteScroll from 'react-infinite-scroller';
 import SpinnerPuzzle from '../../../components/ui/spinner/spinner-puzzle';
+import Masonry from 'react-masonry-css';
 
 const Mansory = () => {
-  const [content, setContent] = useState<FeedItem[][]>([[], [], []]);
-  const itemsRef = useRef<HTMLDivElement[]>([]);
+  const [columns, setcolumns] = useState<number>(3);
   const resolution = useBreakpoint();
 
   const { data: feedData, isValidating, size, setSize } = useApiFeed(0);
-
-  const addToRefs = (index: number, element: HTMLDivElement | null) => {
-    if (element !== null) {
-      itemsRef.current[index] = element;
-    }
-  };
 
   const hasMore =
     feedData &&
@@ -27,14 +21,16 @@ const Mansory = () => {
   useEffect(() => {
     switch (resolution) {
       case 'sm':
-        setContent([[]]);
+        setcolumns(1);
+
         break;
       case 'md':
-        setContent([[], []]);
+        setcolumns(2);
+
         break;
       case 'lg':
       case 'xl':
-        setContent([[], [], []]);
+        setcolumns(3);
         break;
     }
   }, [resolution]);
@@ -42,33 +38,6 @@ const Mansory = () => {
   const allItems = feedData
     ? ([] as FeedItem[]).concat(...feedData.map((i) => i.feedItems))
     : [];
-
-  const smallestColumnIndex = () => {
-    let minimalIndex = 0;
-    let minimalHeight = Number.MAX_SAFE_INTEGER;
-
-    for (let i = 0; i < content.length; i++) {
-      const height =
-        itemsRef.current[i] !== undefined
-          ? itemsRef.current[i].clientHeight
-          : 0;
-      if (height < minimalHeight) {
-        minimalHeight = height;
-        minimalIndex = i;
-      }
-    }
-    return minimalIndex;
-  };
-
-  useLayoutEffect(() => {
-    const displayedCount = content.reduce((s, c) => s + c.length, 0);
-    if (displayedCount < allItems.length) {
-      const tempContent = [...content];
-      tempContent[smallestColumnIndex()].push(allItems[displayedCount]);
-
-      setContent(tempContent);
-    }
-  }, [content, feedData]);
 
   return (
     <InfiniteScroll
@@ -78,19 +47,15 @@ const Mansory = () => {
       hasMore={hasMore && !isValidating}
       loader={<SpinnerPuzzle key={-1} />}
     >
-      <div className="gap-8 grid lg:grid-cols-3 md:grid-cols-2">
-        {content.map((items, index) => {
-          return (
-            <div key={index}>
-              <div ref={(element) => addToRefs(index, element)}>
-                {items.map((singleItem) => (
-                  <PostCard key={singleItem.id} {...singleItem} />
-                ))}
-              </div>
-            </div>
-          );
-        })}
-      </div>
+      <Masonry
+        breakpointCols={columns}
+        className="dashboard-masonry-grid"
+        columnClassName="dashboard-masonry-grid_column"
+      >
+        {allItems.map((singleItem) => (
+          <PostCard key={singleItem.id} {...singleItem} />
+        ))}
+      </Masonry>
     </InfiniteScroll>
   );
 };
