@@ -21,5 +21,8 @@
   "lapis-timeline.activity.location": "Nahlášena nová poloha",
   "lapis-timeline.activity.default": "Neznámá aktivita",
   "lapis-timeline.like": "Palec",
-  "lapis-timeline.comment": "Komentář"
+  "lapis-timeline.comment": "Komentář",
+  "lapis-card.created-by": "Přidal/a",
+  "lapis-card.report-location": "Nahlásit polohu",
+  "lapis-card.from": "ze statu"
 }

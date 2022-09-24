@@ -3,6 +3,7 @@ export type Lapis = {
   code: string;
   name: string;
   description: string;
+  timeStamp: number;
   userId: number;
   image: {
     src: string;

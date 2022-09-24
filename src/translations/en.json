@@ -17,5 +17,8 @@
   "signin.google": "Sign In Using Google",
   "signin.microsoft": "Sign In Using Microsoft",
   "activity.location": "Reported new location",
-  "activity.create": "New lapis was created"
+  "activity.create": "New lapis was created",
+  "lapis-card.created-by": "Created by",
+  "lapis-card.report-location": "Report location",
+  "lapis-card.from": "from"
 }

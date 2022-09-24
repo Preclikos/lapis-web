@@ -1,8 +1,6 @@
 import { FC } from 'react';
 import clsx from 'clsx';
 import LapisCard from '../../../components/lapis-card';
-import { useApiLapisById } from '../../../api/use-api';
-import { useParams } from 'react-router-dom';
 import SpinnerPuzzle from '../../../components/ui/spinner/spinner-puzzle';
 import LapisTimeline from '../../../components/lapis-timeline';
 import { Lapis } from '../../../api/types/lapis';
