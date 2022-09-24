@@ -3,6 +3,7 @@ import { useCallback } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Redirect } from 'react-router-dom';
 import Logo from '../logo';
+import Anchor from '../ui/anchor';
 import Button from '../ui/button';
 import { messages } from './messages';
 
@@ -30,6 +31,11 @@ const SigninBox = () => {
       <h3 className="font-light text-body mb-[50px] leading-snug">
         <FormattedMessage {...messages.content} />
       </h3>
+      <Anchor path={'/terms'}>
+        <h6 className="font-light text-body mb-[50px] leading-snug">
+          <FormattedMessage {...messages.terms} />
+        </h6>
+      </Anchor>
       <Button onClick={loginFacebook} color="facebook" fullwidth>
         <FormattedMessage {...messages.facebook} />
       </Button>

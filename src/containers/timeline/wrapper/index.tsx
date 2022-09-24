@@ -34,7 +34,7 @@ const Wrapper: FC<PropsWithChildren> = ({ children }) => {
           <child.type
             {...child.props}
             sidebarOpen={sidebarOpen}
-            lapis={lapis ?? undefined}
+            lapis={lapis}
           />
         ) : (
           <SpinnerPuzzle />

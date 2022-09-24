@@ -9,6 +9,11 @@ export const messages: { [name: string]: MessageDescriptor } = {
     id: 'signin.content',
     defaultMessage: "It's free to signin and only takes a minute.",
   },
+  terms: {
+    id: 'signin.terms',
+    defaultMessage:
+      'Please read terms and policies, by continuing you agree them.',
+  },
   facebook: {
     id: 'signin.facebook',
     defaultMessage: 'Sign In Using Facebook',
