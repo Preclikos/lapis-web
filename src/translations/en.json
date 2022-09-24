@@ -9,6 +9,7 @@
   "user-menu.logout": "Sign Out",
   "signin.title": "Get Started!",
   "signin.content": "It's free to signin and only takes a minute.",
+  "signin.terms": "Please read terms and policies, by continuing you agree them.",
   "signin.facebook": "Sign In Using Facebook",
   "signin.google": "Sign In Using Google",
   "signin.microsoft": "Sign In Using Microsoft",
