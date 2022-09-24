@@ -2,6 +2,7 @@ import http from './http-client';
 import { Feed } from './types/feed';
 import { Lapis } from './types/lapis';
 import { LapisActivity } from './types/lapisActivity';
+import { LapisLocation } from './types/lapisLocation';
 import { User } from './types/user';
 
 class WebApi {
@@ -22,6 +23,11 @@ class WebApi {
   getLapisActivityById = (lapisId: number, offset: number) =>
     http
       .get<LapisActivity>(`/lapis/id/${lapisId}/activities/${offset}`)
+      .then((res) => res.data);
+
+  getLapisLastLocationById = (lapisId: number) =>
+    http
+      .get<LapisLocation>(`/lapis/id/${lapisId}/lastLocation`)
       .then((res) => res.data);
 }
 

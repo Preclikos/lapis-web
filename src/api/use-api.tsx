@@ -3,6 +3,7 @@ import useSWRInfinite from 'swr/infinite';
 import { Feed } from './types/feed';
 import { Lapis } from './types/lapis';
 import { LapisActivity } from './types/lapisActivity';
+import { LapisLocation } from './types/lapisLocation';
 import { User } from './types/user';
 import webApi from './web-api';
 
@@ -71,3 +72,15 @@ export const useApiLapisActivityById = (lapisId: number) => {
     }
   );
 };
+
+const lapisLastLocationFetcher = (_name: string, id: number) =>
+  webApi.getLapisLastLocationById(id);
+
+export const useApiLapisLastLocationById = (id: number | null) =>
+  useSWR<LapisLocation>(
+    id !== null ? ['useApiLapisLastLocationById', id] : null,
+    lapisLastLocationFetcher,
+    {
+      revalidateOnFocus: false,
+    }
+  );
