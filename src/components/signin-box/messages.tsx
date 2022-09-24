@@ -17,4 +17,8 @@ export const messages: { [name: string]: MessageDescriptor } = {
     id: 'signin.google',
     defaultMessage: 'Sign In Using Google',
   },
+  microsoft: {
+    id: 'signin.microsoft',
+    defaultMessage: 'Sign In Using Microsoft',
+  },
 };
