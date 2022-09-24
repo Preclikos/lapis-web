@@ -30,7 +30,6 @@ const LapisCard: FC<IProps> = ({
   image,
 }) => {
   const { data: author } = useApiUserById(userId ?? null);
-
   const country = useCountries(author?.country ?? null);
 
   return (

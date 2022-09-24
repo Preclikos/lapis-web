@@ -1,4 +1,5 @@
 import { FC, useState } from 'react';
+import { useCountries } from '../../hooks/use-countries';
 import Anchor from '../ui/anchor';
 import Card from '../ui/card/card';
 import CardBody from '../ui/card/card-body';
@@ -24,6 +25,7 @@ const ProfileCard: FC<IProps> = ({
 }) => {
   const [ltlBio, setLtlBio] = useState('');
   const [expanded, setExpanded] = useState(false);
+  const countryName = useCountries(country ?? null);
 
   const readMoreHandler = () => {
     if (!expanded) {
@@ -55,7 +57,13 @@ const ProfileCard: FC<IProps> = ({
               {/*<p className="mb-[5px] text-[15px] text-heading leading-relaxed">
                 {designation} at <span className="text-primary">{company}</span>
             </p>*/}
-              <p>{country}</p>
+              <p>
+                {' '}
+                {country && (
+                  <span className={'fi  fi-' + country.toLocaleLowerCase()} />
+                )}{' '}
+                {countryName}
+              </p>
               <p className="mb-0">
                 {ltlBio}{' '}
                 <button
