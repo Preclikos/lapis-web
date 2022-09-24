@@ -1,4 +1,5 @@
 import { ActivityType } from './activityType';
+import { Image } from './image';
 
 export type LapisActivity = {
   responseLimit: number;
@@ -13,10 +14,5 @@ export type LapisActivityItem = {
   timeStamp: number;
   userId: number;
 
-  image: {
-    src: string;
-    alt?: string;
-    width?: number;
-    height?: number;
-  };
+  images: Image[];
 };
