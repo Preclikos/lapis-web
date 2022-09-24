@@ -5,7 +5,6 @@ import { menuMessages } from '../messages/menu-messages';
 import SEO from '../components/seo';
 import Card from '../components/ui/card/card';
 import CardBody from '../components/ui/card/card-body';
-import CardTitle from '../components/ui/card/card-title';
 
 const TermsAndConditions = () => {
   const t = useIntl();
