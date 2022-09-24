@@ -44,11 +44,9 @@ const TimelinePost: FC<IProps> = ({ type, path, userId, excerpt, images }) => {
           <>
             {images.map((img, i) => (
               <img
+                className="object-scale-down w-100 h-40"
                 key={i}
                 src={img.src}
-                alt={img?.alt}
-                width={100}
-                height={70}
               />
             ))}
           </>
