@@ -1,12 +1,15 @@
 import { FC } from 'react';
 import clsx from 'clsx';
 import SideMapCard from '../../../components/side-map-card';
+import { Lapis } from '../../../api/types/lapis';
+import SpinnerPuzzle from '../../../components/ui/spinner/spinner-puzzle';
 
 interface IProps {
   sidebarOpen?: boolean;
+  lapis?: Lapis;
 }
 
-const Sidebar: FC<IProps> = ({ sidebarOpen }) => {
+const Sidebar: FC<IProps> = ({ sidebarOpen, lapis }) => {
   return (
     <div
       className={clsx(
@@ -15,7 +18,7 @@ const Sidebar: FC<IProps> = ({ sidebarOpen }) => {
         sidebarOpen && 'maxLg:opacity-1 maxLg:visible maxLg:translate-x-0 '
       )}
     >
-      <SideMapCard />
+      {lapis ? <SideMapCard id={lapis.id} /> : <SpinnerPuzzle />}
     </div>
   );
 };

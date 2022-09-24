@@ -1,10 +1,15 @@
 import { LatLng } from 'leaflet';
+import { FC } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import Card from '../ui/card/card';
 import CardBody from '../ui/card/card-body';
 import CardHeader from '../ui/card/card-header';
 
-const SideMapCard = () => {
+interface IProps {
+  id: number;
+}
+
+const SideMapCard: FC<IProps> = ({ id }) => {
   const position = new LatLng(51.505, -0.09);
 
   return (
