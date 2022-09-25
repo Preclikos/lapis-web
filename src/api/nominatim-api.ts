@@ -4,6 +4,7 @@ const http = axios.create({
   baseURL: 'https://nominatim.openstreetmap.org',
   headers: {
     'Content-type': 'application/json',
+    'Accept-Language': 'en-US',
   },
 });
 

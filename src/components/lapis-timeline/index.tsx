@@ -84,6 +84,7 @@ const LapisTimeline: FC<IProps> = ({ id }) => {
                       userId={item.userId}
                       excerpt={item.description}
                       images={item.images}
+                      location={item.location}
                     />
                   </TimelineBody>
                 </TimelineItem>

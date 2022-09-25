@@ -13,6 +13,13 @@ export type LapisActivityItem = {
   description: string;
   timeStamp: number;
   userId: number;
-
   images: Image[];
+  location: LapisActivityLocation;
+};
+
+export type LapisActivityLocation = {
+  lat: number;
+  long: number;
+  countryCode: string;
+  city: string;
 };

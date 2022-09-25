@@ -5,6 +5,7 @@ import { ActivityType } from '../../../api/types/activityType';
 import { useApiUserById } from '../../../api/use-api';
 import Anchor from '../anchor';
 import { messages, getActivityMessage } from './messages';
+import { LapisActivityLocation } from '../../../api/types/lapisActivity';
 
 interface IProps {
   type: ActivityType;
@@ -15,9 +16,17 @@ interface IProps {
     src: string;
     alt?: string;
   }>;
+  location: LapisActivityLocation;
 }
 
-const TimelinePost: FC<IProps> = ({ type, path, userId, excerpt, images }) => {
+const TimelinePost: FC<IProps> = ({
+  type,
+  path,
+  userId,
+  excerpt,
+  images,
+  location,
+}) => {
   const [isOpenLightbox, setOpenLightbox] = useState<boolean>(false);
   const [imageIndex, setImageIndex] = useState<number>(0);
   const { data: author } = useApiUserById(userId);
@@ -30,6 +39,12 @@ const TimelinePost: FC<IProps> = ({ type, path, userId, excerpt, images }) => {
           path={path}
         >
           <FormattedMessage {...getActivityMessage(type)} />
+          {location && (
+            <>
+              {' '}
+              - {location.city}, {location.countryCode}
+            </>
+          )}
         </Anchor>
       </p>
       {author && (
