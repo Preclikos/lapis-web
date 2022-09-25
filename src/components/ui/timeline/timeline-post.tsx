@@ -50,7 +50,7 @@ const TimelinePost: FC<IProps> = ({ type, path, userId, excerpt, images }) => {
                   setImageIndex(i);
                   setOpenLightbox(!isOpenLightbox);
                 }}
-                className="object-scale-down h-120"
+                className="object-scale-down w-[8rem]"
                 key={i}
                 src={img.src}
               />

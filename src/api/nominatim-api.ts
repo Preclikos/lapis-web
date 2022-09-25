@@ -9,8 +9,6 @@ const http = axios.create({
 
 let nextRequestPossible = Date.now();
 
-console.log(nextRequestPossible);
-
 class NominatimOsmApi {
   wait = async (waitMs: number) => {
     return new Promise((resolve) => setTimeout(resolve, waitMs));

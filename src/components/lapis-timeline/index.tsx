@@ -16,6 +16,11 @@ interface IProps {
 }
 
 const convertToLocalTime = (timeStamp: number) => new Date(timeStamp * 1000);
+const isAnotherYearThenBefore = (current: number, prevous: number) => {
+  const currentDate = new Date(current * 1000);
+  const prevousDate = new Date(prevous * 1000);
+  return currentDate.getFullYear() !== prevousDate.getFullYear();
+};
 
 const LapisTimeline: FC<IProps> = ({ id }) => {
   const {
@@ -47,9 +52,24 @@ const LapisTimeline: FC<IProps> = ({ id }) => {
       >
         <Timeline key={'timeline'}>
           {allItems &&
-            allItems.map((item) => (
-              <Fragment key={item.id}>
-                <TimelineItem key={item.id}>
+            allItems.map((item, index) => (
+              <Fragment key={index}>
+                {index > 0 &&
+                  isAnotherYearThenBefore(
+                    item.timeStamp,
+                    allItems[index - 1].timeStamp
+                  ) && (
+                    <TimelineItem isDay>
+                      <TimelineTime>
+                        <FormattedDate
+                          value={convertToLocalTime(item.timeStamp)}
+                          year="numeric"
+                        />
+                      </TimelineTime>
+                      <TimelineBody />
+                    </TimelineItem>
+                  )}
+                <TimelineItem>
                   <TimelineTime>
                     <FormattedDate
                       value={convertToLocalTime(item.timeStamp)}
