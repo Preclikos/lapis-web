@@ -46,7 +46,7 @@ const LapisCard: FC<IProps> = ({
                 height={120}
               />
             )}
-            <MediaBody className="mt-[25px] md:mt-30 md:ml-[30px]">
+            <MediaBody className="mt-[20px] md:mt-30 md:ml-[30px]">
               <h3 className="font-normal">{name}</h3>
               <h6>{code}</h6>
               <p className="mb-[5px] text-[15px] text-heading leading-relaxed">
@@ -59,7 +59,7 @@ const LapisCard: FC<IProps> = ({
                 </Anchor>{' '}
                 <FormattedMessage {...messages.from} /> {country}
               </p>
-              <p>
+              <p className="mb-0.5 pb-1">
                 <FormattedDate value={convertToLocalTime(timeStamp)} />
               </p>
               <p className="mb-0">{description}</p>

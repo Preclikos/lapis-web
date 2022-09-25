@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, Fragment, useState } from 'react';
 import FsLightbox from 'fslightbox-react';
 import { FormattedMessage } from 'react-intl';
 import { ActivityType } from '../../../api/types/activityType';
@@ -37,19 +37,14 @@ const TimelinePost: FC<IProps> = ({
 
   return (
     <>
-      <p className="ont-medium mb-0">
-        <Anchor
-          className="timeline-date font-bold text-heading text-sm uppercase tracking-wider mb-0"
-          path={path}
-        >
-          <FormattedMessage {...getActivityMessage(type)} />
-          {location && (
-            <>
-              {' '}
-              - {location.city}, {country}
-            </>
-          )}
-        </Anchor>
+      <p className="font-medium mb-0 timeline-date font-bold text-heading text-sm uppercase tracking-wider mb-0">
+        <FormattedMessage {...getActivityMessage(type)} />
+        {location && (
+          <Anchor path={'#'} onClick={() => console.log('test')}>
+            {' '}
+            - {location.city}, {country}
+          </Anchor>
+        )}
       </p>
       {author && (
         <p className="text-xs mb-3.7">
@@ -64,15 +59,16 @@ const TimelinePost: FC<IProps> = ({
         {images && (
           <>
             {images.map((img, i) => (
-              <img
+              <Anchor
+                path="#"
+                key={i}
                 onClick={() => {
                   setImageIndex(i);
                   setOpenLightbox(!isOpenLightbox);
                 }}
-                className="object-scale-down w-[8rem]"
-                key={i}
-                src={img.src}
-              />
+              >
+                <img className="object-scale-down w-[8rem]" src={img.src} />
+              </Anchor>
             ))}
             <FsLightbox
               sourceIndex={imageIndex}
@@ -85,11 +81,11 @@ const TimelinePost: FC<IProps> = ({
 
       {
         <div className="text-xs">
-          <Anchor path="/timeline">
+          <Anchor path="#">
             <FormattedMessage {...messages.like} />
           </Anchor>
           &nbsp;&nbsp;
-          <Anchor path="/timeline">
+          <Anchor path="#">
             <FormattedMessage {...messages.comment} />
           </Anchor>
         </div>
