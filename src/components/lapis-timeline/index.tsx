@@ -7,6 +7,7 @@ import Card from '../ui/card/card';
 import SpinnerPuzzle from '../ui/spinner/spinner-puzzle';
 import Timeline from '../ui/timeline/timeline';
 import TimelineBody from '../ui/timeline/timeline-body';
+import TimelineDate from '../ui/timeline/timeline-date';
 import TimelineItem from '../ui/timeline/timeline-item';
 import TimelinePost from '../ui/timeline/timeline-post';
 import TimelineTime from '../ui/timeline/timeline-time';
@@ -60,13 +61,15 @@ const LapisTimeline: FC<IProps> = ({ id }) => {
                     allItems[index - 1].timeStamp
                   ) && (
                     <TimelineItem isDay>
-                      <TimelineTime>
-                        <FormattedDate
-                          value={convertToLocalTime(item.timeStamp)}
-                          year="numeric"
-                        />
-                      </TimelineTime>
-                      <TimelineBody />
+                      <TimelineTime></TimelineTime>
+                      <TimelineBody>
+                        <TimelineDate>
+                          <FormattedDate
+                            value={convertToLocalTime(item.timeStamp)}
+                            year="numeric"
+                          />
+                        </TimelineDate>
+                      </TimelineBody>
                     </TimelineItem>
                   )}
                 <TimelineItem>
