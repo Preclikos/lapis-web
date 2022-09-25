@@ -26,5 +26,8 @@
   "lapis-card.report-location": "Nahlásit polohu",
   "lapis-card.from": "z",
   "side-map.last-location": "Poslední lokace",
-  "lapis-overview.overview": "Přehled"
+  "lapis-overview.overview": "Přehled",
+  "lapis-overview.locations": "Navštívil {count} míst",
+  "lapis-overview.states": "Podíval se do {count} států",
+  "lapis-overview.travel": "Procestoval {distance} km"
 }

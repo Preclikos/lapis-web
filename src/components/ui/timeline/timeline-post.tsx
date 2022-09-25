@@ -1,5 +1,5 @@
-import clsx from 'clsx';
-import { FC } from 'react';
+import { FC, useState } from 'react';
+import FsLightbox from 'fslightbox-react';
 import { FormattedMessage } from 'react-intl';
 import { ActivityType } from '../../../api/types/activityType';
 import { useApiUserById } from '../../../api/use-api';
@@ -18,6 +18,8 @@ interface IProps {
 }
 
 const TimelinePost: FC<IProps> = ({ type, path, userId, excerpt, images }) => {
+  const [isOpenLightbox, setOpenLightbox] = useState<boolean>(false);
+  const [imageIndex, setImageIndex] = useState<number>(0);
   const { data: author } = useApiUserById(userId);
 
   return (
@@ -39,19 +41,29 @@ const TimelinePost: FC<IProps> = ({ type, path, userId, excerpt, images }) => {
         </p>
       )}
       <p className="mb-3.8">{excerpt}</p>
-      <div className="grid grid-cols-5 gap-2 mb-3.8">
+      <div className={`grid gap-2 mb-3.8 grid-cols-${images?.length}`}>
         {images && (
           <>
             {images.map((img, i) => (
               <img
-                className="object-scale-down w-100 h-40"
+                onClick={() => {
+                  setImageIndex(i);
+                  setOpenLightbox(!isOpenLightbox);
+                }}
+                className="object-scale-down h-120"
                 key={i}
                 src={img.src}
               />
             ))}
+            <FsLightbox
+              sourceIndex={imageIndex}
+              toggler={isOpenLightbox}
+              sources={images.map((m) => m.src)}
+            />
           </>
         )}
       </div>
+
       {
         <div className="text-xs">
           <Anchor path="/timeline">

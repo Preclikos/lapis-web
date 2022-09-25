@@ -22,5 +22,8 @@
   "lapis-card.report-location": "Report location",
   "lapis-card.from": "from",
   "side-map.last-location": "Last location",
-  "lapis-overview.overview": "Overview"
+  "lapis-overview.overview": "Overview",
+  "lapis-overview.locations": "Visited {count} places",
+  "lapis-overview.states": "Looked at {count} states",
+  "lapis-overview.travel": "Traveled {distance} km"
 }
