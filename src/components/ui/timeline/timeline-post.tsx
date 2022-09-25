@@ -6,6 +6,7 @@ import { useApiUserById } from '../../../api/use-api';
 import Anchor from '../anchor';
 import { messages, getActivityMessage } from './messages';
 import { LapisActivityLocation } from '../../../api/types/lapisActivity';
+import { useCountries } from '../../../hooks/use-countries';
 
 interface IProps {
   type: ActivityType;
@@ -30,6 +31,9 @@ const TimelinePost: FC<IProps> = ({
   const [isOpenLightbox, setOpenLightbox] = useState<boolean>(false);
   const [imageIndex, setImageIndex] = useState<number>(0);
   const { data: author } = useApiUserById(userId);
+  const country = useCountries(
+    location && location.countryCode ? location.countryCode : null
+  );
 
   return (
     <>
@@ -42,7 +46,7 @@ const TimelinePost: FC<IProps> = ({
           {location && (
             <>
               {' '}
-              - {location.city}, {location.countryCode}
+              - {location.city}, {country}
             </>
           )}
         </Anchor>
