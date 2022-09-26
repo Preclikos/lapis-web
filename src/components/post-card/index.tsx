@@ -13,12 +13,14 @@ import { useApiUserById } from '../../api/use-api';
 import { FeedItem } from '../../api/types/feed';
 import TimeAfter from '../time-after';
 import Image from '../ui/image';
+import { useCountries } from '../../hooks/use-countries';
 
 const PostCard: FC<FeedItem> = (activity: FeedItem) => {
   const [likes, setLikes] = useState(0);
   const [showCommentModal, setShowCommentModal] = useState(false);
 
   const { data: user, error: _userError } = useApiUserById(activity.userId);
+  const country = useCountries(user?.country ?? '');
   return (
     <>
       <Card className="activity-card mb-5">
@@ -48,6 +50,7 @@ const PostCard: FC<FeedItem> = (activity: FeedItem) => {
                 {user && (
                   <>
                     <span
+                      title={country}
                       className={'fi  fi-' + user?.country.toLocaleLowerCase()}
                     />
                   </>
