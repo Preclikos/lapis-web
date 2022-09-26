@@ -28,13 +28,19 @@ const LapisOverview: FC<IProps> = ({ id }) => {
       </Button>
       <CardBody>
         <p className="mb-1">
-          <FormattedMessage {...messages.locations} values={{ count: 46 }} />
+          <FormattedMessage
+            {...messages.locations}
+            values={{ count: <b>46</b> }}
+          />
         </p>
         <p className="mb-1">
-          <FormattedMessage {...messages.states} values={{ count: 2 }} />
+          <FormattedMessage {...messages.states} values={{ count: <b>2</b> }} />
         </p>
         <p className="mb-1">
-          <FormattedMessage {...messages.travel} values={{ distance: 150 }} />
+          <FormattedMessage
+            {...messages.travel}
+            values={{ distance: <b>150</b> }}
+          />
         </p>
       </CardBody>
     </Card>
