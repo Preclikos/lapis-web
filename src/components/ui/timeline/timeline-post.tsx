@@ -70,7 +70,10 @@ const TimelinePost: FC<IProps> = ({
             <FsLightbox
               sourceIndex={imageIndex}
               toggler={isOpenLightbox}
-              sources={images.map((m) => m.path)}
+              types={[...new Array(images.length).fill('image')]}
+              sources={images.map((m) => {
+                return process.env.REACT_APP_IMAGE_URI + m.path;
+              })}
             />
           </>
         )}
