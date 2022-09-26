@@ -83,7 +83,6 @@ const LapisTimeline: FC<IProps> = ({ id }) => {
                   <TimelineBody>
                     <TimelinePost
                       type={item.type}
-                      path={''}
                       userId={item.userId}
                       excerpt={item.description}
                       images={item.images}

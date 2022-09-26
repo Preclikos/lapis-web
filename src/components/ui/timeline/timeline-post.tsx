@@ -7,20 +7,19 @@ import Anchor from '../anchor';
 import { messages, getActivityMessage } from './messages';
 import { LapisActivityLocation } from '../../../api/types/lapisActivity';
 import { useCountries } from '../../../hooks/use-countries';
-import { Image } from '../../../api/types/image';
+import { Image as ImageType } from '../../../api/types/image';
+import Image from '../../ui/image';
 
 interface IProps {
   type: ActivityType;
-  path: string;
   userId: number;
   excerpt: string;
-  images?: Image[];
+  images?: ImageType[];
   location: LapisActivityLocation;
 }
 
 const TimelinePost: FC<IProps> = ({
   type,
-  path,
   userId,
   excerpt,
   images,
@@ -65,7 +64,7 @@ const TimelinePost: FC<IProps> = ({
                   setOpenLightbox(!isOpenLightbox);
                 }}
               >
-                <img className="object-scale-down w-[8rem]" src={img.path} />
+                <Image className="object-scale-down w-[8rem]" path={img.path} />
               </Anchor>
             ))}
             <FsLightbox

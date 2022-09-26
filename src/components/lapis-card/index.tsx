@@ -1,12 +1,13 @@
 import { FC } from 'react';
 import { FormattedDate, FormattedMessage } from 'react-intl';
-import { Image } from '../../api/types/image';
+import { Image as ImageType } from '../../api/types/image';
 import { useApiUserById } from '../../api/use-api';
 import { useCountries } from '../../hooks/use-countries';
 import Anchor from '../ui/anchor';
 import Button from '../ui/button';
 import Card from '../ui/card/card';
 import CardBody from '../ui/card/card-body';
+import Image from '../ui/image';
 import Media from '../ui/media/media';
 import MediaBody from '../ui/media/media-body';
 import { messages } from './messages';
@@ -17,7 +18,7 @@ interface IProps {
   description: string;
   timeStamp: number;
   userId?: number;
-  image: Image;
+  image: ImageType;
 }
 
 const convertToLocalTime = (timeStamp: number) => new Date(timeStamp * 1000);
@@ -39,8 +40,8 @@ const LapisCard: FC<IProps> = ({
         <CardBody className="p-[30px]">
           <Media className="flex-col md:flex-row">
             {image?.path && (
-              <img
-                src={image.path}
+              <Image
+                path={image.path}
                 alt={image?.alt || 'profile'}
                 className="mt-2 w-[120px]"
                 width={120}
