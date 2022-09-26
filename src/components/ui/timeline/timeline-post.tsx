@@ -1,4 +1,4 @@
-import { FC, Fragment, useState } from 'react';
+import { FC, useState } from 'react';
 import FsLightbox from 'fslightbox-react';
 import { FormattedMessage } from 'react-intl';
 import { ActivityType } from '../../../api/types/activityType';
@@ -7,16 +7,14 @@ import Anchor from '../anchor';
 import { messages, getActivityMessage } from './messages';
 import { LapisActivityLocation } from '../../../api/types/lapisActivity';
 import { useCountries } from '../../../hooks/use-countries';
+import { Image } from '../../../api/types/image';
 
 interface IProps {
   type: ActivityType;
   path: string;
   userId: number;
   excerpt: string;
-  images?: Array<{
-    src: string;
-    alt?: string;
-  }>;
+  images?: Image[];
   location: LapisActivityLocation;
 }
 
@@ -67,13 +65,13 @@ const TimelinePost: FC<IProps> = ({
                   setOpenLightbox(!isOpenLightbox);
                 }}
               >
-                <img className="object-scale-down w-[8rem]" src={img.src} />
+                <img className="object-scale-down w-[8rem]" src={img.path} />
               </Anchor>
             ))}
             <FsLightbox
               sourceIndex={imageIndex}
               toggler={isOpenLightbox}
-              sources={images.map((m) => m.src)}
+              sources={images.map((m) => m.path)}
             />
           </>
         )}

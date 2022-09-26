@@ -28,7 +28,7 @@ const UserDropdown = () => {
         className="inline-flex items-center"
       >
         <img
-          src={user?.image.src ?? empty_user}
+          src={user?.image.path ?? empty_user}
           alt="user"
           className="w-[2.813rem] h-[2.813rem] rounded-full p-[3px] border border-primary"
           width={37}

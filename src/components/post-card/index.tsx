@@ -12,6 +12,7 @@ import empty_user from '../images/empty_user.png';
 import { useApiUserById } from '../../api/use-api';
 import { FeedItem } from '../../api/types/feed';
 import TimeAfter from '../time-after';
+import Image from '../ui/image';
 
 const PostCard: FC<FeedItem> = (activity: FeedItem) => {
   const [likes, setLikes] = useState(0);
@@ -31,7 +32,7 @@ const PostCard: FC<FeedItem> = (activity: FeedItem) => {
           <Media className="items-center my-[25px]">
             <Anchor path={`/profile/${user?.id}`}>
               <img
-                src={user?.image?.src ?? empty_user}
+                src={user?.image?.path ?? empty_user}
                 alt={'author'}
                 className="rounded-full w-10"
                 width={40}
@@ -58,10 +59,10 @@ const PostCard: FC<FeedItem> = (activity: FeedItem) => {
             </span>
           </Media>
           <div className="">
-            {activity.image.src && (
+            {activity.image.path && (
               <Anchor path={`/lapis/${activity.lapisId}`}>
-                <img
-                  src={activity.image.src}
+                <Image
+                  path={activity.image.path}
                   className="w-full h-full-aspect object-cover"
                   alt={activity.image?.alt || 'Banner'}
                   width={activity.image.width}

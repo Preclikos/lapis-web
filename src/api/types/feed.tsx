@@ -1,4 +1,5 @@
 import { ActivityType } from './activityType';
+import { Image } from './image';
 
 export type Feed = {
   responseLimit: number;
@@ -12,10 +13,5 @@ export type FeedItem = {
   description: string;
   timeStamp: number;
   userId: number;
-  image: {
-    src: string;
-    alt?: string;
-    width?: number;
-    height?: number;
-  };
+  image: Image;
 };

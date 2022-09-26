@@ -21,7 +21,7 @@ const MainContent = () => {
         country={user?.country}
         motto={user?.motto ?? ''}
         path={'https://' + window.location.host + '/profile/' + user?.id}
-        image={{ src: user?.image.src ?? '', alt: user?.name }}
+        image={{ src: user?.image.path ?? '', alt: user?.name }}
       />
     </>
   );

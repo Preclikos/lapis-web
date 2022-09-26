@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { FormattedDate, FormattedMessage } from 'react-intl';
+import { Image } from '../../api/types/image';
 import { useApiUserById } from '../../api/use-api';
 import { useCountries } from '../../hooks/use-countries';
 import Anchor from '../ui/anchor';
@@ -16,7 +17,7 @@ interface IProps {
   description: string;
   timeStamp: number;
   userId?: number;
-  image: { src: string; alt?: string };
+  image: Image;
 }
 
 const convertToLocalTime = (timeStamp: number) => new Date(timeStamp * 1000);
@@ -37,9 +38,9 @@ const LapisCard: FC<IProps> = ({
       <Card className="card-profile">
         <CardBody className="p-[30px]">
           <Media className="flex-col md:flex-row">
-            {image?.src && (
+            {image?.path && (
               <img
-                src={image.src}
+                src={image.path}
                 alt={image?.alt || 'profile'}
                 className="mt-2 w-[120px]"
                 width={120}

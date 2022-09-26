@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const http = axios.create({
-  baseURL: 'https://nominatim.openstreetmap.org',
+  baseURL: process.env.REACT_APP_NOMINATIM_URI,
   headers: {
     'Content-type': 'application/json',
     'Accept-Language': 'en-US',
