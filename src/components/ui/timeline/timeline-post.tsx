@@ -1,5 +1,4 @@
 import { FC, useState } from 'react';
-import FsLightbox from 'fslightbox-react';
 import { FormattedMessage } from 'react-intl';
 import { ActivityType } from '../../../api/types/activityType';
 import { useApiUserById } from '../../../api/use-api';
@@ -9,6 +8,7 @@ import { LapisActivityLocation } from '../../../api/types/lapisActivity';
 import { useCountries } from '../../../hooks/use-countries';
 import { Image as ImageType } from '../../../api/types/image';
 import Image from '../../ui/image';
+import Lightbox from 'react-image-lightbox';
 
 interface IProps {
   type: ActivityType;
@@ -56,25 +56,58 @@ const TimelinePost: FC<IProps> = ({
         {images && (
           <>
             {images.map((img, i) => (
-              <Anchor
-                path="#"
+              <div
                 key={i}
                 onClick={() => {
                   setImageIndex(i);
-                  setOpenLightbox(!isOpenLightbox);
+                  setOpenLightbox(true);
                 }}
               >
-                <Image className="object-scale-down w-[8rem]" path={img.path} />
-              </Anchor>
+                <Image
+                  className="cursor-pointer object-scale-down w-[8rem]"
+                  path={img.path}
+                />
+              </div>
             ))}
-            <FsLightbox
-              sourceIndex={imageIndex}
-              toggler={isOpenLightbox}
-              types={[...new Array(images.length).fill('image')]}
-              sources={images.map((m) => {
-                return process.env.REACT_APP_IMAGE_URI + m.path;
-              })}
-            />
+            {isOpenLightbox && (
+              <Lightbox
+                onImageLoad={() => {
+                  window.dispatchEvent(new Event('resize'));
+                }}
+                mainSrc={
+                  process.env.REACT_APP_IMAGE_URI + images[imageIndex].path
+                }
+                nextSrc={
+                  process.env.REACT_APP_IMAGE_URI +
+                  images[(imageIndex + 1) % images.length].path
+                }
+                prevSrc={
+                  process.env.REACT_APP_IMAGE_URI +
+                  images[(imageIndex + images.length - 1) % images.length].path
+                }
+                onCloseRequest={() => setOpenLightbox(false)}
+                onMovePrevRequest={() =>
+                  setImageIndex(
+                    (imageIndex + images.length - 1) % images.length
+                  )
+                }
+                onMoveNextRequest={() =>
+                  setImageIndex((imageIndex + 1) % images.length)
+                }
+              />
+            )}
+            {/*
+              <FsLightbox
+                sourceIndex={imageIndex}
+                toggler={isOpenLightbox}
+                types={[...new Array(images.length).fill('image')]}
+                sources={images.map((m) => {
+                  return process.env.REACT_APP_IMAGE_URI + m.path;
+                })}
+
+                //onClose={() => setOpenLightbox((prev) => !prev)}
+              />
+            */}
           </>
         )}
       </div>

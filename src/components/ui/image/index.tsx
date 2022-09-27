@@ -6,9 +6,17 @@ export interface IProps {
   width?: number;
   height?: number;
   alt?: string;
+  onClick?: () => void;
 }
 
-const Image: FC<IProps> = ({ className, path, width, height, alt }) => {
+const Image: FC<IProps> = ({
+  className,
+  path,
+  width,
+  height,
+  alt,
+  onClick,
+}) => {
   return (
     <img
       className={className}
@@ -16,6 +24,7 @@ const Image: FC<IProps> = ({ className, path, width, height, alt }) => {
       width={width}
       height={height}
       alt={alt}
+      onClick={() => onClick}
     />
   );
 };
