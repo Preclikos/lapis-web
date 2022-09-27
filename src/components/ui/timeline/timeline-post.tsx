@@ -8,7 +8,7 @@ import { LapisActivityLocation } from '../../../api/types/lapisActivity';
 import { useCountries } from '../../../hooks/use-countries';
 import { Image as ImageType } from '../../../api/types/image';
 import Image from '../../ui/image';
-import Lightbox from 'react-image-lightbox';
+import Lightbox from 'yet-another-react-lightbox';
 
 interface IProps {
   type: ActivityType;
@@ -69,45 +69,14 @@ const TimelinePost: FC<IProps> = ({
                 />
               </div>
             ))}
-            {isOpenLightbox && (
-              <Lightbox
-                onImageLoad={() => {
-                  window.dispatchEvent(new Event('resize'));
-                }}
-                mainSrc={
-                  process.env.REACT_APP_IMAGE_URI + images[imageIndex].path
-                }
-                nextSrc={
-                  process.env.REACT_APP_IMAGE_URI +
-                  images[(imageIndex + 1) % images.length].path
-                }
-                prevSrc={
-                  process.env.REACT_APP_IMAGE_URI +
-                  images[(imageIndex + images.length - 1) % images.length].path
-                }
-                onCloseRequest={() => setOpenLightbox(false)}
-                onMovePrevRequest={() =>
-                  setImageIndex(
-                    (imageIndex + images.length - 1) % images.length
-                  )
-                }
-                onMoveNextRequest={() =>
-                  setImageIndex((imageIndex + 1) % images.length)
-                }
-              />
-            )}
-            {/*
-              <FsLightbox
-                sourceIndex={imageIndex}
-                toggler={isOpenLightbox}
-                types={[...new Array(images.length).fill('image')]}
-                sources={images.map((m) => {
-                  return process.env.REACT_APP_IMAGE_URI + m.path;
-                })}
-
-                //onClose={() => setOpenLightbox((prev) => !prev)}
-              />
-            */}
+            <Lightbox
+              open={isOpenLightbox}
+              index={imageIndex}
+              close={() => setOpenLightbox(false)}
+              slides={images.map((m) => {
+                return { src: process.env.REACT_APP_IMAGE_URI + m.path };
+              })}
+            />
           </>
         )}
       </div>

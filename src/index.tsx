@@ -6,7 +6,7 @@ import './fonts/font-awesome.css';
 import './fonts/ionicons.css';
 import './fonts/flag-icon.min.css';
 import 'leaflet/dist/leaflet.css';
-import 'react-image-lightbox/style.css';
+import 'yet-another-react-lightbox/styles.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css'; // Re-uses images from ~leaflet package
 import 'leaflet-defaulticon-compatibility';
 
