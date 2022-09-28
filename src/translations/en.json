@@ -20,6 +20,8 @@
   "signin.microsoft": "Sign In Using Microsoft",
   "activity.location": "Reported new location",
   "activity.create": "New lapis was created",
+  "post-card.comment": "Comment",
+  "post-card.like": "Like",
   "lapis-timeline.activity.location": "Reported new location",
   "lapis-timeline.activity.default": "Unknown Activity",
   "lapis-timeline.like": "Like",

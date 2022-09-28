@@ -7,13 +7,14 @@ import CardBody from '../ui/card/card-body';
 import CardTitle from '../ui/card/card-title';
 import Media from '../ui/media/media';
 import MediaBody from '../ui/media/media-body';
-import { messages } from '../../messages/activity-type-messages';
+import { messages as activityMessages } from '../../messages/activity-type-messages';
 import empty_user from '../images/empty_user.png';
 import { useApiUserById } from '../../api/use-api';
 import { FeedItem } from '../../api/types/feed';
 import TimeAfter from '../time-after';
 import Image from '../ui/image';
 import { useCountries } from '../../hooks/use-countries';
+import { messages } from './messages';
 
 const PostCard: FC<FeedItem> = (activity: FeedItem) => {
   const [likes, setLikes] = useState(0);
@@ -27,7 +28,7 @@ const PostCard: FC<FeedItem> = (activity: FeedItem) => {
         <CardBody className="p-[25px]">
           <CardTitle>
             <Anchor path={`/lapis/${activity.lapisId}`}>
-              <FormattedMessage {...messages[activity.type]} />
+              <FormattedMessage {...activityMessages[activity.type]} />
             </Anchor>
           </CardTitle>
 
@@ -83,13 +84,13 @@ const PostCard: FC<FeedItem> = (activity: FeedItem) => {
             onClick={() => setShowCommentModal(true)}
             className="inline-block border-r border-r-geyser py-3 px-3.8 md:px-[25px] text-primary"
           >
-            Comment
+            <FormattedMessage {...messages.comment} />
           </button>
           <button
             className="inline-block border-r border-r-geyser py-3 px-3.8 md:px-[25px] text-primary"
             onClick={() => setLikes((prev) => prev + 1)}
           >
-            Likes ({likes})
+            <FormattedMessage {...messages.like} /> ({likes})
           </button>
         </div>
       </Card>
