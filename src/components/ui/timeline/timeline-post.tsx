@@ -31,7 +31,9 @@ const TimelinePost: FC<IProps> = ({
   const country = useCountries(
     location && location.countryCode ? location.countryCode : null
   );
-
+  const userCountry = useCountries(
+    author && author.country ? author.country : null
+  );
   return (
     <>
       <p className="font-medium mb-0 timeline-date font-bold text-heading text-sm uppercase tracking-wider mb-0">
@@ -46,7 +48,10 @@ const TimelinePost: FC<IProps> = ({
       {author && (
         <p className="text-xs mb-3.7">
           <Anchor path={'/profile/' + author.id}>
-            <span className={'fi  fi-' + author?.country.toLocaleLowerCase()} />{' '}
+            <span
+              title={userCountry}
+              className={'fi  fi-' + author?.country.toLocaleLowerCase()}
+            />{' '}
             {author.name}
           </Anchor>
         </p>
