@@ -4,6 +4,7 @@ import { Feed } from './types/feed';
 import { Lapis } from './types/lapis';
 import { LapisActivity } from './types/lapisActivity';
 import { LapisLocation } from './types/lapisLocation';
+import { LapisOverview } from './types/lapisOverview';
 import { User } from './types/user';
 import webApi from './web-api';
 
@@ -80,6 +81,18 @@ export const useApiLapisLastLocationById = (id: number | null) =>
   useSWR<LapisLocation>(
     id !== null ? ['useApiLapisLastLocationById', id] : null,
     lapisLastLocationFetcher,
+    {
+      revalidateOnFocus: false,
+    }
+  );
+
+const lapisOverviewFetcher = (_name: string, id: number) =>
+  webApi.getLapisOverviewById(id);
+
+export const useApiLapisOverviewById = (id: number | null) =>
+  useSWR<LapisOverview>(
+    id !== null ? ['useApiLapisOverviewById', id] : null,
+    lapisOverviewFetcher,
     {
       revalidateOnFocus: false,
     }

@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { FormattedMessage } from 'react-intl';
+import { useApiLapisOverviewById } from '../../api/use-api';
 import Button from '../ui/button';
 import Card from '../ui/card/card';
 import CardBody from '../ui/card/card-body';
@@ -12,7 +13,9 @@ interface IProps {
 }
 
 const LapisOverview: FC<IProps> = ({ id }) => {
-  return (
+  const { data } = useApiLapisOverviewById(id);
+
+  return data ? (
     <Card className="p-3.8 mb-5">
       <CardHeader className="pb-0">
         <h3>
@@ -30,20 +33,25 @@ const LapisOverview: FC<IProps> = ({ id }) => {
         <p className="mb-1">
           <FormattedMessage
             {...messages.locations}
-            values={{ count: <b>46</b> }}
+            values={{ count: <b>{data.locations}</b> }}
           />
         </p>
         <p className="mb-1">
-          <FormattedMessage {...messages.states} values={{ count: <b>2</b> }} />
+          <FormattedMessage
+            {...messages.states}
+            values={{ count: <b>{data.states}</b> }}
+          />
         </p>
         <p className="mb-1">
           <FormattedMessage
             {...messages.travel}
-            values={{ distance: <b>150</b> }}
+            values={{ distance: <b>{data.distance}</b> }}
           />
         </p>
       </CardBody>
     </Card>
+  ) : (
+    <SpinnerPuzzle />
   );
 };
 

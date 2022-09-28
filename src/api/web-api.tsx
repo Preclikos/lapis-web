@@ -3,6 +3,7 @@ import { Feed } from './types/feed';
 import { Lapis } from './types/lapis';
 import { LapisActivity } from './types/lapisActivity';
 import { LapisLocation } from './types/lapisLocation';
+import { LapisOverview } from './types/lapisOverview';
 import { User } from './types/user';
 
 class WebApi {
@@ -28,6 +29,11 @@ class WebApi {
   getLapisLastLocationById = (lapisId: number) =>
     http
       .get<LapisLocation>(`/lapis/id/${lapisId}/lastLocation`)
+      .then((res) => res.data);
+
+  getLapisOverviewById = (lapisId: number) =>
+    http
+      .get<LapisOverview>(`/lapis/id/${lapisId}/overview`)
       .then((res) => res.data);
 }
 
