@@ -10,6 +10,7 @@ import { fromFetchStream } from '../../api/from-fetch-stream';
 import SpinnerCircle from '../ui/spinner/spinner-circle';
 import { SearchItem } from '../../api/types/search';
 import Anchor from '../ui/anchor';
+import Image from '../ui/image';
 
 const SearchForm = () => {
   const t = useIntl();
@@ -123,7 +124,7 @@ const SearchForm = () => {
                         path={'lapis/' + item.id}
                         className=" grid grid-cols-4 py-4"
                       >
-                        <img src={item.image.src} alt={item.name} />
+                        <Image path={item.image.path} />
                         <div className="px-2 py-2 col-span-3 border border-geyser">
                           <h6>{item.code}</h6>
                           <h4>{item.name}</h4>
