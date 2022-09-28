@@ -1,6 +1,5 @@
 import SEO from '../components/seo';
 import PageHeader from '../components/page-header';
-import MainContent from '../containers/profile/main-content';
 import Layout from '../layout';
 import { menuMessages } from '../messages/menu-messages';
 import { useIntl } from 'react-intl';

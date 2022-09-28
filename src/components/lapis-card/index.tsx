@@ -13,6 +13,7 @@ import MediaBody from '../ui/media/media-body';
 import { messages } from './messages';
 
 interface IProps {
+  id: number;
   code: string;
   name: string;
   description: string;
@@ -24,6 +25,7 @@ interface IProps {
 const convertToLocalTime = (timeStamp: number) => new Date(timeStamp * 1000);
 
 const LapisCard: FC<IProps> = ({
+  id,
   code,
   name,
   description,
@@ -66,9 +68,11 @@ const LapisCard: FC<IProps> = ({
               </p>
               <p className="mb-0">{description}</p>
             </MediaBody>
-            <Button className="mt-[5px]">
-              <FormattedMessage {...messages.reportLocation} />
-            </Button>
+            <Anchor path={`/lapis/${id}/report`}>
+              <Button className="mt-[5px]">
+                <FormattedMessage {...messages.reportLocation} />
+              </Button>
+            </Anchor>
           </Media>
         </CardBody>
       </Card>

@@ -21,4 +21,8 @@ export const menuMessages: { [name: string]: MessageDescriptor } = {
     id: 'menu.terms',
     defaultMessage: 'Terms & Conditions',
   },
+  lapisLocationReport: {
+    id: 'menu.lapis.location-report',
+    defaultMessage: 'Location report',
+  },
 };
