@@ -16,14 +16,14 @@ export const messages: { [name: string]: MessageDescriptor } = {
   },
   facebook: {
     id: 'signin.facebook',
-    defaultMessage: 'Sign In Using Facebook',
+    defaultMessage: 'Facebook',
   },
   google: {
     id: 'signin.google',
-    defaultMessage: 'Sign In Using Google',
+    defaultMessage: 'Google',
   },
   microsoft: {
     id: 'signin.microsoft',
-    defaultMessage: 'Sign In Using Microsoft',
+    defaultMessage: 'Microsoft',
   },
 };

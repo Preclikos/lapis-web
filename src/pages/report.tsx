@@ -4,6 +4,7 @@ import Layout from '../layout';
 import { menuMessages } from '../messages/menu-messages';
 import { useIntl } from 'react-intl';
 import { useParams } from 'react-router-dom';
+import ReportCard from '../components/report-card';
 
 interface ILapisProps {
   id: string;
@@ -28,6 +29,7 @@ const Report = () => {
         currentPage={t.formatMessage({ ...menuMessages.lapisLocationReport })}
         title={t.formatMessage({ ...menuMessages.lapisLocationReport })}
       />
+      <ReportCard id={Number(id)} />
     </Layout>
   );
 };
