@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: lapis
+  name: lapis-web
+  labels:
+    app: lapis-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lapis-web
+  template:
+    metadata:
+      labels:
+        app: lapis-web
+    spec:
+      containers:
+      - name: lapis-web
+        image: repository.preclikos.cz:5000/lapis/web
+        ports:
+        - containerPort: 80

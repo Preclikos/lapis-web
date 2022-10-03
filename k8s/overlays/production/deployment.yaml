@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: lapis
+  name: lapis-web
+spec:
+  template:
+    spec:
+      containers:
+      - name: lapis-web
+        image: repository.preclikos.cz:5000/lapis/web

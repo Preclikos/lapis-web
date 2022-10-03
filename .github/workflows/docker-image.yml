@@ -7,7 +7,8 @@ on:
     branches: [ "master" ]
 
 jobs:
-  docker:
+
+  docker: 
     runs-on: self-hosted
     steps:
       -
@@ -30,20 +31,17 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            repository.preclikos.cz:5000/lapis/web
+             repository.preclikos.cz:5000/lapis/web
           tags: |
-            type=ref,event=branch
-            type=ref,event=pr
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
+            type=sha
       -
         name: Login to Container Repository
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v2
         with:
           registry: repository.preclikos.cz:5000
-          username: none
-          password: none
+          username: cluster
+          password: random
       -
         name: Build and push
         uses: docker/build-push-action@v3
@@ -52,3 +50,32 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+  deploy:
+    runs-on: self-hosted
+    environment: production
+    needs: docker
+    steps:
+      -
+        name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: |
+             repository.preclikos.cz:5000/lapis/web
+          tags: |
+            type=sha
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      - name: 'Kubernetes Tools'
+        uses: yokawasa/action-setup-kube-tools@v0.7.1
+        with:
+          kustomize: '4.5.7'
+          kubectl: '1.17.1'
+      - name: 'Kustomize Build'
+        run: |         
+          (cd k8s/overlays/production && kustomize edit set image repository.preclikos.cz:5000/lapis/web=${{ steps.meta.outputs.tags }})
+          mkdir ~/.kube 
+          echo -n "${{ secrets.KUBE_CONFIG }}" | base64 --decode > ~/.kube/config
+          kustomize build k8s/overlays/production | kubectl apply -f -
